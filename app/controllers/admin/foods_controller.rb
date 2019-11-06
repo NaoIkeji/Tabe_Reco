@@ -9,7 +9,8 @@ class Admin::FoodsController < ApplicationController
 
 	def create
 		@food = Food.new(food_params)
-
+		@food.save
+		redirect_to
 	end
 
 	def edit
@@ -27,6 +28,7 @@ class Admin::FoodsController < ApplicationController
 
 	private
 	def food_params
+		params.require(:food).permit(:ate_date, :ate_time, :meal_item, :meal_image_id, :meal_text)
 	end
 
 end
