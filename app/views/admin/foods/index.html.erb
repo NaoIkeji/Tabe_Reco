@@ -13,6 +13,8 @@
 			<td><%= food.food_item %></td>
 			<td><%= food.food_category %></td>
 			<td><%= food.food_color %></td>
+			<td><%= link_to '編集', edit_admin_food_path(food) %></td>
+			<td><%= link_to '削除', admin_food_path(food), method: :delete %></td>
 	    </tr>
     <% end %>
 </table>

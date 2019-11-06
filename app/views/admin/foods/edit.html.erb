@@ -1,0 +1,25 @@
+<h2>食品の編集</h2>
+
+
+<%= form_for(@food, url:admin_food_path, method: :patch) do |f|%>
+	<div>
+		<%= f.label :food_item, "食品名" %>
+		<%= f.text_field :food_item %>
+
+    </div>
+
+    <div>
+		<%= f.label :food_category, "食品の分類" %>
+		<%= f.select :food_category, [["主食", "主食"],["主菜", "主菜"],["副菜", "副菜"],["果物", "果物"],["牛乳・乳製品", "牛乳・乳製品"],["油脂","油脂"],["嗜好品","嗜好品"]], {include_blank: "選択してください"} %>
+    </div>
+
+    <div>
+		<%= f.label :food_color, "色の分類" %>
+		<%= f.select :food_color, [["黄色", "黄色"],["赤色", "赤色"],["緑色", "赤色"]],{include_blank: "選択してください"} %>
+    </div>
+
+
+
+	<%= f.submit '編集' %>
+
+<% end %>
