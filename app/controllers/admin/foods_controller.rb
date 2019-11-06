@@ -1,5 +1,6 @@
 class Admin::FoodsController < ApplicationController
 	def index
+		@foods = Food.all
 	end
 
 	def new
@@ -10,7 +11,7 @@ class Admin::FoodsController < ApplicationController
 	def create
 		@food = Food.new(food_params)
 		@food.save
-		redirect_to
+		redirect_to admin_foods_path
 	end
 
 	def edit
@@ -28,7 +29,7 @@ class Admin::FoodsController < ApplicationController
 
 	private
 	def food_params
-		params.require(:food).permit(:ate_date, :ate_time, :meal_item, :meal_image_id, :meal_text)
+		params.require(:food).permit(:food_item, :food_category, :food_color)
 	end
 
 end

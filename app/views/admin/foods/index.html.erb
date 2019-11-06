@@ -1,0 +1,18 @@
+<h2>登録食品一覧</h2>
+
+<%= link_to "新規登録", new_admin_food_path %>
+
+<table>
+		<tr>
+			<th>食品名</th>
+			<th>食品の分類</th>
+			<th>色の分類</th>
+		</tr>
+	<% @foods.each do |food| %>
+		<tr>
+			<td><%= food.food_item %></td>
+			<td><%= food.food_category %></td>
+			<td><%= food.food_color %></td>
+	    </tr>
+    <% end %>
+</table>
