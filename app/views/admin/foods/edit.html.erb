@@ -1,7 +1,7 @@
-<h2>食品新規追加</h2>
+<h2>食品の編集</h2>
 
 
-<%= form_for(@food, url:admin_foods_path, method: :post) do |f|%>
+<%= form_for(@food, url:admin_food_path, method: :patch) do |f|%>
 	<div>
 		<%= f.label :food_item, "食品名" %>
 		<%= f.text_field :food_item %>
@@ -20,6 +20,6 @@
 
 
 
-	<%= f.submit '登録' %>
+	<%= f.submit '編集' %>
 
 <% end %>
