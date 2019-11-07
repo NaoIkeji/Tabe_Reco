@@ -67,6 +67,21 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 
 gem "refile-mini_magick"
 
+gem "paranoia"
+
+gem 'kaminari','~> 1.1.1'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+>>>>>>> 700a11ea8b2184ef29a3bfd95ff458b1677d4f5e
 
 gem 'jquery-rails'
+
+gem 'cocoon'
+
+gem 'pry-byebug'
+
+gem "hirb"
+
+gem "hirb-unicode"
+
 

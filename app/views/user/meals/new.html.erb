@@ -1,8 +1,13 @@
-<h2>１食の食事登録</h2>
+<h2>１食の食事記録</h2>
 
-<p>トップへ戻る</p>
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
 
-<%= render 'form', food: @food %>
+<p><a href="#">食事記録の使い方</a></p>
+
+
+<hr>
+
+<%= render 'form', meal: @meal, url: @url, text: @text %>
 
 
 
