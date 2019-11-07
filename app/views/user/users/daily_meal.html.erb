@@ -1,0 +1,40 @@
+<h2>１日の食事一覧</h2>
+
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
+
+<p>xx/xx/xx/</p>
+
+<hr>
+
+<% @meals.each do |meal| %>
+	<p>項目：<b><%= meal.meal_item %></b></p>
+	<p>時間：<%= meal.ate_time %><p>
+	<p><%= attachment_image_tag meal, :meal_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
+	</p>
+	<p>食事メモ：<%= meal.meal_text %></p>
+	<p>食品項目と分量：
+		<br>
+		<% meal.food_points.each do |food_point| %>
+			<%= food_point.food.food_item %>：
+			<% if food_point.point == 1 %>
+				<%= "少ない" %>
+			<% elsif food_point.point == 2 %>
+				<%= "やや少ない" %>
+			<% elsif food_point.point == 3 %>
+				<%= "ふつう" %>
+			<% elsif food_point.point == 4 %>
+				<%= "やや多い" %>
+			<% elsif food_point.point == 5 %>
+				<%= "多い" %>
+			<% end %>
+			<br>
+		<% end %>
+
+	</p>
+	<p><%= link_to '編集', edit_user_meal_path(current_user.id) %></p>
+	<p><%= link_to '削除', user_meal_path(current_user.id), method: :delete %></p>
+<hr>
+<% end %>
+
+
+<p>バランスチェックする</p>
