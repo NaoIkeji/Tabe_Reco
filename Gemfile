@@ -83,4 +83,7 @@ gem "hirb"
 
 gem "hirb-unicode"
 
+gem 'chart-js-rails', '~> 0.1.4'
+
+gem 'gon'
 

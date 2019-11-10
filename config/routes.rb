@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
-  get '/' => 'home#top'
+  get '/' => 'home#top', as: 'root'
 
 namespace :user do
   get '/users/:id/my_page' => 'users#my_page', as: 'my_page'
   get '/users/:id/daily_meal' => 'users#daily_meal', as: 'daily_meal'
+  # get '/users/daily_meal/:id/date[0]/date[1]/date[2]' => 'users#my_page', as: 'daily_meal'
+
   get '/users/:id/daily_meal_balance' => 'users#daily_meal_balance', as: 'daily_meal_balance'
+
+
+  get '/meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
 
 	resources :meals
 	resources :foods, only: [:create, :update, :edit, :destroy]

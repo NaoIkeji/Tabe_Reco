@@ -1,5 +1,5 @@
 class User::MealsController < ApplicationController
-	def about
+	def meal_indication
 	end
 
 	def index
@@ -19,7 +19,7 @@ class User::MealsController < ApplicationController
 	def create
 		@meal = Meal.new(meal_params)
 		@meal.user_id = current_user.id
-		if @meal.save!
+		if @meal.save
           redirect_to user_daily_meal_path(current_user.id)
        else
          @text = "食事を登録する"
@@ -31,7 +31,7 @@ class User::MealsController < ApplicationController
 	def edit
 		@meal = Meal.find(params[:id])
 		@text = "食事を編集する"
-		@url = user_meals_path
+		@url = user_meal_path
 	end
 
 	def update
@@ -51,6 +51,6 @@ class User::MealsController < ApplicationController
 
 	private
 	def meal_params
-		params.require(:meal).permit(:user_id, :ate_date, :ate_time, :meal_item, :meal_image, :meal_text, food_points_attributes: [:id, :meal_id, :food_id, :point, :_destroy])
+		params.require(:meal).permit(:ate_date, :ate_time, :meal_item, :meal_image, :meal_text, food_points_attributes: [:id, :meal_id, :food_id, :point, :_destroy])
 	end
 end

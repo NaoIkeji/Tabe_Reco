@@ -1,15 +1,14 @@
-<h2>１日の食事一覧</h2>
+<h2>xx月xx日の食事一覧</h2>
 
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
-
-<p>xx/xx/xx/</p>
 
 <hr>
 
 <% @meals.each do |meal| %>
+	<p>登録日：<%= meal.ate_date.strftime('%Y/%m/%d') %></p>
 	<p>項目：<b><%= meal.meal_item %></b></p>
-	<p>時間：<%= meal.ate_time %><p>
-	<p><%= attachment_image_tag meal, :meal_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
+	<p>時間：<%= meal.ate_time.strftime('%R') %>
+	<p><%= attachment_image_tag meal, :meal_image, :fill, 200, 150, fallback: "no_image.jpg", size:'200x150' %>
 	</p>
 	<p>食事メモ：<%= meal.meal_text %></p>
 	<p>食品項目と分量：
@@ -31,10 +30,13 @@
 		<% end %>
 
 	</p>
-	<p><%= link_to '編集', edit_user_meal_path(current_user.id) %></p>
-	<p><%= link_to '削除', user_meal_path(current_user.id), method: :delete %></p>
+	<p><%= link_to '編集', edit_user_meal_path(meal.id) %></p>
+	<p><%= link_to '削除', user_meal_path(meal.id), method: :delete %></p>
 <hr>
 <% end %>
 
 
-<p>バランスチェックする</p>
+<p><%= link_to '1食の食事記録へ', new_user_meal_path %></p>
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
+
+<button>バランスチェックする</button>

@@ -8,11 +8,10 @@ class ApplicationController < ActionController::Base
   		else
   			admin_home_top_path
   		end
-
   	end
 
   	def after_sign_out_path_for(resource)
-  		root_path
+  		  root_path
   	end
 
   	protected

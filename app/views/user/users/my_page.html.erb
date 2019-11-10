@@ -1,11 +1,25 @@
+<p>※ナビかサイドバーで表示</p>
+<P><%= link_to 'マイページ', user_my_page_path %></P>
+<p><%= link_to '１食の食事記録', new_user_meal_path %></p>
+<p><%= link_to 'マイデータ' %></p>
+<p><%= link_to '設定変更' %></p>
+
+<hr>
+
 <h2>マイページ</h2>
-
-<p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
-
-<p><%= link_to '食事の新規登録へ', new_user_meal_path %></p>
-
-<p>登録日時一覧</p>
-
 <p><%= link_to '１日の食事記録一覧へ', user_daily_meal_path(current_user) %></p>
-
 <p><%= link_to '食事バランス一覧へ', user_daily_meal_balance_path(current_user)%></p>
+
+
+<div>
+   <p>※カレンダー表示させる</p>
+	<ul>
+		<% @meal.each do |meal| %>
+			<li><%= form_tag user_daily_meal_path(current_user.id), method: :get do %>
+				<%= submit_tag "#{meal.ate_date}"%>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+</div>
+

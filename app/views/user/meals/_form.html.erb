@@ -22,6 +22,9 @@
 	<p><%= f.label :meal_image_id, '食事の写真' %></p>
 	<p><%= attachment_image_tag meal,:meal_image, :fill,60,60,fallback: "no_image.jpg" %></p>
 	<%= f.attachment_field :meal_image %>
+<!-- 	JQで選択した画像を表示予定
+	<script>
+	</script> -->
 </div>
 
 <div>
@@ -31,8 +34,11 @@
 </div>
 
 
+<hr>
 
 <p>1食のバランスチェック</p>
+
+<p>※<%= link_to '食事の目安量について', user_meal_indication_path%></p>
 
 <div>
 	<p>主食</p>

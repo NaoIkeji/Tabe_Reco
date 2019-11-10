@@ -1,21 +1,92 @@
-<h2>１日の食事バランス</h2>
+<h2>xx月xx日の栄養バランス</h2>
+
+<h3>栄養バランス</h3>
+<p>※レーダーチャートを表示させる</p>
+
+<canvas id="graph" width="500px" height="500px"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js">
+	$(function(){
+		var drawGraph = function(data){
+			var ctx = document.getElementById('graph').getContext('2d');
+
+			var data1 = {
+				label:'適正量',
+				data: data[1],
+				backgroundColor: "rgba(250, 50, 50, 0.3)",
+				borderColor: "rgba(200, 50, 50, 0.3)",
+				pointHoverBackgroundColor: "rgba(200, 50, 50, 0.3)",
+				pointHoverBorderColor: "rgba(200, 50, 50, 0.3)",
+			};
+
+			var data2 = {
+				label:'1日の食事',
+				data: data[2],
+				backgroundColor: "rgba(50, 50, 250, 0.3)",
+				borderColor: "rgba(50, 50, 200, 0.3)",
+				pointHoverBackgroundColor: "rgba(50, 50, 200, 0.3)",
+				pointHoverBorderColor: "rgba(50, 50, 200, 0.3)",
+			}
+
+			var label = data[0];
+
+			var config = {
+				type: 'radar',
+				data: { labels: label, datasets: [data1,data2]},
+
+				  options: {
+				  	legend: {
+				  		position: 'left',
+				  	},
+
+				  	responsive: true,
+
+				  	scale: {
+				  		pointLabels: {
+				  			fontSize: 15,
+				  		},
+				  		ticks: {
+				  			stepSize: 10,
+				  			beginAtZero: true,
+				  			min: 0,
+				  			max: 100,
+				  		}
+				  	}
+
+				  }
+			}
+
+			var myChartGraph = new Chart(ctx, config);
+		};
+
+		var data = [['黄色','赤色','緑色'],
+					[18, 12, 12],
+					[10, 10, 10]]
+		drawGraph(data);
+	})
+
+</script>
 
 
-<h3>カレンダー</h3>
-<p>※日付を選ぶとその日の食事一覧が見れる</p>
+<hr>
 
+
+
+
+<h3>食事アドバイス</h3>
+<p>※食品分類や食品項目の各点数の合計値によって表示を変える<br>
+(もう少し食べましょう。ちょうどいい量です。食べ過ぎです。など)</p>
+
+<hr>
 
 <h3>xx月xx日の食事一覧</h3>
-
 <p>朝食</p>
 <p>時間</p>
 <p>画像</p>
 <p>食事メモ</p>
 
-<h3>栄養バランス</h3>
-<p>※レーダーチャートを表示させる</p>
 
 
-<h3>食事アドバイス</h3>
-<p>※食品分類や食品項目の各点数の合計値によって表示を変える(少ない、普通、食べ過ぎなど)</p>
+
+
 

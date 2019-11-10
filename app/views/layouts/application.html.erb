@@ -6,10 +6,63 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <% if request.path_info.include?('admin') %>
+          <div>
+            <p>Tabe_Recoのロゴ</p>
+            <ul>
+                <% if admin_signed_in? %>
+                    <li>管理者としてログイン中</li>
+                    <li><%= link_to 'ログアウト', destroy_admin_session_path, method; :delete %>  %></li>
+                <% else %>
+                    <li><%= link_to 'ログイン', admin_session_path %></li>
+                <% end %>
+            </ul>
+          </div>
+
+      <% else%>
+
+          <div>
+            <p>Tabe_Recoのロゴ</p>
+              <ul>
+                <% if user_signed_in? %>
+                    <li>使い方</li>
+                    <li>お問い合わせ</li>
+                    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p></li>
+                <% else %>
+                    <li><%= link_to '会員登録', new_user_registration_path %></li>
+                    <li><%= link_to 'ログイン',user_session_path %></li>
+                    <li>お問い合わせ</li>
+                <% end %>
+              </ul>
+          </div>
+
+          <% if user_signed_in? %>
+              <div>
+                <ul>
+                  <li><%= link_to '自分の記録（仮）',user_my_page_path(current_user.id) %></li>
+                  <li>みんなの広場（仮）</li>
+                  <li>栄養の知識（仮）</li>
+                  <li>ユーザー名：<%= current_user.nickname %></li>
+                </ul>
+              </div>
+          <% end %>
+      <% end %>
+    </header>
+
+    <hr>
+
+
     <%= yield %>
+
+    <hr>
+    <footer>
+      <p>※フッター</p>
+    </footer>
   </body>
 </html>
