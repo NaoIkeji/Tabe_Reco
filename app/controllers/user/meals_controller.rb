@@ -20,7 +20,8 @@ class User::MealsController < ApplicationController
 		@meal = Meal.new(meal_params)
 		@meal.user_id = current_user.id
 		if @meal.save
-          redirect_to user_daily_meal_path(current_user.id)
+			@date = params[:commit]
+            redirect_to user_daily_meal_path(current_user.id)
        else
          @text = "食事を登録する"
          @url = user_meals_path

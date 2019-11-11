@@ -1,4 +1,4 @@
-<h2>xx月xx日の食事一覧</h2>
+<h2><%= @date %>の食事一覧</h2>
 
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
 
@@ -35,8 +35,12 @@
 <hr>
 <% end %>
 
-
-<p><%= link_to '1食の食事記録へ', new_user_meal_path %></p>
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
 
-<button>バランスチェックする</button>
+
+<div>
+	<%= form_tag user_daily_meal_balance_path(current_user.id), method: :get do %>
+		 <p><%= submit_tag  @date %>のバランスチェックする</p>
+	<% end %>
+</div>
+

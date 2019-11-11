@@ -18,7 +18,7 @@
             <ul>
                 <% if admin_signed_in? %>
                     <li>管理者としてログイン中</li>
-                    <li><%= link_to 'ログアウト', destroy_admin_session_path, method; :delete %>  %></li>
+                    <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
                 <% else %>
                     <li><%= link_to 'ログイン', admin_session_path %></li>
                 <% end %>

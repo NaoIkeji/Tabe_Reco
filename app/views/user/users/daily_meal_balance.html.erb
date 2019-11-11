@@ -1,7 +1,18 @@
-<h2>xx月xx日の栄養バランス</h2>
+<h2><%= @date %>の栄養バランス</h2>
+
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
 
 <h3>栄養バランス</h3>
 <p>※レーダーチャートを表示させる</p>
+
+<% @yellow_food_points = 0 %>
+<% @red_food_points = 0 %>
+<% @green_food_points = 0 %>
+
+<p>黄色の食品の合計点数<%= @yellow_food_points %></p>
+<p>赤色の食品の合計点数<%= @red_food_points %></p>
+<p>緑色の食品の合計点数<%= @green_food_points %></p>
+<% binding.pry %>
 
 <canvas id="graph" width="500px" height="500px"></canvas>
 
@@ -61,7 +72,7 @@
 
 		var data = [['黄色','赤色','緑色'],
 					[18, 12, 12],
-					[10, 10, 10]]
+					[@yellow_food_points, @red_food_points, @green_food_points]]
 		drawGraph(data);
 	})
 
@@ -79,12 +90,18 @@
 
 <hr>
 
-<h3>xx月xx日の食事一覧</h3>
-<p>朝食</p>
-<p>時間</p>
-<p>画像</p>
-<p>食事メモ</p>
+<h3><%= @date %>の食事一覧</h3>
+<% @meals.each do |meal| %>
+	<p>項目：<b><%= meal.meal_item %></b></p>
+	<p>時間：<%= meal.ate_time.strftime('%R') %>
+	<p><%= attachment_image_tag meal, :meal_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
+	</p>
+	<p>食事メモ：<%= meal.meal_text %></p>
+	<hr>
+<% end %>
 
+
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
 
 
 
