@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= include_gon %>
+    <%= Gon::Base.render_data %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -46,7 +46,7 @@
               <div>
                 <ul>
                   <li><%= link_to '自分の記録（仮）',user_my_page_path(current_user.id) %></li>
-                  <li><%= link_to 'みんなの広場（仮）', user_posts_index_path %></li>
+                  <li><%= link_to 'みんなの広場(仮)' %></li>
                   <li>栄養の知識（仮）</li>
                   <li>ユーザー名：<%= current_user.nickname %></li>
                 </ul>

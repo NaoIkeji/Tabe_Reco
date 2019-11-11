@@ -12,72 +12,52 @@
 <p>黄色の食品の合計点数<%= @yellow_food_points %></p>
 <p>赤色の食品の合計点数<%= @red_food_points %></p>
 <p>緑色の食品の合計点数<%= @green_food_points %></p>
-<% binding.pry %>
 
-<canvas id="graph" width="500px" height="500px"></canvas>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js">
-	$(function(){
-		var drawGraph = function(data){
-			var ctx = document.getElementById('graph').getContext('2d');
+<canvas id="myRaderChart"></canvas>
 
-			var data1 = {
-				label:'適正量',
-				data: data[1],
-				backgroundColor: "rgba(250, 50, 50, 0.3)",
-				borderColor: "rgba(200, 50, 50, 0.3)",
-				pointHoverBackgroundColor: "rgba(200, 50, 50, 0.3)",
-				pointHoverBorderColor: "rgba(200, 50, 50, 0.3)",
-			};
+　<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
-			var data2 = {
-				label:'1日の食事',
-				data: data[2],
-				backgroundColor: "rgba(50, 50, 250, 0.3)",
-				borderColor: "rgba(50, 50, 200, 0.3)",
-				pointHoverBackgroundColor: "rgba(50, 50, 200, 0.3)",
-				pointHoverBorderColor: "rgba(50, 50, 200, 0.3)",
-			}
-
-			var label = data[0];
-
-			var config = {
-				type: 'radar',
-				data: { labels: label, datasets: [data1,data2]},
-
-				  options: {
-				  	legend: {
-				  		position: 'left',
-				  	},
-
-				  	responsive: true,
-
-				  	scale: {
-				  		pointLabels: {
-				  			fontSize: 15,
-				  		},
-				  		ticks: {
-				  			stepSize: 10,
-				  			beginAtZero: true,
-				  			min: 0,
-				  			max: 100,
-				  		}
-				  	}
-
-				  }
-			}
-
-			var myChartGraph = new Chart(ctx, config);
-		};
-
-		var data = [['黄色','赤色','緑色'],
-					[18, 12, 12],
-					[@yellow_food_points, @red_food_points, @green_food_points]]
-		drawGraph(data);
-	})
-
-</script>
-
+  <script>
+	    var ctx = document.getElementById("myRaderChart");
+	    var myRadarChart = new Chart(ctx, {
+	        type: 'radar',
+	        data: {
+	            labels: ["黄色", "赤色", "緑色"],
+	            datasets: [{
+	                label: '適正量',
+	                data: [18, 12, 12 ],
+	                backgroundColor: 'RGBA(250, 50, 50, 0.3)',
+	                borderColor: 'RGBA(200, 50, 50, 0.3)',
+	                pointHoverBackgroundColor: 'RGBA(200, 50, 50, 0.3)',
+	                pointHoverBorderColor: 'RGBA(200, 50, 50, 0.3)',
+	            }, {
+	                label: '1日の食事',
+	                data: [15, 5, 20 ],
+	                backgroundColor: 'RGBA(50, 50, 250, 0.3)',
+	                borderColor: 'RGBA(50, 50, 200, 0.3)',
+	                pointHoverBackgroundColor: 'RGBA(50, 50, 200, 0.3)',
+	                pointHoverBorderColor: 'RGBA(50, 50, 200, 0.3)',
+	            }]
+	        },
+	        options: {
+	            title: {
+	                display: true,
+	                text: '栄養バランス'
+	            },
+	            scale:{
+	                ticks:{
+	                    suggestedMin: 0,
+	                    suggestedMax: 30,
+	                    stepSize: 10,
+	                    callback: function(value, index, values){
+	                        return  value +  '点'
+	                    }
+	                }
+	            }
+	        }
+	    });
+    </script>
 
 <hr>
 

@@ -27,11 +27,9 @@ class User::UsersController < ApplicationController
 				end
 			end
 		end
-		binding.pry
 	end
 
 	def my_data
-
 	end
 
 	def setting_changing
