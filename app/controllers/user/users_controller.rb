@@ -10,6 +10,17 @@ class User::UsersController < ApplicationController
 	end
 
 	def daily_meal_balance
+		@user = User.find(params[:id])
+		@date = params[:commit]
+		@meals = Meal.where(user_id: current_user.id,ate_date: @date)
 
 	end
+
+	def my_data
+
+	end
+
+	def setting_changing
+	end
+
 end

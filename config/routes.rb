@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
 namespace :user do
   get '/users/:id/my_page' => 'users#my_page', as: 'my_page'
+  get '/users/:id/my_data' => 'users#my_data', as: 'my_data'
+  get '/users/:id/setting_changing' => 'users#setting_changing', as: 'setting_changing'
   get '/users/:id/daily_meal' => 'users#daily_meal', as: 'daily_meal'
-  # get '/users/daily_meal/:id/date[0]/date[1]/date[2]' => 'users#my_page', as: 'daily_meal'
-
   get '/users/:id/daily_meal_balance' => 'users#daily_meal_balance', as: 'daily_meal_balance'
 
 

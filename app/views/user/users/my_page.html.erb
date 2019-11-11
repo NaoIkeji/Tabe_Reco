@@ -1,8 +1,8 @@
 <p>※ナビかサイドバーで表示</p>
 <P><%= link_to 'マイページ', user_my_page_path %></P>
 <p><%= link_to '１食の食事記録', new_user_meal_path %></p>
-<p><%= link_to 'マイデータ' %></p>
-<p><%= link_to '設定変更' %></p>
+<p><%= link_to 'マイデータ', user_my_data_path(current_user.id%></p>
+<p><%= link_to '設定変更', user_setting_changing_path(current_user.id) %></p>
 
 <hr>
 
@@ -22,4 +22,3 @@
 		<% end %>
 	</ul>
 </div>
-
