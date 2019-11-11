@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :user do
+    get 'posts/index'
+    get 'posts/new'
+    get 'posts/show'
+    get 'posts/edit'
+  end
   get '/' => 'home#top', as: 'root'
 
 namespace :user do
