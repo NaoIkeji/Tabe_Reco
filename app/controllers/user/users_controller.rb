@@ -1,6 +1,29 @@
 class User::UsersController < ApplicationController
 	def my_page
-		@meal = Meal.select(:ate_date).order(ate_date: "ASC").distinct
+		@meals = Meal.select(:ate_date).order(ate_date: "ASC").distinct
+
+		@meals.each do |meal|
+			@meal = 
+		end
+
+
+		# gon.json = [{'title' => 'TEST','start' => '2019-11-13T07:00:00',},
+		# 	{'title' => 'TEST2','start' => '2019-11-14T07:00:00'}]
+		# gon.json = [{'title' => '登録済み', 'start' => '2019-11-12'}]
+
+		url = "user/users" + current_user.id.to_s + "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strtime("%y%-%m%-%d%")
+
+		@meal.variations.each do |variation|
+			json.set! variation.product_code, variation
+		end
+
+		list = []
+		gon.json = list
+
+		# gon.json = [{'start' => '2019-11-10', 'title' => url},
+		# {'start' => '2019-11-10', 'title' => url},]
+		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date'}]
+		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date', 'url' => '{"user/users" + "current_user.id" + "/daily_meal?utf8=%E2%9C%93&commit=" + "meal.ate_date.strtime("%y%-%m%-%d%")"}'}]
 	end
 
 	def daily_meal
@@ -13,24 +36,29 @@ class User::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@date = params[:commit]
 		@meals = Meal.where(user_id: current_user.id, ate_date: @date).order(ate_time: "ASC")
+		@yellow_food_points = 0
+		@red_food_points = 0
+		@green_food_points = 0
 		@meals.each do |meal|
-			@yellow_food_points = 0
-			@red_food_points = 0
-			@green_food_points = 0
 			meal.food_points.each do |food_point|
 				if food_point.food.food_color == "黄色"
-						@yellow_food_points += food_point.point
+				    @yellow_food_points += food_point.point
 				elsif food_point.food.food_color == "赤色"
-					   @red_food_points += food_point.point
+					@red_food_points += food_point.point
 				elsif food_point.food.food_color == "緑色"
-					   @green_food_points += food_point.point
+					@green_food_points += food_point.point
 				end
 			end
 		end
+		gon.yellow_food_points = @yellow_food_points
+		gon.red_food_points = @red_food_points
+		gon.green_food_points = @green_food_points
 	end
+
 
 	def my_data
 	end
+
 
 	def setting_changing
 	end

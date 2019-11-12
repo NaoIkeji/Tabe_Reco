@@ -74,6 +74,10 @@ gem 'kaminari','~> 1.1.1'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+gem 'fullcalendar-rails'
+
+gem 'momentjs-rails'
+
 gem 'jquery-rails'
 
 gem 'cocoon'

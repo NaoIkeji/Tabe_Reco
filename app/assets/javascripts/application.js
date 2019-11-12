@@ -15,8 +15,31 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang/ja
 //= require jquery_ujs
 //= require cocoon
 //= require turbolinks
 //= require_tree .
+
+
+// $(function () {
+//     function eventCalendar() {
+//         return $('#calendar').fullCalendar({});
+//     };
+//     function clearCalendar() {
+//         $('#calendar').html('');
+//     };
+
+// 	$(document).on('turbolinks:load', function(){
+// 		eventCalendar();
+// 	});
+
+// 	$(document).on('turbolinks:before-cache',clearCalendar);
+
+// 	$('#calendar').fullCalender({
+// 		events: '/meals.json'
+// 	})
+// });
 

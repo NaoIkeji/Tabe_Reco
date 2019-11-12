@@ -22,9 +22,18 @@
 	<p><%= f.label :meal_image_id, '食事の写真' %></p>
 	<p><%= attachment_image_tag meal,:meal_image, :fill,60,60,fallback: "no_image.jpg" %></p>
 	<%= f.attachment_field :meal_image %>
-<!-- 	JQで選択した画像を表示予定
+
+<!-- 	選択した画像を表示する -->
 	<script>
-	</script> -->
+		function onChange(event){
+			var file = event.target.files[0];
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				console.log(event.target.result)
+			};
+			reader.readAsTest(file);
+		}
+	</script>
 </div>
 
 <div>

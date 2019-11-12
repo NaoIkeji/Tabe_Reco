@@ -20,9 +20,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
+  def update
+    user = current_user
+    user.update(user_params)
+    redirect_to user_my_page_path(current_user.id)
   #   super
-  # end
+  end
 
   # DELETE /resource
   # def destroy

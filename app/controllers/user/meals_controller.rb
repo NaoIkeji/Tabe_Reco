@@ -21,7 +21,7 @@ class User::MealsController < ApplicationController
 		@meal.user_id = current_user.id
 		if @meal.save
 			@date = params[:commit]
-            redirect_to user_daily_meal_path(current_user.id)
+            redirect_to user_my_page_path(current_user.id)
        else
          @text = "食事を登録する"
          @url = user_meals_path
@@ -32,13 +32,13 @@ class User::MealsController < ApplicationController
 	def edit
 		@meal = Meal.find(params[:id])
 		@text = "食事を編集する"
-		@url = user_meal_path
+		@url = user_my_page_path(current_user.id)
 	end
 
 	def update
 		@meal = Meal.find(params[:id])
 		if @meal.update(meal_params)
-			redirect_to user_daily_meal_path(current_user.id)
+			redirect_to user_my_page_path
 		else
 			render :edit
 		end
