@@ -11,7 +11,6 @@
 
 	<canvas id="myRaderChart"></canvas>
 
-	
 </div>
 
 
@@ -19,6 +18,29 @@
 
 <div>
 	<h3>食事アドバイス</h3>
+	<div>
+		<p><% if @yellow_food_points > 18 %>
+				<p>食べ過ぎです。</p>
+			<% elsif @yellow_food_points = 18 %>
+				<p>適正量です。</p>
+			<% elsif @yellow_food_points < 18 %>
+				<p>もう少し食べましょう。</p>
+		   <% end %>
+		</p>
+
+		<p><% if @red_food_points > 12 %>
+
+		   <% end %>
+		</p>
+
+		<p><% if @green_food_points > 12 %>
+
+		   <% end %>
+		</p>
+
+    </div>
+
+
 	<p>※食品分類や食品項目の各点数の合計値によって表示を変える<br>
 	(もう少し食べましょう。ちょうどいい量です。食べ過ぎです。など)</p>
 </div>
@@ -42,8 +64,6 @@
 
 <p>1日の登録食事一覧に戻る</p>
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
-
-
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 

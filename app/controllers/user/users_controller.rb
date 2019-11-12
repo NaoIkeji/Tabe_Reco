@@ -3,13 +3,8 @@ class User::UsersController < ApplicationController
 		@meals = Meal.select(:ate_date).order(ate_date: "ASC").distinct
 
 		@meals.each do |meal|
-			@meal = 
+			@meal =
 		end
-
-
-		# gon.json = [{'title' => 'TEST','start' => '2019-11-13T07:00:00',},
-		# 	{'title' => 'TEST2','start' => '2019-11-14T07:00:00'}]
-		# gon.json = [{'title' => '登録済み', 'start' => '2019-11-12'}]
 
 		url = "user/users" + current_user.id.to_s + "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strtime("%y%-%m%-%d%")
 
@@ -20,6 +15,9 @@ class User::UsersController < ApplicationController
 		list = []
 		gon.json = list
 
+		# gon.json = [{'title' => 'TEST','start' => '2019-11-13T07:00:00',},
+		# 	{'title' => 'TEST2','start' => '2019-11-14T07:00:00'}]
+		# gon.json = [{'title' => '登録済み', 'start' => '2019-11-12'}]
 		# gon.json = [{'start' => '2019-11-10', 'title' => url},
 		# {'start' => '2019-11-10', 'title' => url},]
 		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date'}]
