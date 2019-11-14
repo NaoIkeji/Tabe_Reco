@@ -13,7 +13,7 @@ namespace :user do
     get '/meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
 
     get '/posts/:id/my_page' =>'posts#my_page', as: 'posts_my_page'
-    get '/posts/:id/post_comments' => 'posts#post_comments', as: 'post_comments'
+    # get '/posts/:id/post_comments' => 'posts#post_comments', as: 'post_comments'
 
     get '/contacts/contact_completed' => 'contacts#contact_complete', as: 'contact_complete'
 
@@ -25,6 +25,7 @@ namespace :user do
 
     resources :posts do
       resource :favorites, only: [:create, :destroy]
+      resource :cheers, only: [:create, :destroy]
       resources :comments, only: [:show, :create, :edit, :update, :destroy]
     end
 
@@ -52,5 +53,6 @@ end
     passwords:     'users/passwords',
     registrations: 'users/registrations'
     }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

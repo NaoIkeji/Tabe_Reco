@@ -5,8 +5,7 @@
 <h2><%= @date %>の食事一覧</h2>
 
 
-<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
-
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
 <hr>
 
 <% @meals.each do |meal| %>
@@ -40,8 +39,7 @@
 <hr>
 <% end %>
 
-<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
-
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
 
 
 <div>

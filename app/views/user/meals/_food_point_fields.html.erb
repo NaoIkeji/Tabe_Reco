@@ -1,11 +1,13 @@
 <div class="nested-fields">
 	<div>
 		<%= f.label :food_id,"食品項目" %>
-		<%= f.collection_select :food_id, Food.where(food_category: @kind), :id, :food_item ,{include_blank: "選択してください"} %>
 
-		<%= f.label :food_id,"食品の分量" %>
-		<%= f.select :point, [["少ない", 1],["やや少ない", 2],["普通", 3],["やや多い", 4],["多い", 5]], {include_blank: "選択してください"} %>
-		<%= link_to_remove_association "食品を削除", f %>
+			<%= f.collection_select :food_id, Food.where(food_category: @kind), :id, :food_item ,{include_blank: "選択してください"} %>
+
+			<%= f.label :food_id,"食品の分量" %>
+			<%= f.select :point, [["少ない", 1],["やや少ない", 2],["普通", 3],["やや多い", 4],["多い", 5]], {include_blank: "選択してください"} %>
+			<%= link_to_remove_association "食品を削除", f %>
+
 	</div>
 
 </div>

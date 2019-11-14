@@ -7,12 +7,7 @@
 
 
 <div>
-   <p>食事一覧※カレンダー表示させる</p>
-   <%= @ulrn %>
-
    <div id="calendar"></div>
-
-
 	<ul>
 		<% @meals.each do |meal| %>
 			<li><%= form_tag user_daily_meal_path(current_user.id), method: :get do %>

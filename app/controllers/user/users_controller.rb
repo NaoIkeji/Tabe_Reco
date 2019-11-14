@@ -41,12 +41,18 @@ class User::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@date = params[:commit]
 		@meals = Meal.where(user_id: current_user.id, ate_date: @date).order(ate_time: "ASC")
+		@meals.each do |meal|
+			@urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+		end
 	end
 
 	def daily_meal_balance
 		@user = User.find(params[:id])
 		@date = params[:commit]
 		@meals = Meal.where(user_id: current_user.id, ate_date: @date).order(ate_time: "ASC")
+		@meals.each do |meal|
+			@urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+		end
 		@yellow_food_points = 0
 		@red_food_points = 0
 		@green_food_points = 0

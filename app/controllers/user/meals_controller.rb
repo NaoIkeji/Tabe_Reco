@@ -34,13 +34,17 @@ class User::MealsController < ApplicationController
 	def edit
 		@meal = Meal.find(params[:id])
 		@text = "食事を編集する"
-		@url = user_meals_path(@meal)
+		@url = "/user/meals/#{@meal.id}"
 	end
 
 	def update
 		@meal = Meal.find(params[:id])
-		if @meal.update(meal_params)
-			redirect_to user_my_page_path(current_user.id)
+		puts "検索用"
+		puts meal_params
+		if @meal.update!(meal_params)
+			redirect_to user_daily_meal_path(current_user.id)
+		else
+			@url = "/user/meals/#{@meal.id}"
 			render :edit
 		end
 	end

@@ -4,7 +4,9 @@
 
 <h2><%= @date %>の栄養バランス</h2>
 
-<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
+<p><%= link_to "#{@date}の食事一覧へ戻る", @urln %></p>
+
+<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
 
 <div>
 	<h3>栄養バランス</h3>
@@ -70,6 +72,7 @@
 </div>
 
 
+<p><%= link_to "#{@date}の食事一覧へ戻る", @urln %></p>
 
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
 

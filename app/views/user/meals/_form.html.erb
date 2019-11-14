@@ -20,26 +20,17 @@
 
 <div>
 	<p><%= f.label :meal_image_id, '食事の写真' %></p>
-	<p><%= attachment_image_tag meal,:meal_image, :fill,60,60,fallback: "no_image.jpg" %></p>
-	<%= f.attachment_field :meal_image %>
 
-<!-- 	選択した画像を表示する -->
-	<script>
-		function onChange(event){
-			var file = event.target.files[0];
-			var reader = new FileReader();
-			reader.onload = function(event) {
-				console.log(event.target.result)
-			};
-			reader.readAsTest(file);
-		}
-	</script>
+<!-- 	選択した画像のプレビューを表示する -->
+<input type="file" onchange="previewFile()"><br>
+<img src="" height="200" >
+
 </div>
 
 <div>
 	<%= f.label :meal_text, '食事メモ' %>
 	<br>
-	<%= f.text_area :meal_text, size:"20x10" %>
+	<%= f.text_area :meal_text, size:"50x5" %>
 </div>
 
 
@@ -149,5 +140,34 @@
 
 <%= f.submit @text %>
 
-
 <% end %>
+
+
+<script>
+	function previewFile(){
+		var preview = document.querySelector('img');
+		var file = document.querySelector('input[type=file]').files[0];
+		var render = new FileReader();
+
+		reader.addEventListenert("load",function(){
+			preview.src = reader.result;
+		}, false);
+
+		if(file){
+			reader.readAsDataURL(file);
+		}
+	}
+
+</script>
+
+<!-- 	<input type="file" onchange="onChange(event)">
+	<script>
+		function onChange(event){
+			var file = event.target.files[0];
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				console.log(event.target.result)
+			};
+			reader.readAsTest(file);
+		}
+	</script> -->

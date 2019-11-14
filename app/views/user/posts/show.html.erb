@@ -3,33 +3,79 @@
 <div>
 	<%= @post.user.profile_image %>
 	<%= @post.user.nickname %>
-	<br>
-	<%= attachment_image_tag @post, :post_image, :fill, 200, 200, fallback: "no_image.jpg" %>
-	<br>
-	<%= @post.post_body %>
-	<%= @post.created_at.strftime('%Y/%m/%d') %>
+</div>
 
 <div>
-	<if user_signed_in? %>
+	<p>フォローする</p>
+	<p>フォローをやめる</p>
+</div>
+
+<div>
+	<%= attachment_image_tag @post, :post_image, :fill, 200, 200, fallback: "no_image.jpg" %>
+</div>
+
+
+<div>
+	<%= @post.post_body %>
+</div>
+
+<div>
 		<% if @post.favorited_by?(current_user) %>
-			<%= link_to user_post_favorites_path(@post), method: :deleted do %>
-				<p>いいねから削除<span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: red;"></span><%= @post.favorites.count %>いいね</p>
-			<% end %>
+				<%= link_to user_post_favorites_path(@post), method: :delete do %>
+					<p><span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+					<%= @post.favorites.count %>いいね</p>
+				<% end %>
 		<% else %>
-			<%= link_to user_post_favorites_path(@post), method: :post do %>
-				<p>お気に入りに追加<span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= @post.favorites.count %>いいね</p>
-			<% end %>
+				<%= link_to user_post_favorites_path(@post), method: :post do %>
+					<p><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span><%= @post.favorites.count %>いいね</p>
+				<% end %>
+		<% end %>
+</div>
+
+
+<div>
+	<% if @post.cheered_by?(current_user) %>
+		<%= link_to user_post_cheers_path(@post), method: :delete do %>
+			<p>	<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span><%= @post.cheers.count %>応援する</p>
 		<% end %>
 	<% else %>
-			<p>いいね数<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span><%= @post.favorites.count %></p>
-</div>
-
-
-	<p>応援する</p>
-
-	<p><%= @post.comments.count %>件のコメント</p>
-	<% if user_signed_in? %>
-		<p><%= link_to '編集', edit_user_post_path(@post.id) %></p>
-		<p><%= link_to '削除', user_post_path(@post.id), method: :delete %></p>
+		<%= link_to user_post_cheers_path(@post), method: :post do %>
+			<p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span><%= @post.cheers.count %>応援する</p>
+		<% end %>
 	<% end %>
 </div>
+
+
+<div>
+	<p><%= @post.comments.count %>件のコメント</p>
+</div>
+
+
+<div>
+	<% if @user.id == current_user.id %>
+		<p><%= link_to '編集', edit_user_post_path(@post.id) %><br>
+			<%= link_to '削除', user_post_path(@post.id), method: :delete %></p>
+	<% end %>
+</div>
+
+<div>
+	<%= @post.created_at.strftime('%Y/%m/%d') %>
+	<%= @post.created_at.strftime('%R') %>
+</div>
+
+<hr>
+
+<div>
+	<h5>コメント投稿フォーム</h5>
+	<p>コメント本文</p>
+</div>
+
+<div>
+	<h5>コメント一覧</h5>
+	<p>ユーザーのプロフィール画像</p>
+	<p>ユーザーのニックネーム</p>
+	<p>コメント本文</p>
+	<p>コメント日</p>
+	<p>コメント時間</p>
+</div>
+
