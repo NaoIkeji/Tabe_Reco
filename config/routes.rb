@@ -9,9 +9,13 @@ namespace :user do
     get '/users/:id/setting_changing' => 'users#setting_changing', as: 'setting_changing'
     get '/users/:id/daily_meal' => 'users#daily_meal', as: 'daily_meal'
     get '/users/:id/daily_meal_balance' => 'users#daily_meal_balance', as: 'daily_meal_balance'
-    get '/meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
-    get '/user/contacts/contact_completed' => 'contacts#contact_complete', as: 'contact_complete'
 
+    get '/meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
+
+    get '/posts/:id/my_page' =>'posts#my_page', as: 'posts_my_page'
+    get '/posts/:id/post_comments' => 'posts#post_comments', as: 'post_comments'
+
+    get '/contacts/contact_completed' => 'contacts#contact_complete', as: 'contact_complete'
 
     resources :meals
     resources :foods, only: [:create, :update, :edit, :destroy]

@@ -1,24 +1,28 @@
 class User::UsersController < ApplicationController
+	before_action :authenticate_user!
+
 	def my_page
 		@meals = Meal.select(:ate_date).order(ate_date: "ASC").distinct
 
 		@meals.each do |meal|
-			@meal =
-		end
+		@aaa=current_user.id.to_s
+		@urln = "user/users" + current_user.id.to_s + "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+		# url = "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+	    puts @urln
+	    gon.json = [{'title' => '登録済み','start' => '2019-11-10', 'url' => @urln }]
+	    # gon.json = [{'title' => '登録済み','start' => 'meal.ate_date', 'url' => url}]
+	    end
 
-		url = "user/users" + current_user.id.to_s + "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strtime("%y%-%m%-%d%")
+		# @meal.variations.each do |variation|
+		# 	json.set! variation.product_code, variation
+		# end
 
-		@meal.variations.each do |variation|
-			json.set! variation.product_code, variation
-		end
-
-		list = []
-		gon.json = list
+		# list = []
+		# gon.json = list
 
 		# gon.json = [{'title' => 'TEST','start' => '2019-11-13T07:00:00',},
 		# 	{'title' => 'TEST2','start' => '2019-11-14T07:00:00'}]
 		# gon.json = [{'title' => '登録済み', 'start' => '2019-11-12'}]
-		# gon.json = [{'start' => '2019-11-10', 'title' => url},
 		# {'start' => '2019-11-10', 'title' => url},]
 		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date'}]
 		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date', 'url' => '{"user/users" + "current_user.id" + "/daily_meal?utf8=%E2%9C%93&commit=" + "meal.ate_date.strtime("%y%-%m%-%d%")"}'}]
@@ -60,5 +64,30 @@ class User::UsersController < ApplicationController
 
 	def setting_changing
 	end
+
+	def new
+
+	end
+
+	def create
+
+	end
+
+	def edit
+		@user = User.find(params[:id])
+	end
+
+	def update
+		@user = User.find(params[:id])
+		@user.update(user_params)
+		redirect_to user_setting_changing_path(current_user.id)
+	end
+
+	private
+
+	def user_params
+		params.require(:user).permit(:nickname, :profile_image, :introduction, targets_attributes:[:id, :target_body, :_destroy])
+	end
+
 
 end

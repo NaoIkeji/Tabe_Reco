@@ -1,4 +1,9 @@
+<%= render 'nav' %>
+
+<hr>
+
 <h2><%= @date %>の食事一覧</h2>
+
 
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
 
@@ -36,6 +41,7 @@
 <% end %>
 
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
+
 
 
 <div>

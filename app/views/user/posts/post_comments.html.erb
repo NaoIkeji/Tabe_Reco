@@ -1,0 +1,23 @@
+<h4>コメント投稿</h4>
+
+<% @comment.comments.each do |comment| %>
+
+
+<% end %>
+
+
+
+<hr>
+<h4>コメント一覧</h4>>
+<% @post.comments.each do |comment| %>
+<div class="user_profile_image">
+	<%= image_tag('no_image.jpg'), style: "width: 60px; height: 60px;" %>
+</div>
+
+<div class="comment-text">
+	<%= comment.user.nickname %>
+	<%= comment.created_at.strftime('%Y/%m/%d') %>
+	<%= comment.comment_body %>
+</div>
+
+<% end %>

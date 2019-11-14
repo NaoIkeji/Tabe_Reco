@@ -1,2 +1,19 @@
 <h1>User::Posts#show</h1>
-<p>Find me in app/views/user/posts/show.html.erb</p>
+
+<div>
+	<%= @post.user.profile_image %>
+	<%= @post.user.nickname %>
+	<br>
+	<%= attachment_image_tag @post, :post_image, :fill, 200, 200, fallback: "no_image.jpg" %>
+	<br>
+	<%= @post.post_body %>
+	<p>いいね！</p>
+	<p>応援する</p>
+	<p><%= @post.comments.count %>件のコメント</p>
+	<% if user_signed_in? %>
+	<p><%= link_to '編集', edit_user_post_path(@post.id) %></p>
+	<p><%= link_to '削除', user_post_path(@post.id), method: :delete %></p>
+	<% end %>
+<% end %>
+</div>
+

@@ -1,4 +1,6 @@
 class User::MealsController < ApplicationController
+	before_action :authenticate_user!
+
 	def meal_indication
 	end
 
@@ -32,14 +34,13 @@ class User::MealsController < ApplicationController
 	def edit
 		@meal = Meal.find(params[:id])
 		@text = "食事を編集する"
-		@url = user_my_page_path(current_user.id)
+		@url = user_meals_path(@meal)
 	end
 
 	def update
 		@meal = Meal.find(params[:id])
 		if @meal.update(meal_params)
-			redirect_to user_my_page_path
-		else
+			redirect_to user_my_page_path(current_user.id)
 			render :edit
 		end
 	end

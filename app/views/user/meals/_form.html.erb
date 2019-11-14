@@ -1,6 +1,5 @@
 <%= form_for(meal, url: url ) do |f| %>
 
-
 <div>
 	<%= f.label :ate_date, '日付' %>
 	<%= f.date_select(:ate_date, use_month_numbers: true) %>
@@ -39,7 +38,7 @@
 <div>
 	<%= f.label :meal_text, '食事メモ' %>
 	<br>
-	<%= f.text_field :meal_text, size:"20x10" %>
+	<%= f.text_area :meal_text, size:"20x10" %>
 </div>
 
 
