@@ -3,15 +3,24 @@ class User::UsersController < ApplicationController
 
 	def my_page
 		@meals = Meal.select(:ate_date).order(ate_date: "ASC").distinct
-
+		list=[]
 		@meals.each do |meal|
 		@aaa=current_user.id.to_s
-		@urln = "user/users" + current_user.id.to_s + "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+		urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+
 		# url = "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
-	    puts @urln
-	    gon.json = [{'title' => '登録済み','start' => '2019-11-10', 'url' => @urln }]
-	    # gon.json = [{'title' => '登録済み','start' => 'meal.ate_date', 'url' => url}]
+	    # puts "-----------------------------------------"
+	    # puts meal.ate_date.strftime("%F")
+	    # puts urln
+
+	    #listという変数に{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }
+	    #をaddしていく処理
+	    obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
+	    list.push(obj)
+	    # gon.json = [{'title' => '登録済み','start' => 'meal.ate_date', 'url'
+	    #gon.json = [{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }]
 	    end
+	    gon.json = list
 
 		# @meal.variations.each do |variation|
 		# 	json.set! variation.product_code, variation

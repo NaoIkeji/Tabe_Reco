@@ -9,7 +9,7 @@
 	<%= post.post_body %>
 		<p>いいね！</p>
 		<p>応援する</p>
-		<p>コメントする</p>
+		<%= link_to "#{post.comments.count}コメント", user_post_comments_path(post.id) %>
 	<% if user_signed_in? %>
 	<p><%= link_to '編集', edit_user_post_path(post.id) %></p>
 	<p><%= link_to '削除', user_post_path(post.id), method: :delete %></p>

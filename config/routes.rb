@@ -25,14 +25,14 @@ namespace :user do
 
     resources :posts do
       resource :favorites, only: [:create, :destroy]
-      resources :comments, only: [:create, :edit, :update, :destroy]
+      resources :comments, only: [:show, :create, :edit, :update, :destroy]
     end
 
     resources :users do
       resource :relationships, only: [:create, :destroy]
     end
 
-  end
+end
 
 
 
