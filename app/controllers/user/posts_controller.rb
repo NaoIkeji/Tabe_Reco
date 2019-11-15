@@ -8,11 +8,6 @@ class User::PostsController < ApplicationController
     @posts = Post.where(user_id: current_user.id).order(created_at: "DESC")
   end
 
-  def post_comments
-    @post = Post.find(params[:id])
-    @comment = Comment.new
-  end
-
   def new
     @post = Post.new
   end
@@ -20,6 +15,8 @@ class User::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @comment = Comment.new
+    @comments = @post.comments.all.order(created_at: "DESC")
   end
 
   def create

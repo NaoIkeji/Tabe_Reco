@@ -1,8 +1,8 @@
 <h3>投稿の詳細</h3>
 
 <div>
-	<%= @post.user.profile_image %>
-	<%= @post.user.nickname %>
+	<p>ユーザーのプロフィール画像：
+	<%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ユーザーのニックネーム：<%= @post.user.nickname %></p>
 </div>
 
 <div>
@@ -19,36 +19,44 @@
 	<%= @post.post_body %>
 </div>
 
+
 <div>
 		<% if @post.favorited_by?(current_user) %>
 				<%= link_to user_post_favorites_path(@post), method: :delete do %>
 					<p><span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-					<%= @post.favorites.count %>いいね</p>
 				<% end %>
+				<%= @post.favorites.count %>：いいね</p>
 		<% else %>
 				<%= link_to user_post_favorites_path(@post), method: :post do %>
-					<p><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span><%= @post.favorites.count %>いいね</p>
+					<p><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
 				<% end %>
+				<%= @post.favorites.count %>：いいね</p>
 		<% end %>
 </div>
+
 
 
 <div>
 	<% if @post.cheered_by?(current_user) %>
 		<%= link_to user_post_cheers_path(@post), method: :delete do %>
-			<p>	<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span><%= @post.cheers.count %>応援する</p>
+			<p>	<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
 		<% end %>
+		<%= @post.cheers.count %>：応援する</p>
 	<% else %>
 		<%= link_to user_post_cheers_path(@post), method: :post do %>
-			<p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span><%= @post.cheers.count %>応援する</p>
+			<p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
 		<% end %>
+		<%= @post.cheers.count %>：応援する</p>
 	<% end %>
 </div>
+
 
 
 <div>
 	<p><%= @post.comments.count %>件のコメント</p>
 </div>
+
+
 
 
 <div>
@@ -63,19 +71,45 @@
 	<%= @post.created_at.strftime('%R') %>
 </div>
 
+
+
 <hr>
+
 
 <div>
 	<h5>コメント投稿フォーム</h5>
-	<p>コメント本文</p>
+<%= form_for [@post, @comment], url: user_post_comments_path(post_id: @post.id), mthod: :post do |f| %>
+	<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに" %>
+	<br>
+	<%= f.submit "送信する" %>
+<% end %>
 </div>
 
+
+<hr>
+
+
+<h4>コメント一覧</h4>
+<% @comments.each do |comment| %>
+	<div class="user_profile_image">
+		<p>ユーザーのプロフィール画像<%= attachment_image_tag @comment.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ユーザーのニックネーム：<%= comment.user.nickname %></p>
+	</div>
+	<div class="comment-text">
+		<p>コメント本文：<%= comment.comment_body %></p>
+		<p>コメント日：<%= comment.created_at.strftime('%Y/%m/%d') %></p>
+		<p>コメント時間：<%= @post.created_at.strftime('%R') %></p>
+	</div>
+	<div>
+		<% if comment.user.id == current_user.id %>
+			<p><%= link_to "編集する", edit_user_post_comment_path(comment.post.id, comment.id) %></p>
+		<% end %>
+		<% if comment.user.id == current_user.id %>
+			<p><%= link_to "削除する", user_post_comment_path(comment.post.id,comment.id), method: :delete %></p>
+		<% end %>
+	</div>
+<% end %>
+
+
 <div>
-	<h5>コメント一覧</h5>
-	<p>ユーザーのプロフィール画像</p>
-	<p>ユーザーのニックネーム</p>
-	<p>コメント本文</p>
-	<p>コメント日</p>
-	<p>コメント時間</p>
 </div>
 

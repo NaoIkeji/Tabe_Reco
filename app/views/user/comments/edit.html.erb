@@ -1,0 +1,8 @@
+<h2>コメントの編集</h2>
+<div>
+	<%= form_for [@post, @comment], url: user_post_comment_path(post_id: @post.id), method: :patch do |f| %>
+		<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに" %>
+		<br>
+		<%= f.submit "送信する" %>
+	<% end %>
+</div>
