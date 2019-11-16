@@ -33,6 +33,7 @@ class User::MealsController < ApplicationController
 
 	def edit
 		@meal = Meal.find(params[:id])
+		@choice = { 1 => "少ない", 2 => "やや少ない", 3 => "普通", 4 => "やや多い", 5 => "多い"}
 		@text = "食事を編集する"
 		@url = "/user/meals/#{@meal.id}"
 	end

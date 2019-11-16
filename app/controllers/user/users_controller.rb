@@ -80,28 +80,58 @@ class User::UsersController < ApplicationController
 	def setting_changing
 	end
 
-	def new
-
+	def index
+		@users = User.all
 	end
 
 	def create
-
 	end
 
 	def edit
 		@user = User.find(params[:id])
+
 	end
 
 	def update
 		@user = User.find(params[:id])
-		@user.update(user_params)
-		redirect_to user_setting_changing_path(current_user.id)
+		if @user.update(user_params)
+			redirect_to user_user_path(current_user.id)
+	    else
+	    	render :edit
+	    end
+	end
+
+	def show
+		@user = User.find(params[:id])
+		@posts = @user.posts.all.order(created_at: "DESC")
+	end
+
+	def follow(other_user)
+		following << other_user
+	end
+
+	def unfollow(other_user)
+		active_relationships.find_by(followed_id: other_user.id).destroy
+	end
+
+	def following?(other_user)
+		following.include?(other_user)
+	end
+
+	def following
+		@user = User.find(params[:id])
+		@users = @user.following
+	end
+
+	def followers
+		@user = User.find(params[:id])
+		@users = @user.followers
 	end
 
 	private
 
 	def user_params
-		params.require(:user).permit(:nickname, :profile_image, :introduction, targets_attributes:[:id, :target_body, :_destroy])
+		params.require(:user).permit(:profile_image, :introduction, targets_attributes: [:id, :target_body, :_destroy])
 	end
 
 

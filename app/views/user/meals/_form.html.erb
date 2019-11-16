@@ -19,11 +19,11 @@
 
 
 <div>
-	<p><%= f.label :meal_image_id, '食事の写真' %></p>
+	<p>食事の写真</p>
 
 <!-- 	選択した画像のプレビューを表示する -->
-<input type="file" onchange="previewFile()"><br>
-<img src="" height="200" >
+<input type="file" id="myImage" accept="image/*">
+<img id="preview" width="350" height="250">
 
 </div>
 
@@ -45,7 +45,11 @@
 	<div>
 		<% @kind = "主食" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+		    <% @meal.food_points.each do |m| %>
+		        <% if m.food.food_category == @kind %>
+			  		<%= render "food_point_fields", f: food_point %>
+			  	<% end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -59,7 +63,11 @@
 	<div>
 		<% @kind = "主菜" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point %>
+			<% @meal.food_points.each do |m| %>
+		        <% if m.food.food_category == @kind %>
+			   	    <%= render "food_point_fields", f: food_point %>
+			    <% end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -73,7 +81,11 @@
 	<div>
 		<% @kind = "副菜" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point %>
+		    <% @meal.food_points.each do |m| %>
+		        <% if m.food.food_category == @kind %>
+		       	    <%= render "food_point_fields", f: food_point %>
+			    <% end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -87,7 +99,11 @@
 	<div>
 		<% @kind = "果物" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point %>
+		    <% @meal.food_points.each do |m| %>
+		        <% if m.food.food_category == @kind %>
+			  		<%= render "food_point_fields", f: food_point %>
+			    <% end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -101,7 +117,11 @@
 	<div>
 		<% @kind = "牛乳・乳製品" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point %>
+		    <% @meal.food_points.each do |m| %>
+		        <% if m.food.food_category == @kind %>
+			  		<%= render "food_point_fields", f: food_point %>
+			    <% end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -114,7 +134,11 @@
 	<div>
 		<% @kind = "油脂" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point %>
+		    <% @meal.food_points.each do |m| %>
+		        <% if m.food.food_category == @kind %>
+			   	  <%= render "food_point_fields", f: food_point %>
+			    <% end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -127,7 +151,11 @@
 	<div>
 		<% @kind = "嗜好品" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point %>
+		    <% @meal.food_points.each do |m| %>
+		        <% if m.food.food_category == @kind %>
+			  		<%= render "food_point_fields", f: food_point %>
+			    <% end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -143,31 +171,13 @@
 <% end %>
 
 
+
 <script>
-	function previewFile(){
-		var preview = document.querySelector('img');
-		var file = document.querySelector('input[type=file]').files[0];
-		var render = new FileReader();
-
-		reader.addEventListenert("load",function(){
-			preview.src = reader.result;
-		}, false);
-
-		if(file){
-			reader.readAsDataURL(file);
-		}
-	}
-
+	$('#myImage').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+	});
 </script>
-
-<!-- 	<input type="file" onchange="onChange(event)">
-	<script>
-		function onChange(event){
-			var file = event.target.files[0];
-			var reader = new FileReader();
-			reader.onload = function(event) {
-				console.log(event.target.result)
-			};
-			reader.readAsTest(file);
-		}
-	</script> -->

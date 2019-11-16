@@ -12,9 +12,13 @@ namespace :user do
 
     get '/meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
 
+    # フォローする
+    post '/follow/:id' => 'relationships#follow', as: 'follow'
+    # フォロー外す
+    post '/unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+
     get '/posts/:id/my_page' =>'posts#my_page', as: 'posts_my_page'
     # get '/posts/:id/post_comments' => 'posts#post_comments', as: 'post_comments'
-
     get '/contacts/contact_completed' => 'contacts#contact_complete', as: 'contact_complete'
 
     resources :meals
@@ -22,6 +26,7 @@ namespace :user do
     resources :food_points, only: [:show, :new, :create, :update, :edit, :destroy]
     resources :targets, only: [:create, :edit, :update, :destroy]
     resources :contacts, only: [:new, :create]
+    resources :users
 
     resources :posts do
       resource :favorites, only: [:create, :destroy]
@@ -29,9 +34,11 @@ namespace :user do
       resources :comments, only: [:show, :create, :edit, :update, :destroy]
     end
 
-    resources :users do
-      resource :relationships, only: [:create, :destroy]
-    end
+    # resources :users do
+    #   member do
+    #     get :following, :followers
+    #   end
+    # end
 
 end
 

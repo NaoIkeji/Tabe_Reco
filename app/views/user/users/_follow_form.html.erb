@@ -1,0 +1,10 @@
+<!-- フォローする/フォロー解除フォーム 呼び出す-->
+<% unless current_user == @user %>
+	<div id="follow_form">
+		
+			<%= render 'user/users/unfollow' %>
+	
+			<%= render 'user/users/follow' %>
+
+	</div>
+<% end %>

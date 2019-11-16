@@ -1,5 +1,6 @@
 <h1>設定の変更</h1>
 
-<p>会員登録時の登録内容編集</p>
-<p>基本データ編集</p>
-<p>プロフィール編集</p>
+<p><%= link_to '会員登録時の登録内容編集', edit_user_registration_path %></p>
+<p><%= link_to 'プロフィール編集', edit_user_user_path(current_user.id) %></p>
+
+<!-- <p>基本データ編集</p> -->

@@ -1,12 +1,9 @@
-<h2>プロフィール編集</h2>
+<h4><%= current_user.nickname %>さんのプロフィール登録</h4>
 
-<%= form_for(@user) do |f| %>
+<%= link_to '投稿のマイページへ戻る', user_user_path(current_user.id) %>
 
-	<div>
-		<%= f.label :nickname, 'ニックネーム' %>
-		<%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム" %>
-	</div>
-
+<%= form_for(@user, url: user_user_path(current_user.id), method: :patch )do |f| %>
+<!-- ニックネームのフォームもいる？ -->
 	<div>
 		<p><%= f.label :profile_image, 'プロフィール画像' %></p>
 		<p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60,fallback: "no_image.jpg" %></p>
@@ -15,19 +12,19 @@
 
 	<div>
 		<p>目標</p>
-		<%= f.fields_for :target_bodys do |target_body| %>
-			<%= render "target_fields", f:target_body %>
+		<%= f.fields_for :targets do |target| %>
+			<%= render "target_fields", f: target %>
 		<% end %>
+
 		<div class="links">
-			<p><%= link_to_add_association "目標を追加", f, :target_bodys %></p>
+			<p><%= link_to_add_association "目標を追加", f, :targets %></p>
 		</div>
 	</div>
 
-
 	<div>
-		<p><%= f.label :introduction, '自己紹介' %></p>
+		<p><%= f.label :introduction, '自己紹介' %>
 		<br>
-		<p><%= f.text_field :introduction, size:"20x10"%></p>
+		<%= f.text_area :introduction, size:"30x2", placeholder:"自己紹介を入力してください"%></p>
 	</div>
-	<%= f.submit "変更を保存" %>
+	<%= f.submit "登録する" %>
 <% end %>

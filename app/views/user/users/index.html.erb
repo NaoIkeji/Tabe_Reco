@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+<h2>ユーザー一覧</h2>
+	<% @users.each do |user| %>
+		<div>
+			<p>プロフィール画像：
+			<%= link_to user_user_path(user.id) do %>
+				<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= user.nickname %>
+				</p>
+			<% end %>
+		</div>
+		<div>
+			<% if current_user.following?(user) %>
+				<%= link_to 'フォローを外す', user_follow_path(user.id), method: :POST %>
+			<% else %>
+				<%= link_to 'フォローする', user_unfollow_path(user.id), method: :POST %>
+			<% end %>
+		</div>
+		<hr>
+	<% end %>
+
+<% end %>
