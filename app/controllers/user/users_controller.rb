@@ -1,26 +1,26 @@
 class User::UsersController < ApplicationController
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 	def my_page
 		@meals = Meal.select(:ate_date).order(ate_date: "ASC").distinct
 		list=[]
 		@meals.each do |meal|
-		@aaa=current_user.id.to_s
-		urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+			urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+	    #listという変数に{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }
+	    #をaddしていく処理
+	   		obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
+	    	list.push(obj)
+	    end
+	    gon.json = list
 
-		# url = "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+	    # @aaa=current_user.id.to_s
+	    # gon.json = [{'title' => '登録済み','start' => 'meal.ate_date', 'url'
+	    #gon.json = [{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }]
+
+	    # url = "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
 	    # puts "-----------------------------------------"
 	    # puts meal.ate_date.strftime("%F")
 	    # puts urln
-
-	    #listという変数に{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }
-	    #をaddしていく処理
-	    obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
-	    list.push(obj)
-	    # gon.json = [{'title' => '登録済み','start' => 'meal.ate_date', 'url'
-	    #gon.json = [{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }]
-	    end
-	    gon.json = list
 
 		# @meal.variations.each do |variation|
 		# 	json.set! variation.product_code, variation
@@ -72,14 +72,6 @@ class User::UsersController < ApplicationController
 		gon.green_food_points = @green_food_points
 	end
 
-
-	def my_data
-	end
-
-
-	def setting_changing
-	end
-
 	def index
 		@users = User.all
 	end
@@ -89,7 +81,7 @@ class User::UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
-
+		@user.targets.build
 	end
 
 	def update
@@ -128,10 +120,19 @@ class User::UsersController < ApplicationController
 		@users = @user.followers
 	end
 
+	def my_data
+	end
+
+
+	def setting_changing
+	end
+
 	private
 
 	def user_params
+		print params
 		params.require(:user).permit(:profile_image, :introduction, targets_attributes: [:id, :target_body, :_destroy])
+		#params.require(:user).permit(:profile_image, :introduction)
 	end
 
 

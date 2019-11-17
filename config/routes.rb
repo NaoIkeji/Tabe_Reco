@@ -46,7 +46,12 @@ end
 
   namespace :admin do
     get 'home/top' => 'home#top'
+    get '/user/:id/edit_list' => 'user#edit_list', as: 'user_edit_list'
+    get '/user/:id/post_list' => 'user#post_list', as: 'user_post_list'
+
   	resources :foods, only: [:index, :new, :create, :update, :edit, :destroy]
+    resources :users
+    resources :posts
   end
 
     devise_for :admins, controllers: {

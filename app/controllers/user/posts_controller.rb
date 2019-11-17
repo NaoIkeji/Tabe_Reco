@@ -10,6 +10,7 @@ class User::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @targets = current_user.targets.all
   end
 
   def show
@@ -50,7 +51,7 @@ class User::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:post_image, :post_body)
+    params.require(:post).permit(:post_image, :post_body, :post_target, targets_attributes: [:id, :_destroy])
   end
 
 end

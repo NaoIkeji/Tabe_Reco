@@ -1,14 +1,20 @@
 <!-- 応援するの部分テンプレート -->
-<div>
-	<% if post.cheered_by?(current_user) %>
-		<%= link_to user_post_cheers_path(post), method: :delete do %>
-			<p>	<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
+<% if post.user.id == current_user.id %>
+	<p><span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
+		<%= post.cheers.count %></p>
+
+<% else %>
+	<div>
+		<% if post.cheered_by?(current_user) %>
+			<%= link_to user_post_cheers_path(post), method: :delete do %>
+				<p>	<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
+			<% end %>
+			<%= post.cheers.count %>：応援する</p>
+		<% else %>
+			<%= link_to user_post_cheers_path(post), method: :post do %>
+				<p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+			<% end %>
+			<%= post.cheers.count %>：応援する</p>
 		<% end %>
-		<%= post.cheers.count %>：応援する</p>
-	<% else %>
-		<%= link_to user_post_cheers_path(post), method: :post do %>
-			<p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-		<% end %>
-		<%= post.cheers.count %>：応援する</p>
-	<% end %>
-</div>
+	</div>
+<% end %>

@@ -3,6 +3,7 @@ class Post < ApplicationRecord
 	has_many :comments
 	has_many :favorites, dependent: :destroy
 	has_many :cheers, dependent: :destroy
+	#belongs_to :target
 	attachment :post_image
 
 	def favorited_by?(user)

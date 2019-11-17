@@ -21,6 +21,16 @@
 	</div>
 
 	<div>
+		<label>目標</label>
+		<br>
+		<% current_user.targets.each do |u| %>
+			<%= f.radio_button :post_target, u.target_body %>
+			<%= u.target_body %>
+			<br>
+		<% end %>
+	</div>
+
+	<div>
 		<label>つぶやき</label>
 		<%= f.text_area :post_body %>
 	</div>

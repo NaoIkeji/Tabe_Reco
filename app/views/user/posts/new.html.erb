@@ -1,5 +1,3 @@
-
-
 <h2>投稿ページ</h2>
 
 <%= form_for(@post, url:user_posts_path ,method: :post) do |f| %>
@@ -18,12 +16,24 @@
 	</div>
 
 	<div>
-	　　<label>投稿画像</label>
-		<%= f.attachment_field :post_image %>
+		<label>投稿画像</label>
+	    <br>
+	    <%= f.attachment_field :post_image %>
+	</div>
+
+	<div>
+		<label>目標</label>
+		<br>
+		<% current_user.targets.each do |u| %>
+			<%= f.radio_button :post_target, u.target_body %>
+			<%= u.target_body %>
+			<br>
+		<% end %>
 	</div>
 
 	<div>
 		<label>つぶやき</label>
+		<br>
 		<%= f.text_area :post_body %>
 	</div>
 

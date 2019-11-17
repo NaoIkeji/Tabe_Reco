@@ -1,0 +1,11 @@
+<h3><%= @user.last_name + @user.first_name %>さんの投稿一覧</h3>
+
+<% @posts.each do |post| %>
+	<%= post.created_at.strftime('%Y/%m/%d') %>
+	<%= l post.created_at, format: :short %>
+	<%= attachment_image_tag post, :post_image, :fill, 200, 200, fallback: "no_image.jpg" %>
+	<p>目標:<%= post.post_target %></p>
+	<p>つぶやき:<%= post.post_body %></p>
+	<p><%= link_to '編集', edit_admin_post_path(post) %></p>
+	<p><%= link_to '削除', admin_post_path(post), method: :delete %></p>
+<% end %>

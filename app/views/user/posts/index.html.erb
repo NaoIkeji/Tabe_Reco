@@ -1,7 +1,21 @@
+<p><%= link_to 'ホーム', user_posts_path %></p>
+<p>検索</p>
+<p><%= link_to '新規投稿する', new_user_post_path %></p>
+<p>ランキング</p>
+<p><%= link_to 'マイページ', user_user_path(current_user.id) %></p>
+
+<hr>
 
 <h1>投稿一覧</h1>
 
 <% @posts.each do |post| %>
+	<div>
+		<p>プロフィール画像：
+		<%= link_to user_user_path(post.user.id) do %>
+			<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= post.user.nickname %></p>
+		<% end %>
+	</div>
+
 	<div>
 	<%= link_to user_post_path(post.id) do %>
 		<%= attachment_image_tag post, :post_image, :fill, 200, 200, fallback: "no_image.jpg", size:'200x200' %>
@@ -9,29 +23,35 @@
 	</div>
 
 	<div>
+		<p>目標</p>
+		<%= post.post_target %>
+	</div>
+
+	<div>
+		<p>つぶやき</p>
 		<%= post.post_body %>
     </div>
 
     <div>
-		<p>いいね！</p>
 		<%= render 'user/posts/favorite', post: post%>
 	</div>
 
 	<div>
-		<p>応援する</p>
 		<%= render 'user/posts/cheer', post: post %>
 	</div>
 
 	<div>
-		<%= link_to "#{post.comments.count}コメント", user_post_comments_path(post.id) %>
+		<%= link_to "#{post.comments.count}コメント", user_post_path(user) %>
 	</div>
 
 	<div>
-		<% if user_signed_in? %>
+		<% if post.user.id == current_user.id %>
 			<p><%= link_to '編集', edit_user_post_path(post.id) %></p>
 			<p><%= link_to '削除', user_post_path(post.id), method: :delete %></p>
 		<% end %>
 	</div>
+
+	<hr>
 
 <% end %>
 

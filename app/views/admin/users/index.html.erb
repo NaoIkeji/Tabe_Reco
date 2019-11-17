@@ -1,0 +1,24 @@
+<h2>ユーザーの一覧</h2>
+
+<p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+
+<div>
+	<p>登録日時</p>
+	<p>お名前</p>
+	<p>ニックネーム</p>
+	<p>メールアドレス</p>
+</div>
+
+<hr>
+
+<div>
+	<% @users.each do |user| %>
+		<p><%= l user.created_at, format: :short %></p>
+		<p><%= user.last_name %> <%= user.first_name %></p>
+		<p><%= user.nickname %></p>
+		<p><%= user.email %></p>
+		<p><%= link_to '各詳細の編集', admin_user_edit_list_path(user) %></p>
+		<p><%= link_to 'ユーザーの削除', admin_user_path(user), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+		<hr>
+	<% end %>
+</div>

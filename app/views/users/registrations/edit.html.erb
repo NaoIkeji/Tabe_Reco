@@ -63,8 +63,10 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<hr>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<h5>退会する</h5>
+
+<p>退会すると登録した情報全て削除されます。本当にいいですか？<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

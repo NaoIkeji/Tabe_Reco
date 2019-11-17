@@ -49,7 +49,10 @@
                   <li><%= link_to '自分の記録（仮）',user_my_page_path(current_user.id) %></li>
                   <li><%= link_to 'みんなの広場(仮)', user_posts_path %></li>
                   <li>栄養の知識（仮）</li>
-                  <li>ユーザー名：<%= current_user.nickname %></li>
+                  <li>
+                    <%= attachment_image_tag current_user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", size: '30x30' %>
+                    ユーザー名：<%= current_user.nickname %>
+                  </li>
                 </ul>
               </div>
           <% end %>
