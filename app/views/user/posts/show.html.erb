@@ -99,12 +99,12 @@
 <h4>コメント一覧</h4>
 <% @comments.each do |comment| %>
 	<div class="user_profile_image">
-		<p>ユーザーのプロフィール画像<%= attachment_image_tag @comment.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ユーザーのニックネーム：<%= comment.user.nickname %></p>
+		<p>ユーザーのプロフィール画像<%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ユーザーのニックネーム：<%= comment.user.nickname %></p>
 	</div>
 	<div class="comment-text">
 		<p>コメント本文：<%= comment.comment_body %></p>
 		<p>コメント日：<%= comment.created_at.strftime('%Y/%m/%d') %></p>
-		<p>コメント時間：<%= @post.created_at.strftime('%R') %></p>
+		<p>コメント時間：<%= comment.created_at.strftime('%R') %></p>
 	</div>
 	<div>
 		<% if comment.user.id == current_user.id %>

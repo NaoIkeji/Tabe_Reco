@@ -26,7 +26,7 @@ namespace :user do
     resources :food_points, only: [:show, :new, :create, :update, :edit, :destroy]
     resources :targets, only: [:create, :edit, :update, :destroy]
     resources :contacts, only: [:new, :create]
-    resources :users
+    # resources :users
 
     resources :posts do
       resource :favorites, only: [:create, :destroy]
@@ -34,12 +34,12 @@ namespace :user do
       resources :comments, only: [:show, :create, :edit, :update, :destroy]
     end
 
-    # resources :users do
-    #   member do
-    #     get :following, :followers
-    #   end
-    # end
-
+    resources :users do
+        resource :relationships, only: [:create, :destroy]
+        member do
+            get :following, :followers
+        end
+     end
 end
 
 

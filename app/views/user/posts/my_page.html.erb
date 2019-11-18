@@ -17,6 +17,9 @@
 <div>
 	<% @posts.each do |post| %>
 		<%= attachment_image_tag post, :post_image, :fill, 50, 50, fallback: "no_image.jpg", size:'50x50' %>
+	  <p>目標</p>
+		<%= post.post_target %>
+	　<p>つぶやき</p>
 		<%= post.post_body %>
 			<p>いいね！</p>
 			<p>応援する</p>

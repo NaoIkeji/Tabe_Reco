@@ -3,8 +3,8 @@
 <% @users.each do |user| %>
 	<div>
 	<p>プロフィール画像：
-		<%= link_to user_user_path(@post.user.id) do %>
-			<%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= @post.user.nickname %></p>
+		<%= link_to user_user_path(user.id) do %>
+			<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= user.nickname %></p>
 		<% end %>
     </div>
     <div>

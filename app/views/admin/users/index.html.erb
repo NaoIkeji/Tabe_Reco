@@ -1,4 +1,4 @@
-<h2>ユーザーの一覧</h2>
+<h2>＜管理者＞ユーザーの一覧</h2>
 
 <p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
 
@@ -13,6 +13,7 @@
 
 <div>
 	<% @users.each do |user| %>
+		<p><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= user.nickname %></p>
 		<p><%= l user.created_at, format: :short %></p>
 		<p><%= user.last_name %> <%= user.first_name %></p>
 		<p><%= user.nickname %></p>

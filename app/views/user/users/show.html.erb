@@ -1,4 +1,4 @@
-<h2>ユーザーのマイページ</h2>
+<h2><%= @user.nickname %>のマイページ</h2>
 
 <%= link_to '投稿のトップページ', user_posts_path %>
 
@@ -8,17 +8,34 @@
 	</p>
 	<p>自己紹介：<%= @user.introduction %></p>
 <!-- current_userのみ表示させる -->
-	<p><%= link_to 'プロフィールの編集', edit_user_user_path(current_user.id)%></p>
+	<% if @user == current_user %>
+		<p><%= link_to 'プロフィールの編集', edit_user_user_path(current_user.id)%></p>
+    <% end %>
+
+    <div>
+		<a href = "<%= following_user_user_path(@user) %>" %>
+			<%= @user.following.count %>フォロー
+		</a>
+		/
+		<a href = "<%= followers_user_user_path(@user) %>" %>
+			<%= @user.followers.count %>フォロワー
+		</a>
+	</div>
+	<div>
+		<% if current_user != @user %>
+			<% if Relationship.find_by(follower_id: current_user.id,followed_id: @user.id) %>
+					<%= link_to "フォロー済み", user_user_relationships_path(@user.id), method: :delete %>
+			<% else %>
+					<%= link_to "フォローする", user_user_relationships_path(@user.id), method: :post %>
+			<% end %>
+		<% end %>
+	</div>
 </div>
-
-
-
-
 
 <hr>
 
 <div>
-	<p>ユーザーの投稿一覧</p>
+	<p><%= @user.nickname %>の投稿一覧</p>
 	<% @posts.each do |post| %>
 		<div>
 			<%= link_to user_post_path(post.id) do %>
@@ -26,8 +43,13 @@
 			<% end %>
 		</div>
 		<div>
+			<p>目標</p>
+			<%= post.post_target %>
+	    </div>
+	    <div>
+	    	<p>つぶやき</p>
 			<%= post.post_body %>
-		</div>
+	    </div>
 		<div>
 			<%= render 'user/posts/favorite', post: post%>
 		</div>
@@ -38,7 +60,7 @@
 			<%= link_to "#{post.comments.count}コメント", user_post_comments_path(post.id) %>
 		</div>
 		<div>
-			<% if user_signed_in? %>
+			<% if post.user.id == current_user.id %>
 				<p><%= link_to '編集', edit_user_post_path(post.id) %></p>
 				<p><%= link_to '削除', user_post_path(post.id), method: :delete %></p>
 		    <% end %>

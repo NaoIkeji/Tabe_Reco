@@ -45,11 +45,7 @@
 	<div>
 		<% @kind = "主食" %>
 		<%= f.fields_for :food_points do |food_point| %>
-		    <% @meal.food_points.each do |m| %>
-		        <% if m.food.food_category == @kind %>
-			  		<%= render "food_point_fields", f: food_point %>
-			  	<% end %>
-			<% end %>
+			<%= render "food_point_fields", f: food_point  %>
 		<% end %>
 	</div>
 	<div>
@@ -63,11 +59,7 @@
 	<div>
 		<% @kind = "主菜" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<% @meal.food_points.each do |m| %>
-		        <% if m.food.food_category == @kind %>
-			   	    <%= render "food_point_fields", f: food_point %>
-			    <% end %>
-			<% end %>
+			<%= render "food_point_fields", f: food_point  %>
 		<% end %>
 	</div>
 	<div>
@@ -81,11 +73,7 @@
 	<div>
 		<% @kind = "副菜" %>
 		<%= f.fields_for :food_points do |food_point| %>
-		    <% @meal.food_points.each do |m| %>
-		        <% if m.food.food_category == @kind %>
-		       	    <%= render "food_point_fields", f: food_point %>
-			    <% end %>
-			<% end %>
+			<%= render "food_point_fields", f: food_point  %>
 		<% end %>
 	</div>
 	<div>
@@ -99,11 +87,7 @@
 	<div>
 		<% @kind = "果物" %>
 		<%= f.fields_for :food_points do |food_point| %>
-		    <% @meal.food_points.each do |m| %>
-		        <% if m.food.food_category == @kind %>
-			  		<%= render "food_point_fields", f: food_point %>
-			    <% end %>
-			<% end %>
+			<%= render "food_point_fields", f: food_point  %>
 		<% end %>
 	</div>
 	<div>
@@ -117,11 +101,7 @@
 	<div>
 		<% @kind = "牛乳・乳製品" %>
 		<%= f.fields_for :food_points do |food_point| %>
-		    <% @meal.food_points.each do |m| %>
-		        <% if m.food.food_category == @kind %>
-			  		<%= render "food_point_fields", f: food_point %>
-			    <% end %>
-			<% end %>
+			<%= render "food_point_fields", f: food_point  %>
 		<% end %>
 	</div>
 	<div>
@@ -134,11 +114,7 @@
 	<div>
 		<% @kind = "油脂" %>
 		<%= f.fields_for :food_points do |food_point| %>
-		    <% @meal.food_points.each do |m| %>
-		        <% if m.food.food_category == @kind %>
-			   	  <%= render "food_point_fields", f: food_point %>
-			    <% end %>
-			<% end %>
+			<%= render "food_point_fields", f: food_point  %>
 		<% end %>
 	</div>
 	<div>
@@ -151,11 +127,7 @@
 	<div>
 		<% @kind = "嗜好品" %>
 		<%= f.fields_for :food_points do |food_point| %>
-		    <% @meal.food_points.each do |m| %>
-		        <% if m.food.food_category == @kind %>
-			  		<%= render "food_point_fields", f: food_point %>
-			    <% end %>
-			<% end %>
+			<%= render "food_point_fields", f: food_point  %>
 		<% end %>
 	</div>
 	<div>
