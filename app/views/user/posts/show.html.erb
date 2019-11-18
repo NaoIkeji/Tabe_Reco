@@ -10,11 +10,6 @@
 </div>
 
 <div>
-	<p>フォローする</p>
-	<p>フォローをやめる</p>
-</div>
-
-<div>
 	<%= attachment_image_tag @post, :post_image, :fill, 200, 200, fallback: "no_image.jpg" %>
 </div>
 
@@ -84,12 +79,14 @@
 
 
 <div>
-	<h5>コメント投稿フォーム</h5>
-<%= form_for [@post, @comment], url: user_post_comments_path(post_id: @post.id), mthod: :post do |f| %>
-	<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに" %>
-	<br>
-	<%= f.submit "送信する" %>
-<% end %>
+	<% if @user.id != current_user.id %>
+		<h5>コメント投稿フォーム</h5>
+		<%= form_for [@post, @comment], url: user_post_comments_path(post_id: @post.id), mthod: :post do |f| %>
+			<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに" %>
+			<br>
+			<%= f.submit "送信する" %>
+		<% end %>
+	<% end %>
 </div>
 
 

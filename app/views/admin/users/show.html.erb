@@ -1,0 +1,5 @@
+<h2><%= @user.last_name %><%= @user.first_name %>さんの詳細ページ</h2>
+
+<p><%= link_to 'ユーザー情報の編集', edit_admin_user_path(@user) %></p>
+<p><%= link_to 'ユーザーの投稿一覧', admin_user_post_list_path(@user) %></p>
+<p>ユーザーのコメント一覧</p>

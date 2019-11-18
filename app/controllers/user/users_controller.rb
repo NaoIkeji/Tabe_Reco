@@ -1,17 +1,21 @@
 class User::UsersController < ApplicationController
-	# before_action :authenticate_user!
+	before_action :authenticate_user!
 
 	def my_page
-		@meals = Meal.select(:ate_date).order(ate_date: "ASC").distinct
-		list=[]
-		@meals.each do |meal|
-			urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
-	    #listという変数に{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }
-	    #をaddしていく処理
-	   		obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
-	    	list.push(obj)
-	    end
-	    gon.json = list
+		#ログインユーザーの食事情報を取得するように書き換える
+		@meals = Meal.select(:ate_date).where(user_id: current_user.id).distinct#全食事情報を取得している
+
+		# meal_json=[]
+		# @meals.each do |meal|
+		# 	urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+	 #    #listという変数に{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }
+	 #    #をaddしていく処理
+	 #   		obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
+	 #    	list.push(obj)
+	 #    end
+	 #    puts "--------------------------------"
+	 #    puts list
+	 #    gon.json = list
 
 	    # @aaa=current_user.id.to_s
 	    # gon.json = [{'title' => '登録済み','start' => 'meal.ate_date', 'url'
@@ -35,6 +39,17 @@ class User::UsersController < ApplicationController
 		# {'start' => '2019-11-10', 'title' => url},]
 		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date'}]
 		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date', 'url' => '{"user/users" + "current_user.id" + "/daily_meal?utf8=%E2%9C%93&commit=" + "meal.ate_date.strtime("%y%-%m%-%d%")"}'}]
+	end
+
+	def json
+		@meals = Meal.select(:ate_date).where(user_id: current_user.id).distinct
+		meal_json=[]
+		@meals.each do |meal|
+			urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+	   		obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
+	    	meal_json.push(obj)
+	    end
+		render :json => meal_json
 	end
 
 	def daily_meal
@@ -81,7 +96,7 @@ class User::UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
-		@user.targets.build
+		# @user.targets.build
 	end
 
 	def update

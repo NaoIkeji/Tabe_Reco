@@ -6,8 +6,9 @@
 <!-- ニックネームのフォームもいる？ -->
 	<div>
 		<p><%= f.label :profile_image, 'プロフィール画像' %></p>
-		<p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60,fallback: "no_image.jpg" %></p>
-		<p><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></p>
+		<%= f.file_field :profile_image, id:"myImage" %>
+		<img id="preview" width="350" height="250">
+
 	</div>
 
 	<div>

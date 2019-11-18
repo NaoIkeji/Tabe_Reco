@@ -13,13 +13,17 @@
 
 <div>
 	<% @users.each do |user| %>
-		<p><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= user.nickname %></p>
-		<p><%= l user.created_at, format: :short %></p>
-		<p><%= user.last_name %> <%= user.first_name %></p>
-		<p><%= user.nickname %></p>
-		<p><%= user.email %></p>
-		<p><%= link_to '各詳細の編集', admin_user_edit_list_path(user) %></p>
-		<p><%= link_to 'ユーザーの削除', admin_user_path(user), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+	<%= link_to admin_user_path(user) do%>
+			<div>
+				<p><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= user.nickname %></p>
+				<p><%= l user.created_at, format: :short %></p>
+				<p><%= user.last_name %> <%= user.first_name %></p>
+				<p><%= user.nickname %></p>
+				<p><%= user.email %></p>
+				<p><%= link_to '各詳細の編集', admin_user_edit_list_path(user) %></p>
+				<p><%= link_to 'ユーザーの削除', admin_user_path(user), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+		    </div>
+	   <% end %>
 		<hr>
 	<% end %>
 </div>

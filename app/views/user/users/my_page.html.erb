@@ -3,9 +3,6 @@
 <hr>
 
 <h2>マイページ</h2>
-
-
-
 <div>
    <div id="calendar"></div>
 	<ul>
@@ -21,9 +18,28 @@
   <script>
 
    	$(document).ready(function() {
-	    $('#calendar').fullCalendar({
-	        editable: true,
-	        events: gon.json
-	    });
+		var data = {};
+        $.ajaxSetup({ cache: false });
+        $.ajax({
+            url: '/user/users/json',//←ここをjsonを返却するアクションのパスに設定し直す
+            dataType: 'json',
+            async: false,
+            success: function(json) {
+            	 $('#calendar').fullCalendar({
+	        		editable: true,
+	        		events: json
+	   			});
+            }
+        });
+
+   		// console.log("---------------------------");
+   		// console.log(gon.json);
+
+	    // $('#calendar').fullCalendar({
+	    //     editable: true,
+	    //     events: date
+	    // });
+
+   		// console.log("---------------------------");
 	});
    </script>

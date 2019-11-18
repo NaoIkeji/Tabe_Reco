@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
 get '/' => 'home#top', as: 'root'
 
-
 namespace :user do
     get '/users/:id/my_page' => 'users#my_page', as: 'my_page'
     get '/users/:id/my_data' => 'users#my_data', as: 'my_data'
     get '/users/:id/setting_changing' => 'users#setting_changing', as: 'setting_changing'
     get '/users/:id/daily_meal' => 'users#daily_meal', as: 'daily_meal'
     get '/users/:id/daily_meal_balance' => 'users#daily_meal_balance', as: 'daily_meal_balance'
+    get '/users/json' => 'users#json', as: 'user_json'
 
     get '/meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
 
