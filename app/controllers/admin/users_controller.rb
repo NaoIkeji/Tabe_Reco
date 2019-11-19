@@ -12,12 +12,12 @@ class Admin::UsersController < ApplicationController
 
 	def post_list
 		@user = User.find(params[:id])
-		@posts = @user.posts
+		@posts = @user.posts.all
 	end
 
-
-	def edit_list
+	def user_comments
 		@user = User.find(params[:id])
+		@comments = @user.comments.all
 	end
 
 	def edit
@@ -38,6 +38,6 @@ class Admin::UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:last_name, :first_name, :last_name_ruby, :first_name_ruby, :nickname, :email, :password)
+		params.require(:user).permit(:last_name, :first_name, :last_name_ruby, :first_name_ruby, :nickname, :email)
 	end
 end

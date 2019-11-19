@@ -1,6 +1,9 @@
-<h3><%= @user.last_name + @user.first_name %>さんの投稿編集</h3>
+<p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+
+<h3>（管理者）<%= @post.user.last_name %><%= @post.user.first_name %><%= attachment_image_tag @post.user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", size: '30x30' %>さんの投稿編集</h3>
 
 
+<%= form_for(@post, url: admin_post_path(@post), method: :patch ) do |f| %>
 	<div>
 		<label>投稿画像</label>
 	    <br>
@@ -25,4 +28,5 @@
 
 		<hr>
 	<%= f.submit "編集する" %>
+
 <% end %>

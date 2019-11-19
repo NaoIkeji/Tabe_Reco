@@ -4,47 +4,15 @@ class User::UsersController < ApplicationController
 	def my_page
 		#ログインユーザーの食事情報を取得するように書き換える
 		@meals = Meal.select(:ate_date).where(user_id: current_user.id).distinct#全食事情報を取得している
-
-		# meal_json=[]
-		# @meals.each do |meal|
-		# 	urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
-	 #    #listという変数に{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }
-	 #    #をaddしていく処理
-	 #   		obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
-	 #    	list.push(obj)
-	 #    end
-	 #    puts "--------------------------------"
-	 #    puts list
-	 #    gon.json = list
-
-	    # @aaa=current_user.id.to_s
-	    # gon.json = [{'title' => '登録済み','start' => 'meal.ate_date', 'url'
-	    #gon.json = [{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }]
-
-	    # url = "/daily_meal?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
-	    # puts "-----------------------------------------"
-	    # puts meal.ate_date.strftime("%F")
-	    # puts urln
-
-		# @meal.variations.each do |variation|
-		# 	json.set! variation.product_code, variation
-		# end
-
-		# list = []
-		# gon.json = list
-
-		# gon.json = [{'title' => 'TEST','start' => '2019-11-13T07:00:00',},
-		# 	{'title' => 'TEST2','start' => '2019-11-14T07:00:00'}]
-		# gon.json = [{'title' => '登録済み', 'start' => '2019-11-12'}]
-		# {'start' => '2019-11-10', 'title' => url},]
-		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date'}]
-		# gon.json = [{'title' => '登録済み', 'start' => '@meal.ate_date', 'url' => '{"user/users" + "current_user.id" + "/daily_meal?utf8=%E2%9C%93&commit=" + "meal.ate_date.strtime("%y%-%m%-%d%")"}'}]
 	end
 
 	def json
 		@meals = Meal.select(:ate_date).where(user_id: current_user.id).distinct
 		meal_json=[]
 		@meals.each do |meal|
+		# urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+	    #listという変数に{'title' => '登録済み','start' => meal.ate_date.strftime("%F"), 'url' => urln }
+	    #をaddしていく処理
 			urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
 	   		obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
 	    	meal_json.push(obj)
@@ -147,7 +115,6 @@ class User::UsersController < ApplicationController
 	def user_params
 		print params
 		params.require(:user).permit(:profile_image, :introduction, targets_attributes: [:id, :target_body, :_destroy])
-		#params.require(:user).permit(:profile_image, :introduction)
 	end
 
 

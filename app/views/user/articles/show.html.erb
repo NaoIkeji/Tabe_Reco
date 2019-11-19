@@ -1,0 +1,11 @@
+<h2>記事の詳細</h2>
+
+<div>
+	<p>タイトル：<%= @article.article_title %></p>
+	<p>カテゴリー：<%= @article.article_category %></p>
+	<p>
+		<%= attachment_image_tag @article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
+	</p>
+	<p><%= @article.created_at.strftime('%Y/%m/%d') %></p>
+	<p><%= @article.article_body %></p>
+</div>

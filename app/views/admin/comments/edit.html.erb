@@ -1,0 +1,9 @@
+<h2><%= @comment.user.nickname %>さんのコメント編集</h2>
+
+<div>
+	<%= form_for [@post, @comment], url: admin_post_comment_path(post_id: @post.id), method: :patch do |f| %>
+		<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに" %>
+		<br>
+		<%= f.submit "編集" %>
+	<% end %>
+</div>

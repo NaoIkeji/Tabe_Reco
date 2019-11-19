@@ -17,8 +17,10 @@
 
 	<div>
 		<label>投稿画像</label>
+		<br>
+		<img id="preview" width="250" height="200">
+		<%= f.file_field :post_image, id:"myImage" %>
 	    <br>
-	    <%= f.attachment_field :post_image %>
 	</div>
 
 	<div>
@@ -40,3 +42,14 @@
 	<hr>
 	<%= f.submit "投稿する" %>
 <% end %>
+
+
+<script>
+	$('#myImage').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+	});
+</script>
