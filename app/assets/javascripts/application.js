@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+
 //= require Chart.min
 //= require rails-ujs
 //= require activestorage

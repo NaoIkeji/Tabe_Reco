@@ -1,4 +1,12 @@
 <%= form_for(meal, url: url ) do |f| %>
+<%= f %>
+
+<% if @meal.errors.any? %>
+  <%= @meal.errors.count %>error!
+  <% @meal.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 
 <div>
 	<%= f.label :ate_date, '日付' %>
@@ -45,7 +53,9 @@
 	<div>
 		<% @kind = "主食" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+
+					<%= render "food_point_fields", f: food_point %>
+	
 		<% end %>
 	</div>
 	<div>
@@ -84,8 +94,8 @@
 
 <div>
 	<p>果物</p>
-	<div>
 		<% @kind = "果物" %>
+	<div>
 		<%= f.fields_for :food_points do |food_point| %>
 			<%= render "food_point_fields", f: food_point  %>
 		<% end %>

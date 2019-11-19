@@ -39,6 +39,8 @@ class User::UsersController < ApplicationController
 		@yellow_food_points = 0
 		@red_food_points = 0
 		@green_food_points = 0
+		@goody_food_points = 0
+		@alcohol_food_points = 0
 		@meals.each do |meal|
 			meal.food_points.each do |food_point|
 				if food_point.food.food_color == "黄色"
@@ -47,6 +49,10 @@ class User::UsersController < ApplicationController
 					@red_food_points += food_point.point
 				elsif food_point.food.food_color == "緑色"
 					@green_food_points += food_point.point
+				elsif food_point.food.food_item == "菓子類"
+					@goody_food_points += food_point.point
+				elsif food_point.food.food_item == "お酒"
+					@alcohol_food_points += food_point.point
 				end
 			end
 		end
@@ -101,6 +107,17 @@ class User::UsersController < ApplicationController
 	def followers
 		@user = User.find(params[:id])
 		@users = @user.followers
+	end
+
+	def user_search
+		# 検索オブジェクト
+		@search = User.ransack(params[:q])
+		# 検索結果
+		@users = @search.result
+	end
+
+	def user_search_list
+		@users = User.all
 	end
 
 	def my_data

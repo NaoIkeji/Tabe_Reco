@@ -1,5 +1,12 @@
 <h2>食品新規追加</h2>
 
+<% if @food.errors.any? %>
+  <%= @food.errors.count %>error!
+  <% @food.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 
 <%= form_for(@food, url:admin_foods_path, method: :post) do |f|%>
 	<div>

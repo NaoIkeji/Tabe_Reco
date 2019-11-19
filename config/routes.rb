@@ -10,13 +10,9 @@ namespace :user do
     get 'users/:id/daily_meal' => 'users#daily_meal', as: 'daily_meal'
     get 'users/:id/daily_meal_balance' => 'users#daily_meal_balance', as: 'daily_meal_balance'
     get 'users/json' => 'users#json', as: 'user_json'
-
+    get 'users/user_search' =>'users#user_search', as: 'user_search'
+    get 'user/search_list' => 'user#search_list', as:'user_search_list'
     get 'meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
-
-    # # フォローする
-    # post '/follow/:id' => 'relationships#follow', as: 'follow'
-    # # フォロー外す
-    # post '/unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
 
     get 'posts/:id/my_page' =>'posts#my_page', as: 'posts_my_page'
     # get '/posts/:id/post_comments' => 'posts#post_comments', as: 'post_comments'

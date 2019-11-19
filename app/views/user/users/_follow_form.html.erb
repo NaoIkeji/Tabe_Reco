@@ -1,10 +1,8 @@
-<!-- フォローする/フォロー解除フォーム 呼び出す-->
-<% unless current_user == @user %>
-	<div id="follow_form">
-		
-			<%= render 'user/users/unfollow' %>
-	
-			<%= render 'user/users/follow' %>
-
-	</div>
+<!-- フォローをやめる/フォローをするのボタンを表示する 部分テンプレート　-->
+<% if current_user != user %>
+	<% if Relationship.find_by(follower_id: current_user.id,followed_id: user.id) %>
+			<%= link_to "フォローをやめる", user_user_relationships_path(user.id), method: :delete, remote: true %>
+	<% else %>
+            <%= link_to "フォローする", user_user_relationships_path(user.id), method: :post, remote: true %>
+	<% end %>
 <% end %>

@@ -1,0 +1,10 @@
+<!-- フォロー、フォロワーの統計表示する部分テンプレート -->
+<div>
+	<a href = "<%= following_user_user_path(user) %>" %>
+		<%= user.following.count %>フォロー
+	</a>
+	/
+	<a href = "<%= followers_user_user_path(user) %>" %>
+		<%= user.followers.count %>フォロワー
+	</a>
+</div>

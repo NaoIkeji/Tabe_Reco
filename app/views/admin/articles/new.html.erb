@@ -1,5 +1,13 @@
 <h2>(管理者)記事の新規投稿</h2>
 
+<% if @article.errors.any? %>
+  <%= @article.errors.count %>error!
+  <% @article.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+
 <%= form_for(@article, url: admin_articles_path ,method: :post) do |f| %>
 	<div>
 		<%= f.label :タイトル %>

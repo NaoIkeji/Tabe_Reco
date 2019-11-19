@@ -46,5 +46,6 @@
 	<%= form_tag user_daily_meal_balance_path(current_user.id), method: :get do %>
 		<%= submit_tag  @date %>のバランスチェックする
 	<% end %>
+	<p><%= @date_display %></p>
 </div>
 

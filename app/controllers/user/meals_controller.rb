@@ -8,9 +8,6 @@ class User::MealsController < ApplicationController
 		@meals = Meal.all
 	end
 
-	def show
-	end
-
 	def new
 		@meal = Meal.new
 		@text = "食事を登録する"
@@ -39,10 +36,10 @@ class User::MealsController < ApplicationController
 
 	def update
 		@meal = Meal.find(params[:id])
-		puts "検索用"
-		puts meal_params
-		if @meal.update!(meal_params)
-			redirect_to user_daily_meal_path(current_user.id)
+		# puts "検索用"
+		# puts meal_params
+		if @meal.update(meal_params)
+		   redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
 		else
 			@url = "/user/meals/#{@meal.id}"
 			render :edit
@@ -52,7 +49,7 @@ class User::MealsController < ApplicationController
 	def destroy
 		@meal = Meal.find(params[:id])
 		Meal.find(params[:id]).destroy
-		redirect_to user_daily_meal_path(current_user.id)
+		redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
 	end
 
 	private

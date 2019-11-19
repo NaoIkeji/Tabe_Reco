@@ -1,3 +1,6 @@
+
+<%= render 'user/posts/nav' %>
+
 <hr>
 
 <% if user_signed_in? %>
@@ -12,25 +15,12 @@
 			<% end %>
 		</div>
 
-
 		<div>
-			<a href = "<%= following_user_user_path(user) %>" %>
-				<%= user.following.count %>フォロー
-			</a>
-			/
-			<a href = "<%= followers_user_user_path(user) %>" %>
-				<%= user.followers.count %>フォロワー
-			</a>
-		</div>
+    		<%= render 'user/users/following_followers_statistics' , user: user %>
+    	</div>
 
-		<div>
-			<% if current_user != user %>
-				<% if Relationship.find_by(follower_id: current_user.id,followed_id: user.id) %>
-					<%= link_to "フォロー済み", user_user_relationships_path(user.id), method: :delete %>
-				<% else %>
-					<%= link_to "フォローする", user_user_relationships_path(user.id), method: :post %>
-				<% end %>
-			<% end %>
+		<div id="follow_buttons_<%= user.id %>">
+			<%= render 'user/users/follow_form' , user: user %>
 		</div>
 		<hr>
 	<% end %>

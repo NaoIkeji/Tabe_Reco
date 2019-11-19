@@ -1,9 +1,5 @@
-<p><%= link_to 'ホーム', user_posts_path %></p>
-<p>検索</p>
-<p><%= link_to '新規投稿する', new_user_post_path %></p>
-<p>ランキング</p>
-<p><%= link_to 'マイページ', user_user_path(current_user.id) %></p>
-<p><%= link_to 'ユーザー一覧', user_users_path%></p>
+
+<%= render 'user/posts/nav' %>
 
 <hr>
 
@@ -33,12 +29,12 @@
 		<%= post.post_body %>
     </div>
 
-    <div>
-		<%= render 'user/posts/favorite', post: post%>
+    <div id="favorites_buttons_<%= post.id %>">
+		<%= render partial: 'user/posts/favorite', locals: {post: post} %>
 	</div>
 
-	<div>
-		<%= render 'user/posts/cheer', post: post %>
+	<div id="cheers_buttons_<%= post.id %>">
+		<%= render partial: 'user/posts/cheer', locals: {post: post} %>
 	</div>
 
 	<div>

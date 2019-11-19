@@ -1,4 +1,5 @@
 // JavaScriptと埋め込みRubyを使ってフォローの関係性を作成する
+$('#follow_buttons_<%= user.id %>').html("<%= j(render partial: 'user/users/follow_form', locals: {user: @user}) %>");
 
-$("#follow_form").html("<%= escape_javascript(render('user/users/unfollow')) %>");
-$("#followers").html('<%= @user.followers.count %>>');
+// $("#follow_button").html("<%= escape_javascript(render('user/users/unfollow')) %>");
+// $("#followers").html('<%= @user.followers.count %>>');
