@@ -2,7 +2,7 @@
 
 <hr>
 
-<h2><%= @date %>の食事一覧</h2>
+<h2><%= @date[0] %>年<%= @date[1] %>月<%= @date[2] %>日の食事一覧</h2>
 
 
 <p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
@@ -44,7 +44,8 @@
 
 <div>
 	<%= form_tag user_daily_meal_balance_path(current_user.id), method: :get do %>
-		<%= submit_tag  @date %>のバランスチェックする
+	　	<%= hidden_field_tag :date, @_date %>
+		<%= submit_tag  "#{@date[0]}年#{@date[1]}月#{@date[2]}日" %>のバランスチェックする
 	<% end %>
 	<p><%= @date_display %></p>
 </div>
