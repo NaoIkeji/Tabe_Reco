@@ -1,0 +1,2 @@
+class ArticleGenre < ApplicationRecord
+end

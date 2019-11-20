@@ -1,6 +1,14 @@
-<%= form_for(meal, url: url ) do |f| %>
-<%= f %>
+<script>
+	$('#myImage').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+	});
+</script>
 
+<%= form_for(meal, url: url ) do |f| %>
 <% if @meal.errors.any? %>
   <%= @meal.errors.count %>error!
   <% @meal.errors.full_messages.each do |message| %>
@@ -53,9 +61,12 @@
 	<div>
 		<% @kind = "主食" %>
 		<%= f.fields_for :food_points do |food_point| %>
-
+			<% @syusyoku_foods = Food.where(food_category: "主食") %>
+			<% @syusyoku_foods.each do |t| %>
+				<% if t.id == food_point.object.food_id%>
 					<%= render "food_point_fields", f: food_point %>
-	
+				<%	end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -69,9 +80,13 @@
 	<div>
 		<% @kind = "主菜" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+			<% @syusyoku_foods = Food.where(food_category: "主菜") %>
+			<% @syusyoku_foods.each do |t| %>
+				<% if t.id == food_point.object.food_id%>
+					<%= render "food_point_fields", f: food_point %>
+				<%	end %>
+			<% end %>
 		<% end %>
-	</div>
 	<div>
 		<%= link_to_add_association "食品を追加", f, :food_points %>
 	</div>
@@ -83,7 +98,12 @@
 	<div>
 		<% @kind = "副菜" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+			<% @syusyoku_foods = Food.where(food_category: "副菜") %>
+			<% @syusyoku_foods.each do |t| %>
+				<% if t.id == food_point.object.food_id%>
+					<%= render "food_point_fields", f: food_point %>
+				<%	end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -94,12 +114,16 @@
 
 <div>
 	<p>果物</p>
-		<% @kind = "果物" %>
 	<div>
+		<% @kind = "果物" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+			<% @syusyoku_foods = Food.where(food_category: "果物") %>
+			<% @syusyoku_foods.each do |t| %>
+				<% if t.id == food_point.object.food_id%>
+					<%= render "food_point_fields", f: food_point %>
+				<%	end %>
+			<% end %>
 		<% end %>
-	</div>
 	<div>
 		<%= link_to_add_association "食品を追加", f, :food_points %>
 	</div>
@@ -111,7 +135,12 @@
 	<div>
 		<% @kind = "牛乳・乳製品" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+			<% @syusyoku_foods = Food.where(food_category: "牛乳・乳製品") %>
+			<% @syusyoku_foods.each do |t| %>
+				<% if t.id == food_point.object.food_id%>
+					<%= render "food_point_fields", f: food_point %>
+				<%	end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -124,7 +153,12 @@
 	<div>
 		<% @kind = "油脂" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+			<% @syusyoku_foods = Food.where(food_category: "油脂") %>
+			<% @syusyoku_foods.each do |t| %>
+				<% if t.id == food_point.object.food_id%>
+					<%= render "food_point_fields", f: food_point %>
+				<%	end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -137,7 +171,12 @@
 	<div>
 		<% @kind = "嗜好品" %>
 		<%= f.fields_for :food_points do |food_point| %>
-			<%= render "food_point_fields", f: food_point  %>
+			<% @syusyoku_foods = Food.where(food_category: "油脂") %>
+			<% @syusyoku_foods.each do |t| %>
+				<% if t.id == food_point.object.food_id%>
+					<%= render "food_point_fields", f: food_point %>
+				<%	end %>
+			<% end %>
 		<% end %>
 	</div>
 	<div>
@@ -154,12 +193,3 @@
 
 
 
-<script>
-	$('#myImage').on('change', function (e) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $("#preview").attr('src', e.target.result);
-    }
-    reader.readAsDataURL(e.target.files[0]);
-	});
-</script>

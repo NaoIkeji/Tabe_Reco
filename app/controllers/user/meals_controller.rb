@@ -39,7 +39,7 @@ class User::MealsController < ApplicationController
 		# puts "検索用"
 		# puts meal_params
 		if @meal.update(meal_params)
-		   redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+		   redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + @meal.ate_date.strftime("%F")
 		else
 			@url = "/user/meals/#{@meal.id}"
 			render :edit

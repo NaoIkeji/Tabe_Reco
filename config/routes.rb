@@ -24,6 +24,7 @@ namespace :user do
     resources :targets, only: [:create, :edit, :update, :destroy]
     resources :contacts, only: [:new, :create]
     resources :articles, only: [:index, :show]
+    resources :article_genres, only: [:new, :create, :edit, :update, :destroy]
 
     resources :posts do
       resource :favorites, only: [:create, :destroy]
@@ -50,6 +51,7 @@ end
 
   	resources :foods, only: [:index, :new, :create, :update, :edit, :destroy]
     resources :contacts, only: [:index, :show, :update]
+    resources :article_genres, only: [:show]
     resources :articles
     resources :users
 
