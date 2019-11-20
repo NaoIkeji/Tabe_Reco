@@ -1,0 +1,17 @@
+<h2>検索結果</h2>
+
+<p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+
+<hr>
+
+<% @users.each do |user| %>
+	<div>
+		<%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+			<%= link_to admin_user_path(user.id) do %>
+			<p><%= user.last_name %><%= user.first_name %></p>
+			<%= user.nickname %><br>
+			<%= user.email %>
+		<% end %>
+		<hr>
+	</div>
+<% end %>

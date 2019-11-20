@@ -1,5 +1,7 @@
 <h1>お問いあわせ一覧</h1>
 
+<p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+
 <% @contacts.each do |contact| %>
 	<%= link_to admin_contact_path(contact.id) do %>
 		<p>名前：<%= contact.last_name %><%= contact.first_name %></p>

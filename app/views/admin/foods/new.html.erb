@@ -1,5 +1,8 @@
 <h2>食品新規追加</h2>
 
+<p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+<hr>
+
 <% if @food.errors.any? %>
   <%= @food.errors.count %>error!
   <% @food.errors.full_messages.each do |message| %>

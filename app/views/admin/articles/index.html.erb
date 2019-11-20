@@ -1,4 +1,6 @@
 <h2>(管理者)記事一覧</h2>
+<p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+<hr>
 
 <% @articles.each do |article| %>
 	<p>タイトル：<%= article.article_title %></p>

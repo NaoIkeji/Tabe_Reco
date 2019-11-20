@@ -3,6 +3,8 @@ class Admin::UsersController < ApplicationController
 
 	def index
 		@users = User.page(params[:page]).reverse_order
+		@search = User.ransack(params[:q])
+		@users = @search.result
 		# @users = User.where(deleted_at: nil).page(params[:page]).reverse_order
 		# @users = User.all
 		# @users = User.where(deleted_at: nil).all.order(created_at: "DESC")
@@ -19,7 +21,7 @@ class Admin::UsersController < ApplicationController
 
 	def user_comments
 		@user = User.find(params[:id])
-		@comments = @user.comments.all
+		@comments = @user.comments
 	end
 
 	def edit
@@ -36,6 +38,14 @@ class Admin::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		User.find(params[:id]).destroy
 		redirect_to admin_users_path
+	end
+
+	def user_search
+	end
+
+	def search_list
+		@search = User.ransack(params[:q])
+		@users = @search.result
 	end
 
 	private

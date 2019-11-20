@@ -1,5 +1,19 @@
+
+<%= render 'user/posts/nav' %>
+
+<hr>
+
 <h2>検索結果</h2>
 
-<%= @users.each do |user| %>
-	<%= user.last_name %>
+<% @users.each do |user| %>
+	<div>
+		<%= link_to user_user_path(user.id) do %>
+			<%= user.nickname %><br>
+			<%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
+			<div id="follow_buttons_<%= user.id %>">
+				<%= render 'user/users/follow_form' , user: user %>
+			</div>
+		<% end %>
+	</div>
 <% end %>
+

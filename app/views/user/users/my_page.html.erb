@@ -5,14 +5,6 @@
 <h2>マイページ</h2>
 <div>
    <div id="calendar"></div>
-	<ul>
-		<% @meals.each do |meal| %>
-			<li><%= form_tag user_daily_meal_path(current_user.id), method: :get do %>
-				  <%= submit_tag "#{meal.ate_date}" %>
-				<% end %>
-			</li>
-		<% end %>
-	</ul>
 </div>
 
   <script>

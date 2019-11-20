@@ -1,5 +1,2 @@
-//  Ruby JavaScript (RJS) を使ってフォローの関係性を削除する
-$('#follow_buttons_<%= user.id %>').html("<%= j(render partial: 'user/users/follow_form', locals: {user: @user}) %>");
 
-// $("#follow_form").html("<%= escape_javascript(render('user/users/follow')) %>");
-// $("#followers").html('<%= @user.followers.count %>');
+$('#follow_buttons_<%= @user.id %>').html("<%= j(render partial: 'user/users/follow_form', locals: {user: @user}) %>");

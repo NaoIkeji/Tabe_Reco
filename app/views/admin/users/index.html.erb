@@ -3,6 +3,15 @@
 <p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
 
 <div>
+<p>ユーザーの検索</p>
+<%= search_form_for @search, url: admin_user_search_list_path do |f| %>
+	<%= f.label :nickname_cont, placeholder: '検索するユーザーを入力' %>
+	<%= f.search_field :nickname_cont %>
+	<%= f.submit "検索" %>
+<% end %>
+</div>
+
+<div>
 	<p>登録日時</p>
 	<p>お名前</p>
 	<p>ニックネーム</p>

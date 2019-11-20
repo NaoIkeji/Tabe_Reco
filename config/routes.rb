@@ -4,14 +4,15 @@ get '/' => 'home#top', as: 'root'
 
 namespace :user do
     get 'home/about' => 'home#about', as: 'about'
+    get 'users/search_list' => 'users#search_list', as:'user_search_list'
+    get 'users/user_search' =>'users#user_search', as: 'user_search'
     get 'users/:id/my_page' => 'users#my_page', as: 'my_page'
     get 'users/:id/my_data' => 'users#my_data', as: 'my_data'
     get 'users/:id/setting_changing' => 'users#setting_changing', as: 'setting_changing'
     get 'users/:id/daily_meal' => 'users#daily_meal', as: 'daily_meal'
     get 'users/:id/daily_meal_balance' => 'users#daily_meal_balance', as: 'daily_meal_balance'
     get 'users/json' => 'users#json', as: 'user_json'
-    get 'users/user_search' =>'users#user_search', as: 'user_search'
-    get 'user/search_list' => 'user#search_list', as:'user_search_list'
+
     get 'meals/meal_indication' =>'meals#meal_indication', as: 'meal_indication'
 
     get 'posts/:id/my_page' =>'posts#my_page', as: 'posts_my_page'
@@ -44,8 +45,10 @@ end
 
   namespace :admin do
     get 'home/top' => 'home#top'
-    get 'users/:id/edit_list' => 'users#edit_list', as: 'user_edit_list'
+    # get 'users/:id/edit_list' => 'users#edit_list', as: 'user_edit_list'
     get 'users/:id/post_list' => 'users#post_list', as: 'user_post_list'
+    get 'users/search_list' => 'users#search_list', as:'user_search_list'
+    get 'users/user_search' =>'users#user_search', as: 'user_search'
 
     get 'users/:id/user_comments' => 'users#user_comments', as: 'user_comments'
 

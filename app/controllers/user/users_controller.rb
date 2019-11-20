@@ -26,6 +26,7 @@ class User::UsersController < ApplicationController
 		@meals = Meal.where(user_id: current_user.id, ate_date: @date).order(ate_time: "ASC")
 		@meals.each do |meal|
 			@urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
+			# @ate_date = meal.ate_date.strftime("%Y年%-m月%-d日")
 		end
 	end
 
@@ -70,7 +71,6 @@ class User::UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
-		# @user.targets.build
 	end
 
 	def update
@@ -110,14 +110,13 @@ class User::UsersController < ApplicationController
 	end
 
 	def user_search
+	end
+
+	def search_list
 		# 検索オブジェクト
 		@search = User.ransack(params[:q])
 		# 検索結果
 		@users = @search.result
-	end
-
-	def user_search_list
-		@users = User.all
 	end
 
 	def my_data

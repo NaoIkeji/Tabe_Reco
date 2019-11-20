@@ -36,11 +36,13 @@
 
 <div>
 	<p>食事の写真</p>
-
-<!-- 	選択した画像のプレビューを表示する -->
+	<!-- editの時だけ登録済みの写真を表示させる-->
+	<% if request.path_info.include?('edit') %>
+		<%= attachment_image_tag @meal, :meal_image, :fill, 200,150, format: 'jpeg', fallback: "no_image.jepg", size: '200x150' %>
+	<% end %>
+	<!-- 選択した画像のプレビューを表示する -->
 	<%= f.file_field :meal_image, id:"myImage" %>
 	<img id="preview" width="350" height="250">
-
 </div>
 
 <div>
