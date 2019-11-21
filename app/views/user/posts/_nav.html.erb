@@ -1,5 +1,9 @@
-<p><%= link_to 'ホーム', user_posts_path %></p>
-<p><%= link_to '検索', user_user_search_path %></p>
-<p><%= link_to '新規投稿する', new_user_post_path %></p>
-<p><%= link_to 'マイページ', user_user_path(current_user.id) %></p>
-<p><%= link_to 'ユーザー一覧', user_users_path%></p>
+<div>
+	<ul class="nav nav-tabs nav-justified">
+		<li role="presentation" class="active"><p><%= link_to 'ホーム', user_posts_path %></p></li>
+		<li role="presentation"><p><%= link_to '検索', user_user_search_path %></p></li>
+		<li role="presentation"><p><%= link_to '新規投稿する', new_user_post_path %></p></li>
+		<li role="presentation"><p><%= link_to 'マイページ', user_user_path(current_user.id) %></p></li>
+		<li role="presentation"><p><%= link_to 'ユーザー一覧', user_users_path%></p></li>
+	</ul>
+</div>

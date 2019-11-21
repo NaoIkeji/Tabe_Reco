@@ -4,29 +4,37 @@
 
 
 
-.stats {
-	overflow: auto;
-	margin-top: 0;
-	padding: 0;
-	a {
-	  float: left;
-	  padding: 0 10px;
-	  border-left: 1px solid gray-lighter;
-	  color: gray;
-	  &:first-child {
-	  	padding-left: 0;
-	  	border: 0;
-	  }
-	  &:hover {
-	  	text-decolation: none;
-	  	color: blue;
-	  }
-	}
-	strong {
-		display: block;
-	}
+.post-list {
+	background-color: black;
+	padding: 0px 25px;
+
 }
 
-.users.follow {
-	padding: 0;
+.post {
+	background-color: white;
+	padding: 15px 20px;
+	margin-bottom: 30px;
 }
+
+.post-user {
+	background-color: pink;
+}
+
+.post-image {
+	background-color: orange;
+	margin-bottom: 30px;
+}
+
+.post-target {
+	background-color: green;
+}
+
+.post-body {
+	background-color: yellow;
+}
+
+.post-stats {
+	background-color: blue;
+}
+
+

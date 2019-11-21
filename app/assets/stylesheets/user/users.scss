@@ -1,3 +1,88 @@
 // Place all the styles related to the user/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.my-calender{
+	background-color: #ffffff;
+	padding: 30px 50px 50px 50px;
+}
+.daily_meal_body{
+	padding: 10px 0px 30px 0px;
+}
+
+.daily_meal_list {
+	background-color: #ffe8d1;
+	padding: 10px 60px;
+	margin-bottom: 25px;
+}
+
+.daily_meal_content {
+	margin: 10px;
+}
+
+.meal-image {
+
+	padding: 0px 30px;
+}
+
+.meal-memo {
+
+}
+
+.meal-date {
+
+	padding: 0px 20px;
+}
+
+.meal-date ul {
+	list-style: none;
+}
+
+.meal-action {
+	text-align: right;
+}
+
+.meal-action ul {
+	list-style: none;
+	float: right;
+}
+
+.meal-action li {
+	float: left;
+	padding: 0px 10px;
+	text-align: right;
+}
+
+.submit-balance-check-link {
+	text-align: right;
+}
+
+.balance-check {
+	padding-bottom: 20px;
+	text-align: right;
+}
+
+.total-points {
+	background-color: green;
+	padding: 5px 30px;
+	margin-bottom: 20px;
+}
+
+.reader-chart{
+	background-color: pink;
+	margin-bottom: 20px;
+}
+
+.meal-advice {
+	background-color: gray;
+}
+
+.daily-meal-balance-body {
+	padding-bottom: 30px;
+}
+
+.daily-meal-balance-list {
+	background-color: orange;
+	padding: 5px 30px;
+}

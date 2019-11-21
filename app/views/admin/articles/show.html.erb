@@ -2,7 +2,7 @@
 
 <div>
 	<p>タイトル：<%= @article.article_title %></p>
-	<p>カテゴリー：<%= @article.article_category %></p>
+	<p>カテゴリー：<%= @article.article_genre.genre_name %></p>
 	<p>
 		<%= attachment_image_tag @article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
 	</p>

@@ -1,96 +1,95 @@
 <%= render 'nav' %>
 
-<hr>
-
-<h2><%= @m_date %>の栄養バランス</h2>
-
-
-<p><%= link_to "#{@m_date}の食事一覧へ戻る", @urln %></p>
-
-<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
-
 <div>
-	<h3>栄養バランス</h3>
-	<p>黄色の食品の合計点数<%= @yellow_food_points %></p>
-	<p>赤色の食品の合計点数<%= @red_food_points %></p>
-	<p>緑色の食品の合計点数<%= @green_food_points %></p>
-
-	<canvas id="myRaderChart"></canvas>
-
-</div>
-
-
-<hr>
-
+  <p class="headline"><%= @m_date %>の栄養バランス</p>
 <div>
-	<h3>食事アドバイス</h3>
-	<div>
-		<p><% if @yellow_food_points > 18 %>
-				<p>・黄色：炭水化物、脂質が多い食品　→ <b>食べ過ぎです！</b></p>
-			<% elsif @yellow_food_points < 18 %>
-				<p>・黄色：炭水化物、脂質が多い食品　→ <b>もう少し食べましょう！</b></p>
-			<% elsif @yellow_food_points = 18 %>
-				<p>・黄色：炭水化物、脂質が多い食品　→ <b>適正量です！</b></p>
-		   <% end %>
-		</p>
 
-		<p><% if @red_food_points > 12 %>
-				<p>・赤色：たんぱく質が多い食品　→ <b>食べ過ぎです！</b></p>
-			<% elsif @yellow_food_points < 12 %>
-				<p>・赤色：たんぱく質が多い食品　→ <b>もう少し食べましょう！</b></p>
-			<% elsif @yellow_food_points = 12 %>
-				<p>・赤色：たんぱく質が多い食品　→ <b>適正量です！</b></p>
-		   <% end %>
-		</p>
+<div class="daily-meal-balance-body row">
+	<div class="col-lg-7">
+		<div class="reader-chart col-lg-12">
+			<h4>栄養バランス</h4>
+			<canvas id="myRaderChart" width="100" height="100"></canvas>
+	    </div>
 
-		<p><% if @green_food_points > 12 %>
-				<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>食べ過ぎです！</b></p>
-			<% elsif @yellow_food_points < 12 %>
-				<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>もう少し食べましょう！</b></p>
-			<% elsif @yellow_food_points = 12 %>
-				<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>適正量です！</b></p>
-		   <% end %>
-		</p>
+		<div class="meal-advice col-lg-12">
+			<h4>食事アドバイス</h4>
+			<div>
+				<p><% if @yellow_food_points > 18 %>
+						<p>・黄色：炭水化物、脂質が多い食品　→ <b>食べ過ぎです！</b></p>
+					<% elsif @yellow_food_points < 18 %>
+						<p>・黄色：炭水化物、脂質が多い食品　→ <b>もう少し食べましょう！</b></p>
+					<% elsif @yellow_food_points = 18 %>
+						<p>・黄色：炭水化物、脂質が多い食品　→ <b>適正量です！</b></p>
+				   <% end %>
+				</p>
 
-		<p>
-			<% if @goody_food_points > 3 %>
-				<p>・菓子類：食べ過ぎです。お菓子など甘いものは控えめにしましょう。</p>
+				<p><% if @red_food_points > 12 %>
+						<p>・赤色：たんぱく質が多い食品　→ <b>食べ過ぎです！</b></p>
+					<% elsif @yellow_food_points < 12 %>
+						<p>・赤色：たんぱく質が多い食品　→ <b>もう少し食べましょう！</b></p>
+					<% elsif @yellow_food_points = 12 %>
+						<p>・赤色：たんぱく質が多い食品　→ <b>適正量です！</b></p>
+				   <% end %>
+				</p>
+
+				<p><% if @green_food_points > 12 %>
+						<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>食べ過ぎです！</b></p>
+					<% elsif @yellow_food_points < 12 %>
+						<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>もう少し食べましょう！</b></p>
+					<% elsif @yellow_food_points = 12 %>
+						<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>適正量です！</b></p>
+				   <% end %>
+				</p>
+
+				<p>
+					<% if @goody_food_points > 3 %>
+						<p>・菓子類：食べ過ぎです。お菓子など甘いものは控えめにしましょう。</p>
+					<% end %>
+				</p>
+
+				<p>
+					<% if @alcohol_food_points > 3 %>
+						<p>・お酒：飲み過ぎです。お酒を控えましょう。休肝日も作りましょう。</p>
+					<% end %>
+				</p>
+
+		    </div>
+		</div>
+
+	</div><!-- col-lg-7_end -->
+
+	<div class="col-lg-5">
+		<div class="total-points">
+			<h4>食品の合計点数</h4>
+			<p>黄色の食品：合計<%= @yellow_food_points %>点（適正量18点）</p>
+			<p>赤色の食品：合計<%= @red_food_points %>点（適正量12点）</p>
+			<p>緑色の食品：合計<%= @green_food_points %>点（適正量12点）</p>
+		</div>
+
+		<div class="daily-meal-balance-list">
+			<h4><%= @m_date %>の食事一覧</h4>
+			<% @meals.each do |meal| %>
+				<p><b><%= meal.meal_item %></b>
+					<%= meal.ate_time.strftime('%R') %>
+				</p>
+				<div class="row">
+					<div class="col-lg-6">
+						<p><%= attachment_image_tag meal, :meal_image, :fill, 200, 150, fallback: "no_image.jpg", size:'200x150' %></p>
+					</div>
+					<div class="col-lg-6">
+						<p><b>食事メモ</b></p><%= meal.meal_text %>
+			    	</div>
+			    </div>
+			    <hr>
 			<% end %>
-		</p>
+			<p><%= link_to "#{@m_date}の食事一覧へ戻る", @urln %></p>
+		</div>
+	</div><!-- col-lg-5 -->
 
-		<p>
-			<% if @alcohol_food_points > 3 %>
-				<p>・お酒：飲み過ぎです。お酒を控えましょう。休肝日も作りましょう。</p>
-			<% end %>
-		</p>
-
-    </div>
-</div>
+</div><!-- row_end -->
 
 
-<hr>
-
-
-<div>
-	<h3><%= @date %>の食事一覧</h3>
-	<% @meals.each do |meal| %>
-	    <p>登録日：<%= meal.ate_date %></p>
-		<p>項目：<b><%= meal.meal_item %></b></p>
-		<p>時間：<%= meal.ate_time.strftime('%R') %></p>
-		<p><%= attachment_image_tag meal, :meal_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %></p>
-		<p>食事メモ：<%= meal.meal_text %></p>
-		<hr>
-	<% end %>
-</div>
-
-
-<p><%= link_to "#{@m_date}の食事一覧へ戻る", @urln %></p>
-
-<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user.id) %></p>
-
-
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
 	<script>
 		    var ctx = document.getElementById("myRaderChart");

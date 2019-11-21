@@ -1,2 +1,3 @@
 class ArticleGenre < ApplicationRecord
+	has_many :articles, dependent: :destroy
 end

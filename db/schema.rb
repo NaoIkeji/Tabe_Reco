@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_091332) do
+ActiveRecord::Schema.define(version: 2019_11_20_173850) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_091332) do
     t.text "article_body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "article_genre_id"
   end
 
   create_table "cheers", force: :cascade do |t|
@@ -52,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_091332) do
     t.text "comment_body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "post_target"
+    t.text "post_body"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -60,10 +63,10 @@ ActiveRecord::Schema.define(version: 2019_11_20_091332) do
     t.string "last_name_ruby"
     t.string "first_name_ruby"
     t.string "email"
-    t.string "status"
     t.text "contact_body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "未対応"
   end
 
   create_table "favorites", force: :cascade do |t|

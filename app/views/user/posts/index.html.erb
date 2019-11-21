@@ -1,44 +1,53 @@
 
 <%= render 'user/posts/nav' %>
 
-<hr>
+<div>
+  <p class="headline">投稿一覧</p>
+<div>
 
-<h1>投稿一覧</h1>
+<div class="row">
+<div class="col-lg-3"></div>
 
+
+<div class="post-list col-lg-6">
 <% @posts.each do |post| %>
-	<div>
-		<p>プロフィール画像：
-		<%= link_to user_user_path(post.user.id) do %>
-			<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %><br>ニックネーム：<%= post.user.nickname %></p>
+<div class="post">
+	<div class="post-user">
+		<p>
+			<%= link_to user_user_path(post.user.id) do %>
+				<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50', class:"img-circle" %><%= post.user.nickname %>
+			</p>
 		<% end %>
 	</div>
 
-	<div>
+	<div class="post-image">
 	<%= link_to user_post_path(post.id) do %>
-		<%= attachment_image_tag post, :post_image, :fill, 200, 200, fallback: "no_image.jpg", size:'200x200' %>
+		<%= attachment_image_tag post, :post_image, :fill, 520, 430, fallback: "no_image.jpg", size:'520x430' %>
 	<% end %>
 	</div>
 
-	<div>
+	<div class="post-target">
 		<p>目標</p>
 		<%= post.post_target %>
 	</div>
 
-	<div>
+	<div class="post-body">
 		<p>つぶやき</p>
 		<%= post.post_body %>
     </div>
 
-    <div id="favorites_buttons_<%= post.id %>">
-		<%= render partial: 'user/posts/favorite', locals: {post: post} %>
-	</div>
+    <div class="post-stats">
+	    <div id="favorites_buttons_<%= post.id %>">
+			<%= render partial: 'user/posts/favorite', locals: {post: post} %>
+		</div>
 
-	<div id="cheers_buttons_<%= post.id %>">
-		<%= render partial: 'user/posts/cheer', locals: {post: post} %>
-	</div>
+		<div id="cheers_buttons_<%= post.id %>">
+			<%= render partial: 'user/posts/cheer', locals: {post: post} %>
+		</div>
 
-	<div>
-		<%= link_to "#{post.comments.count}コメント", user_user_path(post.user.id) %>
+		<div>
+			<%= link_to "#{post.comments.count}コメント", user_user_path(post.user.id) %>
+		</div>
 	</div>
 
 	<div>
@@ -47,8 +56,12 @@
 			<p><%= link_to '削除', user_post_path(post.id), method: :delete %></p>
 		<% end %>
 	</div>
-
-	<hr>
-
+   </div>
 <% end %>
+</div>
+
+<div class="col-lg-3"></div>
+
+</div>
+<!-- row_end -->
 

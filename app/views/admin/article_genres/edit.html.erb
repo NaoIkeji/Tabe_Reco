@@ -1,1 +1,6 @@
 <h2>ジャンル編集</h2>
+
+<%= form_for(@genre, url: admin_article_genre_path ,method: :patch) do |f| %>
+	<%= f.text_field :genre_name %>
+	<%= f.submit "編集する" %>
+<% end %>

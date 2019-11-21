@@ -1,1 +1,9 @@
 <h2>ジャンル一覧</h2>
+
+<% @genres.each do |genre| %>
+	<div>
+		<%= genre.genre_name %>
+		<%= link_to '編集', edit_admin_article_genre_path(genre.id) %>
+		<%= link_to '削除', admin_article_genre_path(genre.id), method: :delete %>
+    </div>
+<% end %>

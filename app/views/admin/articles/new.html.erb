@@ -17,7 +17,7 @@
 	</div>
 	<div>
 		<%= f.label :カテゴリー %>
-		<%= f.text_field :article_category %>
+		<%= f.collection_select :article_genre_id, ArticleGenre.all, :id, :genre_name, {prompt: true} %>
 	</div>
 	<div>
 		<%= f.label :投稿画像 %><br>

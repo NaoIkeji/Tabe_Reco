@@ -1,11 +1,9 @@
 <%= render 'user/users/nav' %>
 
-<hr>
+<div>
+  <p class="headline">１食の食事記録の編集</p>
+<div>
 
-<h2>１食の食事記録の編集</h2>
-
-<p><%= link_to 'マイページへ戻る', user_my_page_path(current_user) %></p>
-
-<hr>
-
-<%= render 'form', meal: @meal, url: @url, text: @text %>
+<div>
+	<%= render 'form', meal: @meal, url: @url, text: @text %>
+</div>

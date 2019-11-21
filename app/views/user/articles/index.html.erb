@@ -3,13 +3,20 @@
 
 <hr>
 
+<h2>記事のジャンル一覧</h2>
+	<ul>
+		<% @genres.each do |genre| %>
+			<li><%= link_to "#{genre.genre_name}", user_article_genre_path(genre.id) %></li>
+		<% end %>
+	</ul>
+
 <h2>記事一覧</h2>
 
 <% @articles.each do |article| %>
 	<p>タイトル：<%= article.article_title %></p>
-	<p>カテゴリー：<%= article.article_category %></p>
+	<p>カテゴリー：<%= article.article_genre.genre_name %></p>
 	<p>
-		<%= link_to admin_article_path(article.id) do %>
+		<%= link_to user_article_path(article.id) do %>
 			<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
 		<% end %>
 	</p>

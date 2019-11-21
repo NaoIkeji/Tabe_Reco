@@ -1,3 +1,59 @@
 // Place all the styles related to the user/meals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.meal-form  {
+	padding: 5px 0px;
+}
+
+.meal-headline {
+	font-weight: bold;
+}
+
+.meal-headline-about {
+	text-align: right;
+}
+
+.new_daily_meal {
+	padding-bottom: 20px;
+}
+
+.balance-check-form {
+
+}
+
+.food-select {
+	margin-bottom: 20px;
+}
+
+.yellow-food {
+	background-color: #ffffb7;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.red-food {
+	background-color: #ffc1c1;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.green-food {
+	background-color: #ddffbc;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.other-food {
+	background-color: #dfdfdf;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.add-food {
+}
+
+.meal-submit {
+	text-align: right;
+}

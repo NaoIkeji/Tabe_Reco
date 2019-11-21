@@ -8,190 +8,232 @@
 	});
 </script>
 
-<%= form_for(meal, url: url ) do |f| %>
-<% if @meal.errors.any? %>
-  <%= @meal.errors.count %>error!
-  <% @meal.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
+
+<div class="new_daily_meal row ">
+
+
+	<%= form_for(meal, url: url ) do |f| %>
+
+	<div>
+		<% if @meal.errors.any? %>
+	  		<%= @meal.errors.count %>error!
+	  		<% @meal.errors.full_messages.each do |message| %>
+	   			 <%= message %>
+	  		<% end %>
+		<% end %>
+	</div>
+
+
+	<div class="col-lg-5">
+
+		<div class="meal-form row">
+			<div class="col-lg-2">
+				<p class="meal-headline" >日付</p>
+			</div>
+			<div class="col-lg-10">
+				<%= f.date_select(:ate_date, use_month_numbers: true) %>
+			</div>
+		</div>
+
+		<div class="meal-form row">
+			<div class="col-lg-2">
+				<p class="meal-headline" >時間</p>
+			</div>
+			<div class="col-lg-10">
+				<%= f.time_select :ate_time %>
+			</div>
+		</div>
+
+		<div class="meal-form row">
+			<div class="col-lg-2">
+				<p class="meal-headline" >項目</p>
+			</div>
+			<div class="col-lg-10">
+				<%= f.select :meal_item, [["朝食", "朝食"],["昼食", "昼食"],["夕食", "夕食"],["夜食", "夜食"],["間食", "間食"],["飲酒", "飲酒"]],{include_blank: "選択してください"} %>
+			</div>
+		</div>
+
+		<div class="meal-form">
+			<p class="meal-headline">食事の写真</p>
+			<!-- editの時だけ登録済みの写真を表示させる-->
+			<% if request.path_info.include?('edit') %>
+				<%= attachment_image_tag @meal, :meal_image, :fill, 200,150, format: 'jpeg', fallback: "no_image.jpg", size: '200x150' %>
+			<% end %>
+			<!-- 選択した画像のプレビューを表示する -->
+			<img id="preview" width="400" height="300" >
+			<%= f.file_field :meal_image, id:"myImage" %>
+		</div>
+
+		<div class="meal-form">
+			<p class="meal-headline">食事メモ</p>
+			<%= f.text_area :meal_text, size:"55x5" %>
+		</div>
+	</div>
+
+
+<div class="balance-check-form col-lg-7">
+	<p class="meal-headline">1食のバランスチェック</p>
+
+	<p class="meal-headline-about">※<%= link_to '食事の目安量について', user_meal_indication_path%></p>
+
+	<div class="food-select">
+		<div class="yellow-food">
+			<p class="meal-headline">主食</p>
+			<div class="food-select-form">
+				<% @kind = "主食" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "主食") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="food-select">
+		<div class="red-food">
+			<p class="meal-headline">主菜</p>
+			<div class="food-select-form">
+				<% @kind = "主菜" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "主菜") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="food-select">
+		<div class="green-food">
+			<p class="meal-headline">副菜</p>
+			<div class="food-select-form">
+				<% @kind = "副菜" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "副菜") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="food-select">
+		<div class="meal-headline green-food">
+			<p class="meal-headline">果物</p>
+			<div class="food-select-form">
+				<% @kind = "果物" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "果物") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="food-select">
+		<div class="red-food">
+			<p class="meal-headline">牛乳・乳製品</p>
+			<div class="food-select-form">
+				<% @kind = "牛乳・乳製品" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "牛乳・乳製品") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs"%>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="food-select">
+		<div class="yellow-food">
+			<p class="meal-headline">油脂</p>
+			<div class="food-select-form">
+				<% @kind = "油脂" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "油脂") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="food-select">
+		<div class="other-food">
+			<p class="meal-headline">嗜好品</p>
+			<div class="food-select-form">
+				<% @kind = "嗜好品" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "油脂") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
+			</div>
+		</div>
+	</div>
+
+
+	<div>
+		<p class="meal-submit"><%= f.submit @text ,class:"btn btn-warning"%></p>
+	</div>
+
+</div>
+<!-- balance-check-form_end -->
+
 <% end %>
 
-<div>
-	<%= f.label :ate_date, '日付' %>
-	<%= f.date_select(:ate_date, use_month_numbers: true) %>
-</div>
 
-<div>
-	<%= f.label :ate_time, '時間' %>
-	<%= f.time_select :ate_time %>
-</div>
-
-<div>
-	<p>
-		<%= f.label :meal_item, '食事項目' %><br>
-		<%= f.select :meal_item, [["朝食", "朝食"],["昼食", "昼食"],["夕食", "夕食"],["夜食", "夜食"],["間食", "間食"],["飲酒", "飲酒"]],{include_blank: "選択してください"} %>
-	</p>
-</div>
-
-
-<div>
-	<p>食事の写真</p>
-	<!-- editの時だけ登録済みの写真を表示させる-->
-	<% if request.path_info.include?('edit') %>
-		<%= attachment_image_tag @meal, :meal_image, :fill, 200,150, format: 'jpeg', fallback: "no_image.jepg", size: '200x150' %>
-	<% end %>
-	<!-- 選択した画像のプレビューを表示する -->
-	<%= f.file_field :meal_image, id:"myImage" %>
-	<img id="preview" width="350" height="250">
-</div>
-
-<div>
-	<%= f.label :meal_text, '食事メモ' %>
-	<br>
-	<%= f.text_area :meal_text, size:"50x5" %>
-</div>
-
-
-<hr>
-
-<p>1食のバランスチェック</p>
-
-<p>※<%= link_to '食事の目安量について', user_meal_indication_path%></p>
-
-<div>
-	<p>主食</p>
-	<div>
-		<% @kind = "主食" %>
-		<%= f.fields_for :food_points do |food_point| %>
-			<% @syusyoku_foods = Food.where(food_category: "主食") %>
-			<% @syusyoku_foods.each do |t| %>
-				<% if t.id == food_point.object.food_id%>
-					<%= render "food_point_fields", f: food_point %>
-				<%	end %>
-			<% end %>
-		<% end %>
-	</div>
-	<div>
-		<%= link_to_add_association "食品を追加", f, :food_points %>
-	</div>
-</div>
-
-
-<div>
-	<p>主菜</p>
-	<div>
-		<% @kind = "主菜" %>
-		<%= f.fields_for :food_points do |food_point| %>
-			<% @syusyoku_foods = Food.where(food_category: "主菜") %>
-			<% @syusyoku_foods.each do |t| %>
-				<% if t.id == food_point.object.food_id%>
-					<%= render "food_point_fields", f: food_point %>
-				<%	end %>
-			<% end %>
-		<% end %>
-	<div>
-		<%= link_to_add_association "食品を追加", f, :food_points %>
-	</div>
-</div>
-
-
-<div>
-	<p>副菜</p>
-	<div>
-		<% @kind = "副菜" %>
-		<%= f.fields_for :food_points do |food_point| %>
-			<% @syusyoku_foods = Food.where(food_category: "副菜") %>
-			<% @syusyoku_foods.each do |t| %>
-				<% if t.id == food_point.object.food_id%>
-					<%= render "food_point_fields", f: food_point %>
-				<%	end %>
-			<% end %>
-		<% end %>
-	</div>
-	<div>
-		<%= link_to_add_association "食品を追加", f, :food_points %>
-	</div>
-</div>
-
-
-<div>
-	<p>果物</p>
-	<div>
-		<% @kind = "果物" %>
-		<%= f.fields_for :food_points do |food_point| %>
-			<% @syusyoku_foods = Food.where(food_category: "果物") %>
-			<% @syusyoku_foods.each do |t| %>
-				<% if t.id == food_point.object.food_id%>
-					<%= render "food_point_fields", f: food_point %>
-				<%	end %>
-			<% end %>
-		<% end %>
-	<div>
-		<%= link_to_add_association "食品を追加", f, :food_points %>
-	</div>
-</div>
-
-
-<div>
-	<p>牛乳・乳製品</p>
-	<div>
-		<% @kind = "牛乳・乳製品" %>
-		<%= f.fields_for :food_points do |food_point| %>
-			<% @syusyoku_foods = Food.where(food_category: "牛乳・乳製品") %>
-			<% @syusyoku_foods.each do |t| %>
-				<% if t.id == food_point.object.food_id%>
-					<%= render "food_point_fields", f: food_point %>
-				<%	end %>
-			<% end %>
-		<% end %>
-	</div>
-	<div>
-		<%= link_to_add_association "食品を追加", f, :food_points %>
-	</div>
-</div>
-
-<div>
-	<p>油脂</p>
-	<div>
-		<% @kind = "油脂" %>
-		<%= f.fields_for :food_points do |food_point| %>
-			<% @syusyoku_foods = Food.where(food_category: "油脂") %>
-			<% @syusyoku_foods.each do |t| %>
-				<% if t.id == food_point.object.food_id%>
-					<%= render "food_point_fields", f: food_point %>
-				<%	end %>
-			<% end %>
-		<% end %>
-	</div>
-	<div>
-		<%= link_to_add_association "食品を追加", f, :food_points %>
-	</div>
-</div>
-
-<div>
-	<p>嗜好品</p>
-	<div>
-		<% @kind = "嗜好品" %>
-		<%= f.fields_for :food_points do |food_point| %>
-			<% @syusyoku_foods = Food.where(food_category: "油脂") %>
-			<% @syusyoku_foods.each do |t| %>
-				<% if t.id == food_point.object.food_id%>
-					<%= render "food_point_fields", f: food_point %>
-				<%	end %>
-			<% end %>
-		<% end %>
-	</div>
-	<div>
-		<%= link_to_add_association "食品を追加", f, :food_points %>
-	</div>
-</div>
-
-
-</div>
-
-<%= f.submit @text %>
-
-<% end %>
-
-
+</div><!-- row_end -->
 

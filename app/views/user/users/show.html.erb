@@ -56,7 +56,7 @@
 		<div>
 			<% if post.user.id == current_user.id %>
 				<p><%= link_to '編集', edit_user_post_path(post.id) %></p>
-				<p><%= link_to '削除', user_post_path(post.id), method: :delete %></p>
+				<p><%= link_to '削除', user_post_path(post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
 		    <% end %>
 		</div>
 	<% end %>

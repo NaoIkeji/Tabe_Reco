@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <header>
+
+  <header>
+  <div class="row">
       <% if request.path_info.include?('admin') %>
           <div>
             <div>
@@ -30,47 +32,50 @@
 
       <% else%>
 
-          <div>
-            <p>Tabe_Recoのロゴ</p>
-              <ul>
-                <% if user_signed_in? %>
-                    <li><%= link_to '使い方', user_about_path %></li>
-                    <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
-                    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p></li>
-                <% else %>
-                    <li><%= link_to '会員登録', new_user_registration_path %></li>
-                    <li><%= link_to 'ログイン', user_session_path %></li>
-                    <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
-                <% end %>
-              </ul>
-          </div>
+            <div class="logo col-lg-2">
+                  <p>Tabe_Recoのロゴ</p>
+            </div>
 
-          <% if user_signed_in? %>
-              <div>
-                <ul>
-                  <li><%= link_to '自分の記録（仮）',user_my_page_path(current_user.id) %></li>
-                  <li><%= link_to 'みんなの広場(仮)', user_posts_path %></li>
-                  <li><%= link_to '栄養の知識（仮）', user_articles_path %></li>
-                  <li>
-                    <%= attachment_image_tag current_user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", size: '30x30' %>
-                    ユーザー名：<%= current_user.nickname %>
-                  </li>
-                </ul>
-              </div>
-          <% end %>
+            <div class="header-list col-lg-10 ">
+                <div class="header-nav-list1 row clearfix">
+                  <ul>
+                    <% if user_signed_in? %>
+                        <li><%= link_to '使い方', user_about_path %></li>
+                        <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
+                        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                    <% else %>
+                        <li><%= link_to '会員登録', new_user_registration_path %></li>
+                        <li><%= link_to 'ログイン', user_session_path %></li>
+                        <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
+                    <% end %>
+                  </ul>
+                </div>
+
+              <% if user_signed_in? %>
+                <div class="header-nav-list2 row clearfix">
+                  <ul>
+                    <li class="col-lg-3"><%= link_to '自分の記録（仮）',user_my_page_path(current_user.id) %></li>
+                    <li class="col-lg-3"><%= link_to 'みんなの広場(仮)', user_posts_path %></li>
+                    <li class="col-lg-3"><%= link_to '栄養の知識（仮）', user_articles_path %></li>
+                    <li class="col-lg-3">
+                      <%= attachment_image_tag current_user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", size: '30x30', class:"img-circle" %>
+                      ユーザー名：<%= current_user.nickname %>
+                    </li>
+                  </ul>
+                </div>
+              <% end %>
+          </div>
       <% end %>
+    </div>
     </header>
 
-    <hr>
-
-    <div class="container">
+    <div class="container main">
         <%= yield %>
     </div>
 
-    <hr>
-
-    <footer>
-      <p>※フッター</p>
-    </footer>
+  <footer>
+        <p><small>Copyright © 2019 TabeReco. All Rights Reserved.</small></p>
+  </footer>
   </body>
+
 </html>

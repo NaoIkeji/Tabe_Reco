@@ -112,6 +112,10 @@ class User::UsersController < ApplicationController
 	end
 
 	def user_search
+				# 検索オブジェクト
+		@search = User.ransack(params[:q])
+		# 検索結果
+		# @users = @search.result
 	end
 
 	def search_list

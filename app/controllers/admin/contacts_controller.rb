@@ -15,9 +15,8 @@ class Admin::ContactsController < ApplicationController
 			@contact.status = "対応済み"
 			@contact.save
 			redirect_to admin_contacts_path
-		else
-			@contact.status == "対応済み"
-			@contact.status == "未対応"
+		elsif @contact.status == "対応済み"
+			@contact.status = "未対応"
 			@contact.save
 			redirect_to admin_contacts_path
 		end

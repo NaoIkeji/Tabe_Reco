@@ -5,10 +5,12 @@ class User::CommentsController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@comment = current_user.comments.new(comment_params)
 		@comment.post_id = @post.id
+		# @comment.post_target = @post.post_target
+		# @comment.post_body = @post.post_body
 		if @comment.save
 		  redirect_to user_post_path(@post.id)
 		else
-		   @comments = @post.reviews.all.order(created_at: "DESC")
+		   @comments = @post.comments.all.order(created_at: "DESC")
 		   render "user/posts/show"
 		end
 	end

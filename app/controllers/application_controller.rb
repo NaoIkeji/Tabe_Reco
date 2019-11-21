@@ -10,16 +10,6 @@ class ApplicationController < ActionController::Base
   		end
   	end
 
-
-
-  	def after_sign_out_path_for(resource)
-      if params[:admin]
-         admin_session_path
-      else
-         root_path
-      end
-  	end
-
   	protected
   	def configure_permitted_parameters
     	devise_parameter_sanitizer.permit(:sign_up) do |user_params|
