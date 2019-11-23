@@ -2,6 +2,7 @@
 
 <div>
 	<p class="headline">投稿の詳細</p>
+
 	<div>
 		<div>
 			<% if @post.errors.any? %>
@@ -72,13 +73,13 @@
 
 					<div class="comment-form">
 						<% if @user.id != current_user.id %>
-							<p>コメント投稿フォーム</p>
-							<%= form_for [@post, @comment], url: user_post_comments_path(post_id: @post.id), mthod: :post do |f| %>
-								<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに", class:"form-control" %>
-								<div class="comment-submit">
-								<%= f.submit "送信する", class:"btn btn-info" %>
-								</div>
-							<% end %>
+						<p>コメント投稿フォーム</p>
+						<%= form_for [@post, @comment], url: user_post_comments_path(post_id: @post.id), mthod: :post do |f| %>
+						<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに", class:"form-control" %>
+						<div class="comment-submit">
+							<%= f.submit "送信する", class:"btn btn-info" %>
+						</div>
+						<% end %>
 						<% end %>
 					</div>
 
@@ -108,12 +109,11 @@
 						<% end %>
 					</div>
 				</div>
-			  <div>
-			 </div>
+				<div>
+				</div>
 
 			</div><!-- post_end -->
-		</div>
-		<!-- col-lg-6_end -->
+		</div><!-- col-lg-6_end -->
 		<div class="col-lg-3"></div>
 	</div><!-- row_end -->
 </div>

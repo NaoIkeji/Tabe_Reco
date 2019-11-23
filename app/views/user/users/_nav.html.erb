@@ -1,9 +1,8 @@
-<div>
-	<ul class="nav nav-tabs nav-justified">
-		<li role="presentation" class="active"><P><%= link_to 'マイページ', user_my_page_path(current_user.id) %></P></li>
-		<li role="presentation"><p><%= link_to '食事記録する', new_user_meal_path %></p></li>
-		<li role="presentation"><p><%= link_to '設定変更', user_setting_changing_path(current_user.id) %></p></li>
-	</ul>
-</div>
+<ul class="nav nav-pills nav-justified">
+	<li role="presentation"><%= link_to 'マイページ', user_my_page_path(current_user.id) %></li>
+	<li role="presentation"><%= link_to '食事記録する', new_user_meal_path %></li>
+	<li role="presentation"><%= link_to '設定変更', user_setting_changing_path(current_user.id) %></li>
+</ul>
+
 
 
