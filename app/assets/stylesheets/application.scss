@@ -33,7 +33,7 @@
 
 header {
 	background-color: #ffffff;
-	padding: 20px 40px;
+	padding: 10px 40px 0px 40px;
 	border-bottom: solid 1px #bfbfbf;
 }
 
@@ -48,7 +48,13 @@ body {
 footer {
 	background-color: #ffffff;
 	border-top: solid 1px #bfbfbf;
+	margin-top: 50px;
 }
+
+.footer-copyright {
+	text-align: center;
+}
+
 
 .header-nav-list1 ul {
 	display: flex;
@@ -56,6 +62,7 @@ footer {
 	align-items: center;
 	list-style: none;
 	margin: 0;
+	padding: 15px 0px;
 }
 
 .header-nav-list2 ul {
@@ -65,7 +72,6 @@ footer {
 	list-style: none;
 	margin: 0;
 }
-
 
 .header-nav-list1 li {
 	list-style: none;
@@ -81,9 +87,13 @@ footer {
 	text-align: right;
 }
 
+.header-user-image {
+	paddig-right: 10px;
+}
+
 .headline {
 	font-size: 20px;
 	font-weight: bold;
-	padding: 15px 0px 20px 0px;
+	padding: 15px 0px 10px 0px;
 	margin: 0px;
 }

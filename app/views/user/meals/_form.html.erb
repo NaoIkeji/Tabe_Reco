@@ -8,7 +8,6 @@
 	});
 </script>
 
-
 <div class="new_daily_meal row ">
 
 
@@ -24,7 +23,7 @@
 	</div>
 
 
-	<div class="col-lg-5">
+	<div class="meal-form-main col-lg-5">
 
 		<div class="meal-form row">
 			<div class="col-lg-2">
@@ -56,9 +55,12 @@
 		<div class="meal-form">
 			<p class="meal-headline">食事の写真</p>
 			<!-- editの時だけ登録済みの写真を表示させる-->
-			<% if request.path_info.include?('edit') %>
-				<%= attachment_image_tag @meal, :meal_image, :fill, 200,150, format: 'jpeg', fallback: "no_image.jpg", size: '200x150' %>
-			<% end %>
+			<div class="meal-image-edit">
+				<% if request.path_info.include?('edit') %>
+					<p>登録済みの写真<p>
+					<%= attachment_image_tag @meal, :meal_image, :fill, 400,300, format: 'jpeg', fallback: "no_image.jpg", size: '400x300' %>
+				<% end %>
+			</div>
 			<!-- 選択した画像のプレビューを表示する -->
 			<img id="preview" width="400" height="300" >
 			<%= f.file_field :meal_image, id:"myImage" %>
@@ -66,15 +68,15 @@
 
 		<div class="meal-form">
 			<p class="meal-headline">食事メモ</p>
-			<%= f.text_area :meal_text, size:"55x5" %>
+			<%= f.text_area :meal_text, size:"55x7" %>
 		</div>
 	</div>
 
 
 <div class="balance-check-form col-lg-7">
-	<p class="meal-headline">1食のバランスチェック</p>
-
 	<p class="meal-headline-about">※<%= link_to '食事の目安量について', user_meal_indication_path%></p>
+
+	<p class="meal-headline">1食のバランスチェック</p>
 
 	<div class="food-select">
 		<div class="yellow-food">
@@ -141,27 +143,6 @@
 	<hr>
 
 	<div class="food-select">
-		<div class="meal-headline green-food">
-			<p class="meal-headline">果物</p>
-			<div class="food-select-form">
-				<% @kind = "果物" %>
-				<%= f.fields_for :food_points do |food_point| %>
-					<% @syusyoku_foods = Food.where(food_category: "果物") %>
-					<% @syusyoku_foods.each do |t| %>
-						<% if t.id == food_point.object.food_id%>
-							<%= render "food_point_fields", f: food_point %>
-						<%	end %>
-					<% end %>
-				<% end %>
-			</div>
-			<div class="add-food">
-				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="food-select">
 		<div class="red-food">
 			<p class="meal-headline">牛乳・乳製品</p>
 			<div class="food-select-form">
@@ -177,6 +158,27 @@
 			</div>
 			<div class="add-food">
 				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs"%>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="food-select">
+		<div class="meal-headline green-food">
+			<p class="meal-headline">果物</p>
+			<div class="food-select-form">
+				<% @kind = "果物" %>
+				<%= f.fields_for :food_points do |food_point| %>
+					<% @syusyoku_foods = Food.where(food_category: "果物") %>
+					<% @syusyoku_foods.each do |t| %>
+						<% if t.id == food_point.object.food_id%>
+							<%= render "food_point_fields", f: food_point %>
+						<%	end %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="add-food">
+				<%= link_to_add_association "食品を追加", f, :food_points, class:"btn btn-default btn-xs" %>
 			</div>
 		</div>
 	</div>
@@ -235,5 +237,8 @@
 <% end %>
 
 
-</div><!-- row_end -->
+</div><!-- new_daily_meal row _end -->
+
+
+
 

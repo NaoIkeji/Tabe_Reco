@@ -1,5 +1,6 @@
+<!-- このページいらない -->
+
 <h4><%= current_user.nickname %>さんのプロフィール登録</h4>
-<% p @user.errors %>
 
 <%= form_for(@user, url: user_users_path(current_user.id), method: :post )do |f| %>
 	<div>

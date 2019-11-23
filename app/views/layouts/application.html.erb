@@ -17,30 +17,46 @@
   <div class="row">
       <% if request.path_info.include?('admin') %>
           <div>
-            <div>
-              <p>Tabe_Recoのロゴ</p>
-           </div>
-            <ul>
-                <% if admin_signed_in? %>
-                    <li>管理者としてログイン中</li>
-                    <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-                <% else %>
-                    <li><%= link_to 'ログイン', admin_session_path %></li>
-                <% end %>
+              <% if admin_signed_in? %>
+                <div>
+                    <%= link_to admin_home_top_path do %>
+                        <%= image_tag 'logo.jpg', size: '280x120'%>
+                    <% end %>
+                </div>
+                <div>
+                    <ul>
+                      <li>管理者としてログイン中</li>
+                      <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+                    </ul>
+                </div>
+              <% else %>
+                <div>
+                      <%= link_to new_admin_session_path do %>
+                        <%= image_tag 'logo.jpg', size: '280x120'%>
+                      <% end %>
+                    </div>
+                    <div>
+                      <ul>
+                        <li><%= link_to 'ログイン', admin_session_path %></li>
+                     </ul>
+                </div>
+              <% end %>
             </ul>
           </div>
 
       <% else%>
 
-            <div class="logo col-lg-2">
-                  <p>Tabe_Recoのロゴ</p>
+            <div class="logo col-lg-3">
+                  <%= link_to root_path do %>
+                    <%= image_tag 'logo.jpg', size: '280x120'%>
+                  <% end %>
             </div>
 
-            <div class="header-list col-lg-10 ">
+            <div class="header-list col-lg-9 ">
                 <div class="header-nav-list1 row clearfix">
                   <ul>
                     <% if user_signed_in? %>
-                        <li><%= link_to '使い方', user_about_path %></li>
+                        <li><%= link_to '使い方', about_path %></li>
                         <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
                         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
                     <% else %>
@@ -54,12 +70,14 @@
               <% if user_signed_in? %>
                 <div class="header-nav-list2 row clearfix">
                   <ul>
-                    <li class="col-lg-3"><%= link_to '自分の記録（仮）',user_my_page_path(current_user.id) %></li>
-                    <li class="col-lg-3"><%= link_to 'みんなの広場(仮)', user_posts_path %></li>
-                    <li class="col-lg-3"><%= link_to '栄養の知識（仮）', user_articles_path %></li>
+                    <li class="col-lg-3"><%= link_to '自分の記録',user_my_page_path(current_user.id) %></li>
+                    <li class="col-lg-3"><%= link_to 'みんなの広場', user_posts_path %></li>
+                    <li class="col-lg-3"><%= link_to '栄養の知識', user_articles_path %></li>
                     <li class="col-lg-3">
-                      <%= attachment_image_tag current_user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", size: '30x30', class:"img-circle" %>
-                      ユーザー名：<%= current_user.nickname %>
+                      <%= link_to user_setting_changing_path(current_user.id) do %>
+                        <span class="header-user-image"><%= attachment_image_tag current_user, :profile_image, :fill, 28, 28, format: 'jpeg', fallback: "no_image.jpg", size: '28x28', class:"img-circle" %></span>
+                        ユーザー名：<%= current_user.nickname %>
+                        <% end %>
                     </li>
                   </ul>
                 </div>
@@ -73,9 +91,11 @@
         <%= yield %>
     </div>
 
-  <footer>
-        <p><small>Copyright © 2019 TabeReco. All Rights Reserved.</small></p>
-  </footer>
+    <footer>
+      <div>
+          <p class="footer-copyright"><small>Copyright © 2019 TabeReco. All Rights Reserved.</small></p>
+      </div>
+    </footer>
   </body>
 
 </html>

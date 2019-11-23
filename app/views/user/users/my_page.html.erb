@@ -1,11 +1,31 @@
 <%= render 'nav' %>
 
-<div>
-  <p class="headline"><%= current_user.nickname %>さんのマイページ</p>
-<div>
+<p class="headline"><%= current_user.nickname %>さんのマイページ</p>
 
-<div class="my-calender">
-   <div id="calendar"></div>
+<div class="row">
+
+  <div class="my-data col-lg-4">
+      <div class="my-data-contant">
+        <div class="my-data-prof">
+          <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100', class:"img-circle" %>
+          <span class="user-nickname"><%= current_user.nickname %></span>
+        </div>
+        <div class="my-data-target-list">
+          <p><b>目標</b></p>
+          <% @targets.each do |target| %>
+            <ul>
+              <li><%= target.target_body %></li>
+            </ul>
+          <% end %>
+        </div>
+
+      </div>
+  </div>
+
+  <div class="my-calender col-lg-8">
+     <div id="calendar"></div>
+  </div>
+
 </div>
 
   <script>

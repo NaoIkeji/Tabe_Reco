@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.new_daily_meal {
+	background-color: #ffffff;
+	padding: 20px 30px;
+	margin-bottom: 50px;
+}
 
 .meal-form  {
 	padding: 5px 0px;
@@ -15,12 +20,7 @@
 	text-align: right;
 }
 
-.new_daily_meal {
-	padding-bottom: 20px;
-}
-
-.balance-check-form {
-
+.meal-image-edit {
 }
 
 .food-select {

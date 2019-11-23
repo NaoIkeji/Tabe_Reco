@@ -4,6 +4,7 @@ class User::UsersController < ApplicationController
 	def my_page
 		#ログインユーザーの食事情報を取得するように書き換える
 		@meals = Meal.select(:ate_date).where(user_id: current_user.id).distinct#全食事情報を取得している
+		@targets = Target.where(user_id: current_user.id)
 	end
 
 	def json
@@ -66,6 +67,8 @@ class User::UsersController < ApplicationController
 
 	def index
 		@users = User.all
+		# 検索オブジェクト
+		@search = User.ransack(params[:q])
 	end
 
 	def create
@@ -104,15 +107,18 @@ class User::UsersController < ApplicationController
 	def following
 		@user = User.find(params[:id])
 		@users = @user.following
+		@search = User.ransack(params[:q])
 	end
 
 	def followers
 		@user = User.find(params[:id])
 		@users = @user.followers
+		@search = User.ransack(params[:q])
 	end
 
 	def user_search
 				# 検索オブジェクト
+		@users = User.all
 		@search = User.ransack(params[:q])
 		# 検索結果
 		# @users = @search.result

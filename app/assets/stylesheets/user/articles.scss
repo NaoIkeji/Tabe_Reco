@@ -1,3 +1,38 @@
 // Place all the styles related to the user/articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.f-container{
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.sidebar {
+	background-color: #ffffff;
+	padding: 10px 50px;
+}
+
+.article-content {
+}
+
+.article-content-item {
+	background-color: #ffffff;
+	padding: 10px 20px;
+	margin: 0px 10px 40px 10px;
+}
+
+.article-item {
+	padding: 20px 70px;
+	background-color: #ffffff;
+}
+
+.article-text {
+	margin-top :30px;
+}
+
+.article-item-in {
+	margin-right: 35px;
+}
+
+

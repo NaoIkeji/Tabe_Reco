@@ -1,8 +1,6 @@
 <%= render 'nav' %>
 
-<div>
-  <p class="headline"><%= @m_date %>の栄養バランス</p>
-<div>
+<p class="headline"><%= @m_date %>の栄養バランス</p>
 
 <div class="daily-meal-balance-body row">
 	<div class="col-lg-7">
@@ -67,7 +65,7 @@
 		</div>
 
 		<div class="daily-meal-balance-list">
-			<h4><%= @m_date %>の食事一覧</h4>
+			<h4 class="daily-meal-balance-list-headline"><%= @m_date %>の食事一覧</h4>
 			<% @meals.each do |meal| %>
 				<p><b><%= meal.meal_item %></b>
 					<%= meal.ate_time.strftime('%R') %>

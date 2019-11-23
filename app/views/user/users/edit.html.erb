@@ -1,40 +1,58 @@
-<h4><%= current_user.nickname %>さんのプロフィール登録</h4>
+<p class="headline"><%= current_user.nickname %>さんのプロフィール登録</p>
 
-<%= link_to '投稿のマイページへ戻る', user_user_path(current_user.id) %>
+<div class="row">
+	<div class="col-lg-3"></div>
 
-<%= form_for(@user, url: user_user_path(current_user.id), method: :patch )do |f| %>
-<!-- ニックネームのフォームもいる？ -->
-	<div>
-		<p><%= f.label :profile_image, 'プロフィール画像' %></p>
-		<%= f.file_field :profile_image, id:"myImage" %>
-		<img id="preview" width="200" height="200">
-	</div>
+	<div class="edit-prof-container col-lg-6">
+		<div class="edit-prof-in">
+			<%= form_for(@user, url: user_user_path(current_user.id), method: :patch )do |f| %>
+			<div class="user-prof row">
+				<div class="user-prof-form-image col-lg-6">
+					<p><b>プロフィール画像</b></p>
+					<img id="preview" width="150" height="150">
+					<%= f.file_field :profile_image, id:"myImage" %>
+				</div>
+				<div class="user-prof-image-edit col-lg-6">
+					<% if request.path_info.include?('edit') %>
+						<p><b>登録済みの写真</b><p>
+						<%= attachment_image_tag @user, :profile_image, :fill, 150,150, format: 'jpeg', fallback: "no_image.jpg", size: '150x150' %>
+					<% end %>
+				</div>
+			</div>
 
-	<div>
-		<p>目標</p>
-		<%= f.fields_for :targets do |target| %>
-			<%= render "target_fields", f: target %>
-		<% end %>
+			<div class="user-prof-form-target">
+				<p><b>目標</b></p>
+					<%= f.fields_for :targets do |target| %>
+					<%= render "target_fields", f: target %>
+				<% end %>
 
-		<div class="links">
-			<p><%= link_to_add_association "目標を追加", f, :targets %></p>
+				<div class="links">
+					<p><%= link_to_add_association "目標を追加", f, :targets, class:"btn btn-default btn-sm" %></p>
+				</div>
+			</div>
+
+			<div class="user-prof-form-introduction">
+				<p><b>自己紹介</b></p>
+				<%= f.text_area :introduction, size:"65x4", placeholder:"自己紹介を入力してください", class:"form-control"%>
+			</div>
+
+			<div class="user-prof-form-submit">
+				<%= f.submit "登録する", class:"btn btn-info" %>
+			</div>
+
+		  <% end %>
 		</div>
-	</div>
+	</div><!-- new-post-container -->
+	<div class="col-lg-3"></div>
+</div><!-- row_end -->
 
-	<div>
-		<p><%= f.label :introduction, '自己紹介' %>
-		<br>
-		<%= f.text_area :introduction, size:"30x2", placeholder:"自己紹介を入力してください"%></p>
-	</div>
-	<%= f.submit "登録する" %>
-<% end %>
 
 <script>
 	$('#myImage').on('change', function (e) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $("#preview").attr('src', e.target.result);
-    }
-    reader.readAsDataURL(e.target.files[0]);
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$("#preview").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
 	});
 </script>

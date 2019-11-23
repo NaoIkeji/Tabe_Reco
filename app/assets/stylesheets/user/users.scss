@@ -5,33 +5,53 @@
 
 .my-calender{
 	background-color: #ffffff;
-	padding: 30px 50px 50px 50px;
+	padding: 15px 50px 50px 50px;
 }
+
+.my-data-prof {
+	margin-bottom: 20px;
+	padding: 0px 15px;
+}
+
+.my-data-target-list {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 10px 35px;
+}
+
+my-data-target-list ul {
+	list-style-type: none;
+}
+
+.my-data-contant {
+	background-color: #ffffff;
+	margin-right: 15px;
+	padding: 20px 40px;
+}
+
 .daily_meal_body{
 	padding: 10px 0px 30px 0px;
 }
 
 .daily_meal_list {
-	background-color: #ffe8d1;
+	background-color: #ffffff;
 	padding: 10px 60px;
 	margin-bottom: 25px;
 }
 
 .daily_meal_content {
 	margin: 10px;
+	padding: 0px 30px;
 }
 
 .meal-image {
-
 	padding: 0px 30px;
 }
 
 .meal-memo {
-
 }
 
 .meal-date {
-
 	padding: 0px 20px;
 }
 
@@ -59,23 +79,26 @@
 }
 
 .balance-check {
-	padding-bottom: 20px;
 	text-align: right;
 }
 
+.balance-check-btn {
+	padding: 10px;
+}
+
 .total-points {
-	background-color: green;
+	background-color: #ffffff;
 	padding: 5px 30px;
 	margin-bottom: 20px;
 }
 
 .reader-chart{
-	background-color: pink;
+	background-color: #ffffff;
 	margin-bottom: 20px;
 }
 
 .meal-advice {
-	background-color: gray;
+	background-color: #ffffff;
 }
 
 .daily-meal-balance-body {
@@ -83,6 +106,138 @@
 }
 
 .daily-meal-balance-list {
-	background-color: orange;
+	background-color: #ffffff;
 	padding: 5px 30px;
+}
+
+.daily-meal-balance-list-headline {
+	padding-bottom: 10px;
+}
+
+.setting-changing-btn {
+	margin: 20px 0px;
+}
+
+.user-prof {
+	padding: 0px 20px;
+}
+
+.user-search {
+
+}
+
+.search {
+	background-color: #ffffff;
+	padding: 40px;
+}
+
+.user-list {
+}
+
+.user-list-content {
+	background-color: #ffffff;
+	padding: 0px 60px 15px 60px;
+}
+
+.user-list-in {
+	background-color: #ededed;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	padding: 10px 15px;
+}
+
+.user-prof {
+	padding: 0px 20px;
+}
+
+.follow-status {
+	padding: 0px;
+}
+
+.follow-status ul {
+	list-style: none;
+}
+
+.follow-status li {
+	float: left;
+	padding: 15px 10px;
+}
+
+.follow-btn {
+	padding: 10px 30px;
+	margin: 0 auto;
+}
+
+.user-post-my-page-info {
+	padding-bottom: 30px;
+}
+
+.user-prof-my-page {
+	padding: 10px 20px;
+
+}
+
+.user-prof-content{
+	background-color: #ffffff;
+	padding: 10px 50px;
+	border: solid 1px #e0e0e0;
+	border-radius: 8px;
+}
+
+.user-introduction {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 15px 30px;
+	margin: 0px 20px;
+}
+
+.user-edit {
+	text-align: right;
+	padding: 5px 20px;
+}
+
+.follow-field {
+	padding: 0px 10px 0px 20px;
+	margin: 0px 20px;
+}
+
+.user-follow-list  {
+	background-color: #ffffff;
+	padding: 20px;
+	margin-top: 30px;
+
+}
+
+.user-follow-list-content {
+	padding: 10px 30px;
+}
+
+.edit-prof-container {
+	background-color: #ffffff;
+}
+
+.edit-prof-in {
+	padding: 10px 50px;
+}
+
+
+.user-prof-form-image{
+	padding-bottom: 25px;
+}
+
+.user-prof-form-target {
+	padding-bottom: 25px;
+}
+
+.user-prof-form-introduction {
+	padding-bottom: 15px;
+}
+
+.target-body-form {
+	margin-bottom: 20px;
+}
+
+.user-prof-form-submit {
+	text-align: right;
 }

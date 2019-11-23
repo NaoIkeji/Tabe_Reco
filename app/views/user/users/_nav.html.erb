@@ -1,8 +1,7 @@
 <div>
 	<ul class="nav nav-tabs nav-justified">
 		<li role="presentation" class="active"><P><%= link_to 'マイページ', user_my_page_path(current_user.id) %></P></li>
-		<li role="presentation"><p><%= link_to '１食の食事記録', new_user_meal_path %></p></li>
-		<li role="presentation"><p><%= link_to 'マイデータ', user_my_data_path(current_user.id) %></p></li>
+		<li role="presentation"><p><%= link_to '食事記録する', new_user_meal_path %></p></li>
 		<li role="presentation"><p><%= link_to '設定変更', user_setting_changing_path(current_user.id) %></p></li>
 	</ul>
 </div>

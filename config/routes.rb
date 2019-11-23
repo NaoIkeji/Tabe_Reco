@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
 get '/' => 'home#top', as: 'root'
+get 'home/about' => 'home#about', as: 'about'
 
 namespace :user do
-    get 'home/about' => 'home#about', as: 'about'
+    # get 'home/about' => 'home#about', as: 'about'
     get 'users/search_list' => 'users#search_list', as:'user_search_list'
     get 'users/user_search' =>'users#user_search', as: 'user_search'
     get 'users/:id/my_page' => 'users#my_page', as: 'my_page'

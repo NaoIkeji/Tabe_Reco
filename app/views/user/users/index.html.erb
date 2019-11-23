@@ -1,23 +1,42 @@
 
 <%= render 'user/posts/nav' %>
 
-<hr>
+<div class="clearfix row">
 
-<% if user_signed_in? %>
-<h2>ユーザー一覧</h2>
-	<% @users.each do |user| %>
-		<div>
-			<p>プロフィール画像：
-			<%= link_to user_user_path(user.id) do %>
-				<%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %>
-			<br>ニックネーム：<%= user.nickname %>
-				</p>
+	<div class="user-search col-lg-4">
+		<div class="search">
+			<%= search_form_for @search, url: user_user_search_list_path do |f| %>
+			<%= f.search_field :nickname_cont, placeholder: 'ニックネームを入力'%>
+			<%= f.submit "検索", class:"btn btn-default btn-sm"%>
 			<% end %>
 		</div>
+	</div>
 
-		<div id="follow_buttons_<%= user.id %>">
-			<%= render 'user/users/follow_form' , user: user %>
-		</div>
-		<hr>
-	<% end %>
-<% end %>
+
+	<div class="user-list col-lg-8">
+		<% if user_signed_in? %>
+
+		<div class="user-list-content">
+			<p class="headline">ユーザー 一覧</p>
+
+
+			<% @users.each do |user| %>
+			<div class="user-list-in row">
+				<div class="user-prof col-lg-4">
+					<%= link_to user_user_path(user.id) do %>
+					<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50', class:"img-circle" %>
+					<span class="user-nickname"><%= user.nickname %></span>
+					<% end %>
+				</div>
+
+				<div id="follow_buttons_<%= user.id %>" class="col-lg-8">
+					<%= render 'user/users/follow_form' , user: user %>
+				</div>
+			</div><!-- user-list-in row _end> -->
+			<% end %>
+
+
+			<% end %>
+		</div><!-- user-list-content -->
+	</div><!-- user-list_end -->
+</div><!-- row_end -->

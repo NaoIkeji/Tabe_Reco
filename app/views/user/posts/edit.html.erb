@@ -1,40 +1,75 @@
-<h2>投稿ページ</h2>
 
-<%= form_for(@post, url:user_post_path(@post.id) ,method: :patch) do |f| %>
+<%= render 'user/posts/nav' %>
 
-	<div>
-	  <% if @post.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= @post.errors.count %>件のエラーが発生しました。</h2>
-	      <ul>
-	      <% @post.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-	</div>
+<p class="headline">投稿編集ページ</p>
 
-	<div>
-	　　<label>投稿画像</label>
-		<%= f.attachment_field :post_image %>
-	</div>
+<div class="row">
+	<div class="col-lg-3"></div>
 
-	<div>
-		<label>目標</label>
-		<br>
-		<% current_user.targets.each do |u| %>
-			<%= f.radio_button :post_target, u.target_body %>
-			<%= u.target_body %>
-			<br>
-		<% end %>
-	</div>
+	<div class="new-post-container col-lg-6">
+		<div>
+			<% if @post.errors.any? %>
+			<%= @post.errors.count %>error!
+			<% @post.errors.full_messages.each do |message| %>
+			<%= message %>
+			<% end %>
+			<% end %>
+		</div>
 
-	<div>
-		<label>つぶやき</label>
-		<%= f.text_area :post_body %>
-	</div>
+		<div class="post-form">
+			<%= form_for(@post, url:user_post_path(@post.id) ,method: :patch) do |f| %>
+			<div class="post-form-image">
+				<!-- editの時だけ登録済みの写真を表示させる-->
+				<div class="post-image-edit">
+						<% if request.path_info.include?('edit') %>
+							<p><b>登録済み画像</b><p>
+							<%= attachment_image_tag @post, :post_image, :fill, 350,250, format: 'jpeg', fallback: "no_image.jpg", size: '350x250' %>
+						<% end %>
+					</div>
+					<div>
+						<p><b>投稿画像</b></p>
+						<img id="preview" width="350" height="250">
+						<%= f.file_field :post_image, id:"myImage" %>
+					</div>
+					<br>
+				</div>
 
-	<hr>
-	<%= f.submit "投稿する" %>
-<% end %>
+				<div class="post-form-target">
+					<p><b>目標</b></p>
+					<% current_user.targets.each do |u| %>
+					<%= f.radio_button :post_target, u.target_body %>
+					<%= u.target_body %>
+					<br>
+					<% end %>
+				</div>
+
+				<div class="post-form-text">
+					<p><b>テキスト</b></p>
+					<%= f.text_area :post_body, size:'50x5', class:"form-control" %>
+				</div>
+
+				<div class="post-submit">
+					<%= f.submit "投稿する", class:"btn btn-info" %>
+				</div>
+
+				<div class="post-show-link">
+					<%= link_to '詳細ページへ戻る', user_post_path(@post.id) %>
+				</div>
+
+				<% end %>
+			</div>
+
+		</div><!-- new-post-container -->
+
+		<div class="col-lg-3"></div>
+	</div><!-- row_end -->
+
+	<script>
+		$('#myImage').on('change', function (e) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$("#preview").attr('src', e.target.result);
+			}
+			reader.readAsDataURL(e.target.files[0]);
+		});
+	</script>

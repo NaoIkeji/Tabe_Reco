@@ -5,9 +5,7 @@
 
 
 .post-list {
-	background-color: black;
 	padding: 0px 25px;
-
 }
 
 .post {
@@ -17,24 +15,160 @@
 }
 
 .post-user {
-	background-color: pink;
+	padding: 0px 20px;
+}
+
+.user-nickname {
+	padding-left: 15px;
 }
 
 .post-image {
-	background-color: orange;
-	margin-bottom: 30px;
+	padding-bottom: 0px;
+}
+
+.post-text {
+	border: solid 1px #bfbfbf;
+	padding: 10px 5px;
+	margin: 0px 20px 10px 20px;
 }
 
 .post-target {
-	background-color: green;
+	padding: 0px 20px;
 }
 
 .post-body {
-	background-color: yellow;
+	padding: 0px 20px;
 }
 
 .post-stats {
-	background-color: blue;
+	padding: 5px 20px;
 }
 
+.post-stats ul {
+	list-style: none;
+}
 
+.post-stats li {
+	float: left;
+	padding-right: 20px;
+}
+
+.glyphicon-heart-empty, .glyphicon-heart {
+	font-size: 28px;
+}
+
+.glyphicon-star, .glyphicon-star-empty {
+	font-size: 28px;
+}
+
+.cheer {
+	line-height: center;
+}
+
+.post-datetime {
+	text-align: right;
+	padding-bottom: 15px;
+	padding-right: 20px;
+}
+
+.post-action ul {
+	list-style: none;
+	float: right;
+}
+
+.post-action li {
+	float: left;
+	padding: 0px 10px;
+}
+
+.new-post-container {
+
+}
+
+.post-form {
+	padding: 15px;
+	margin: 0px 20px;
+	background-color: #ffffff;
+	padding-bottom: 30px;
+}
+
+.post-form-image {
+	padding: 0px 70px;
+}
+
+.post-form-target {
+	padding: 10px 70px;
+}
+
+.post-form-text {
+	padding: 10px 70px 20px 70px;
+}
+
+.post-submit {
+	text-align: right;
+}
+
+.post-show-link {
+	padding: 0px 70px;
+}
+
+.comment-form {
+	margin: 0px 20px 10px 20px;
+}
+
+.comment-submit {
+	text-align: right;
+	padding: 10px 0px;
+}
+
+.comment-text {
+	border-radius: 3px;
+	border: solid 1px #bfbfbf;
+	padding: 10px;
+	margin: 15px 20px 10px 20px;
+	background-color: #ffffff;
+}
+
+.comment-datetime {
+    text-align: right;
+	padding-bottom: 15px;
+	padding-right: 25px;
+}
+
+.user_comment_image {
+	padding: 0px 20px;
+}
+
+.comment-action ul {
+	list-style: none;
+	float: right;
+}
+
+.comment-action li {
+	float: left;
+	padding: 0px 10px;
+}
+
+.comment-action {
+	padding-right: 10px;
+}
+
+.comment-list {
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	margin: 0px 10px;
+	padding-top:10px;
+}
+
+.commentlist-headline {
+	margin: 10px 10px;
+}
+
+.comment-edit {
+	background-color: #ffffff;
+	padding: 20px 40px;
+}
+
+.comment-edit-content {
+	padding: 0px 40px;
+}

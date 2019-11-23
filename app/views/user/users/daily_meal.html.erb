@@ -1,9 +1,9 @@
 <%= render 'nav' %>
 
 
-<div>
-  <p class="headline"><%= @date[0] %>年<%= @date[1] %>月<%= @date[2] %>日の食事一覧</p>
-<div>
+
+<p class="headline"><%= @date[0] %>年<%= @date[1] %>月<%= @date[2] %>日の食事一覧</p>
+
 
 <div class="daily_meal_body row">
 
@@ -53,8 +53,8 @@
 
 	<div class="meal-action clearfix">
 		<ul>
-			<li><p><%= link_to '編集', edit_user_meal_path(meal.id) ,class:"btn btn-default btn-xs"%></p></li>
-			<li><%= link_to '削除', user_meal_path(meal.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-xs" %></li>
+			<li><p><%= link_to '編集', edit_user_meal_path(meal.id) ,class:"btn btn-default btn-ms"%></p></li>
+			<li><%= link_to '削除', user_meal_path(meal.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-ms" %></li>
 		</ul>
 	</div>
 </div>
@@ -72,7 +72,7 @@
 	<div class="col-lg-10">
 		<%= form_tag user_daily_meal_balance_path(current_user.id), method: :get do %>
 		　	<%= hidden_field_tag :date, @_date %>
-			<%= submit_tag  "#{@date[0]}年#{@date[1]}月#{@date[2]}日" ,class:"btn btn-warning"%>
+			<%= submit_tag  "#{@date[0]}年#{@date[1]}月#{@date[2]}日" ,class:"btn btn-warning btn-lg balance-check-btn"%>
 			<br>バランスチェックページへ
 		<% end %>
 	</div>

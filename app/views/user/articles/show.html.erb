@@ -1,11 +1,20 @@
-<h2>記事の詳細</h2>
-
-<div>
-	<p>タイトル：<%= @article.article_title %></p>
-	<p>カテゴリー：<%= @article.article_genre.genre_name %></p>
-	<p>
-		<%= attachment_image_tag @article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
-	</p>
-	<p><%= @article.created_at.strftime('%Y/%m/%d') %></p>
-	<p><%= @article.article_body %></p>
+<div class="row">
+	<div class="article-container col-lg-9">
+		<div class="article-item row">
+			<div class="article-item-in">
+				<div class="col-lg-6">
+					<p><b><%= @article.article_title %></b></p>
+						<%= attachment_image_tag @article, :article_image, :fill, 300, 250, format: 'jpeg', fallback: "no_image.jpg", size: '300x250' %>
+					<p>カテゴリー：<%= @article.article_genre.genre_name %></p>
+					<p><%= @article.created_at.strftime('%Y/%m/%d') %></p>
+				</div>
+				<div class="article-text col-lg-6">
+					<p><%= @article.article_body %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<%= render 'user/articles/nav' , genres: @genres %>
+	</div>
 </div>
