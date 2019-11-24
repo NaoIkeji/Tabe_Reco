@@ -1,6 +1,29 @@
-<h2>ジャンル編集</h2>
+<p class="headline">ジャンル編集</p>
 
-<%= form_for(@genre, url: admin_article_genre_path ,method: :patch) do |f| %>
-	<%= f.text_field :genre_name %>
-	<%= f.submit "編集する" %>
-<% end %>
+<div class="row">
+  <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+    	<div>
+          <% if @genre.errors.any? %>
+            <%= @genre.errors.count %>error!
+            <% @genre.errors.full_messages.each do |genre| %>
+              <%= message %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="genre-form">
+			<%= form_for(@genre, url: admin_article_genre_path ,method: :patch) do |f| %>
+				<div class="genre-form-item">
+					<%= f.text_field :genre_name, class:"form-control" %>
+				</div>
+				<div class="genre-submit">
+				<%= f.submit "編集する", class:"btn btn-info" %>
+				</div>
+			<% end %>
+			<br>
+			<p class="admin-top-link"><%= link_to 'ジャンル一覧へ戻る', admin_article_genres_path %></p>
+		</div>
+    </div>
+  <div class="col-lg-3"></div>
+</div><!-- row_end -->

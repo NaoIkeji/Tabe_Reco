@@ -73,7 +73,6 @@
 
 					<div class="comment-form">
 						<% if @user.id != current_user.id %>
-						<p>コメント投稿フォーム</p>
 						<%= form_for [@post, @comment], url: user_post_comments_path(post_id: @post.id), mthod: :post do |f| %>
 						<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに", class:"form-control" %>
 						<div class="comment-submit">
@@ -84,7 +83,6 @@
 					</div>
 
 					<div>
-						<p class="commentlist-headline">コメント一覧</p>
 						<% @comments.each do |comment| %>
 							<div class="comment-list">
 								<div class="user_comment_image">

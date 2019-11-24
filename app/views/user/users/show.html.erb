@@ -23,20 +23,11 @@
 				<%= render 'user/users/follow_form' , user: @user %>
 			</div>
 		</div>
-
-		<!-- current_userのみ表示させる -->
-		<div class="user-edit">
-			<% if @user == current_user %>
-				<p><%= link_to 'プロフィールの編集', edit_user_user_path(current_user.id)%></p>
-		    <% end %>
-		</div>
 	</div>
 
 	<div class="col-lg-3"></div>
 	</div><!-- row_end -->
 </div><!-- user-post-my-page-info_end -->
-
-<hr>
 
 
 <div class="user-post-my-page-post-list">

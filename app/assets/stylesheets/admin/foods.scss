@@ -1,3 +1,19 @@
 // Place all the styles related to the admin/foods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.food-form {
+	background-color: #ffffff;
+	padding: 10px 40px;
+}
+
+.food-form-item {
+	padding: 10px 0px;
+}
+
+.food-submit {
+	text-align: right;
+	padding: 10px 0px;
+}

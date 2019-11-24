@@ -69,7 +69,7 @@
 
 <div class="balance-check row">
 	<div class="col-lg-1"></div>
-	<div class="col-lg-10">
+	<div class="daily-meal-check-btn col-lg-10">
 		<%= form_tag user_daily_meal_balance_path(current_user.id), method: :get do %>
 		　	<%= hidden_field_tag :date, @_date %>
 			<%= submit_tag  "#{@date[0]}年#{@date[1]}月#{@date[2]}日" ,class:"btn btn-warning btn-lg balance-check-btn"%>

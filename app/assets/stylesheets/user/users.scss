@@ -115,15 +115,11 @@ my-data-target-list ul {
 }
 
 .setting-changing-btn {
-	margin: 20px 0px;
+	margin: 20px 10px;
 }
 
 .user-prof {
 	padding: 0px 20px;
-}
-
-.user-search {
-
 }
 
 .search {
@@ -180,9 +176,8 @@ my-data-target-list ul {
 
 .user-prof-content{
 	background-color: #ffffff;
-	padding: 10px 50px;
-	border: solid 1px #e0e0e0;
-	border-radius: 8px;
+	padding: 10px 40px;
+	margin-bottom: 50px;
 }
 
 .user-introduction {
@@ -269,4 +264,13 @@ my-data-target-list ul {
 
 .user-form-item-link {
 	margin-top: 40px;
+}
+
+.user-setting {
+	background-color: #ffffff;
+	padding: 30px 0px;
+}
+
+.daily-meal-check-btn {
+	color: #ffffff;
 }

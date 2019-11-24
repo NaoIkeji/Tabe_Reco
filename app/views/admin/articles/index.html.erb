@@ -1,15 +1,52 @@
-<h2>(管理者)記事一覧</h2>
-<p><%= link_to 'トップへ戻る', admin_home_top_path %></p>
-<hr>
+<p class="headline">記事一覧</p>
 
-<% @articles.each do |article| %>
-	<p>タイトル：<%= article.article_title %></p>
-	<p>カテゴリー：<%= article.article_genre.genre_name %></p>
-	<p>
-		<%= link_to admin_article_path(article.id) do %>
-			<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
-		<% end %>
-	</p>
-	<p><%= article.created_at.strftime('%Y/%m/%d') %></p>
-	<hr>
-<% end %>
+<div class="row">
+	<div class="col-lg-1"></div>
+
+	<div class="admin-article-list col-lg-10">
+
+		<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>日付</th>
+					<th>記事画像</th>
+					<th>タイトル</th>
+					<th>ジャンル</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @articles.each do |article| %>
+					<tr>
+						<td>
+							<%= link_to admin_article_path(article.id) do %>
+								<%= article.created_at.strftime('%Y/%m/%d') %>
+							<% end %>
+						</td>
+						<td>
+							<%= link_to admin_article_path(article.id) do %>
+								<%= attachment_image_tag article, :article_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50' %>
+							<% end %>
+						</td>
+						<td>
+							<%= link_to admin_article_path(article.id) do %>
+								<%= article.article_title %>
+							<% end %>
+						</td>
+						<td>
+							<%= link_to admin_article_path(article.id) do %>
+								<%= article.article_genre.genre_name %>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+
+
+	</div><!-- admin-article-list col-lg-10 -->
+	<div class="col-lg-1"></div>
+</div><!-- row_end -->

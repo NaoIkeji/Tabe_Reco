@@ -1,3 +1,49 @@
 // Place all the styles related to the admin/articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.admin-article-list {
+	background-color: #ffffff;
+	padding: 10px 30px;
+}
+
+.article-form {
+	background-color: #ffffff;
+	padding: 10px 40px;
+}
+
+.article-form-item {
+	padding: 10px 0px;
+}
+
+.article-submit {
+	text-align: right;
+	padding: 10px 0px;
+}
+
+.admin-article-content {
+	background-color: #ffffff;
+	padding: 10px 60px;
+}
+
+.admin-article-body {
+	background-color: #eaeaea;
+	border-radius: 5px;
+	padding: 30px;
+}
+
+.admin-article-action ul {
+	float: right;
+	list-style: none;
+}
+
+.admin-article-action li {
+	float: left;
+	padding-left: 15px;
+	padding-top: 15px;
+}
+
+.admin-article-image {
+	padding-bottom: 30px;
+}

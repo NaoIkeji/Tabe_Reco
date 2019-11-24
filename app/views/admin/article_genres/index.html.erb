@@ -1,9 +1,27 @@
-<h2>ジャンル一覧</h2>
+<p class="headline">ジャンル一覧</p>
 
-<% @genres.each do |genre| %>
-	<div>
-		<%= genre.genre_name %>
-		<%= link_to '編集', edit_admin_article_genre_path(genre.id) %>
-		<%= link_to '削除', admin_article_genre_path(genre.id), method: :delete %>
-    </div>
-<% end %>
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="admin-article-list col-lg-10">
+		<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>ジャンル</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @genres.each do |genre| %>
+					<tr>
+						<td><%= genre.genre_name %></td>
+						<td><%= link_to '編集', edit_admin_article_genre_path(genre.id) %></td>
+						<td><%= link_to '削除', admin_article_genre_path(genre.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div><!-- admin-article-list col-lg-10 -->
+	<div class="col-lg-1"></div>
+</div><!-- row_end -->

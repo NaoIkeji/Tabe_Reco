@@ -1,3 +1,25 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.admin-user-list {
+	background-color: #ffffff;
+	padding: 10px 30px;
+}
+
+.admin-user-search {
+	padding: 10px 10px 10px 5px;
+}
+
+.admin-top-link {
+	text-align: right;
+}
+
+.admin-user-info {
+	border: solid 1px #gray;
+}
+
+.admin-user-search {
+	padding: 30px 0px;
+}

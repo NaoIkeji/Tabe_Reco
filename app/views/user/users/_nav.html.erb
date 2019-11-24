@@ -1,5 +1,5 @@
 <ul class="nav nav-pills nav-justified">
-	<li role="presentation"><%= link_to 'マイページ', user_my_page_path(current_user.id) %></li>
+	<li id="nav-list" role="presentation"><%= link_to 'マイページ', user_my_page_path(current_user.id) %></li>
 	<li role="presentation"><%= link_to '食事記録する', new_user_meal_path %></li>
 	<li role="presentation"><%= link_to '設定変更', user_setting_changing_path(current_user.id) %></li>
 </ul>

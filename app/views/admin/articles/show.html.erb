@@ -1,13 +1,28 @@
-<h2>(管理者)記事の詳細</h2>
+<p class="headline">記事の詳細</p>
 
-<div>
-	<p>タイトル：<%= @article.article_title %></p>
-	<p>カテゴリー：<%= @article.article_genre.genre_name %></p>
-	<p>
-		<%= attachment_image_tag @article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
-	</p>
-	<p><%= @article.created_at.strftime('%Y/%m/%d') %></p>
-	<p><%= @article.article_body %></p>
-	<p><%= link_to "編集", edit_admin_article_path(@article.id) %></p>
-	<p><%= link_to "削除", admin_article_path(@article.id), method: :delete %></p>
-</div>
+<div class="row">
+	<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<div class="admin-article-content">
+				<p><b><%= @article.created_at.strftime('%Y/%m/%d') %></b></p>
+				<p>タイトル：<%= @article.article_title %></p>
+				<p>カテゴリー：<%= @article.article_genre.genre_name %></p>
+				<div class="admin-article-image">
+					<%= attachment_image_tag @article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: '300x300' %>
+				</div>
+				<div class="admin-article-body ">
+					<%= @article.article_body %>
+			    </div>
+
+				<div class="admin-article-action clearfix">
+					<ul>
+						<li><%= link_to "編集", edit_admin_article_path(@article.id), class:"btn btn-default btn-sm" %></li>
+						<li><%= link_to "削除", admin_article_path(@article.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-sm" %></li>
+					</ul>
+				</div>
+				<br>
+				<p class="admin-top-link"><%= link_to '記事の一覧へ戻る', admin_articles_path %></p>
+			</div>
+		</div>
+	<div class="col-lg-3"></div>
+</div><!-- row_end -->

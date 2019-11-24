@@ -1,7 +1,12 @@
-<h2>サイトのトップページ</h2>
-
-
 <!-- スライドショーか写真を入れる -->
+<div id="top-image-container">
+	<div id="theTarget">
+		<div class="top-img1"></div>
+		<div class="top-img2"></div>
+		<div class="top-img3"></div>
+	</div>
+</div>
+
 
 <p>Tabe_Reco(タベレコ)は食事管理ができるサイトです。</p>
 
@@ -15,10 +20,28 @@
 </ul>
 
 <p>
-食事の改善を目標にする人だけでなく、<br>
-病気の予防のためや健康的な食生活を送り続けたいと思っている人にも、<br>
-楽しく手軽に利用できます。
+	食事の改善を目標にする人だけでなく、<br>
+	病気の予防のためや健康的な食生活を送り続けたいと思っている人にも、<br>
+	楽しく手軽に利用できます。
 </p>
 
 <p><%= link_to 'ログイン', new_user_session_path %></p>
 <p><%= link_to '会員登録', new_user_registration_path %></p>
+
+
+
+<script>
+	$(document).ready(function(){
+		$("#theTarget").skippr({
+			transition : 'slide',
+			speed : 500,
+			easing : 'easeOutQuart',
+			navType : 'block',
+			childrenElementType: 'div',
+			arrows : true,
+			autoPlayDuration : 3000,
+			keyboardOnAlways : true,
+			hidePrevious : false
+		});
+	});
+</script>
