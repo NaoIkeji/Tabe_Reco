@@ -1,52 +1,60 @@
 <div class="top">
-<h1>TABE RECO</h1>
-<p>TABE RECO (タベレコ）は食べたものを記録（レコード）する
-<P>食事管理ができるサイトです。</p>
+		<h1>TABE RECO</h1>
+		<p>TABE RECO (タベレコ）は
+		<p>"食べたものを記録（レコード）する"</p>
+		<p>食事管理ができるサイトです</p>
 
-<p>会員登録すると</p>
-<p>食事記録をしながら栄養の知識がつきます。</p>
-<p>食事記録をすることで自分の食事の傾向を知り、改善できます</p>
-<p>目標に向かって頑張る仲間たちと繋がってモチベーションをUPさせることができます。</p>
+		<p>会員登録をすると</p>
+		<p>食事記録をすることで、自分の食事の傾向を知り、食生活の改善ができます</p>
+		<p>目標に向かって頑張る仲間たちと繋がって、モチベーションをアップさせることができます</p>
+		<p>栄養の知識も得ることができます</p>
 
-<!-- スライドショーか写真を入れる -->
-<div class="top-image-slide">
-	<div id="top-image-container">
-		<div id="theTarget">
-			<div class="top-img1"></div>
-			<div class="top-img2"></div>
-			<div class="top-img3"></div>
-			<div class="top-img4"></div>
-			<div class="top-img5"></div>
+		<!-- スライドショーか写真を入れる -->
+		<div class="top-image-slide">
+			<div id="top-image-container">
+				<div id="theTarget">
+					<div class="top-img1"></div>
+					<div class="top-img2"></div>
+					<div class="top-img3"></div>
+					<div class="top-img4"></div>
+					<div class="top-img5"></div>
+				</div>
+			</div>
 		</div>
-	</div>
+
+		<p>食事の改善を目標にする人だけでなく、</p>
+		<p>健康的な食生活を送り続けたいと思っている人にも</p>
+		<p>楽しく手軽に利用できます</p>
+
+		<div class="row">
+			<div class="col-lg-4"></div>
+			<div class="col-lg-4">
+				<div class="top-new">
+					<p><%= link_to '会員登録', new_user_registration_path, class:"btn btn-info col-lg-12"%></p>
+				</div>
+				<div class="top-login">
+					<p><%= link_to 'ログイン', new_user_session_path, class:"btn btn-default col-lg-12" %></p>
+				</div>
+			</div>
+			<div class="col-lg-4"></div>
+	    </div>
+
+
 </div>
 
-
-
-
-<p>
-	食事の改善を目標にする人だけでなく、<br>
-	健康的な食生活を送り続けたいと思っている人にも、<br>
-	楽しく手軽に利用できます。
-</p>
-
-<p><%= link_to 'ログイン', new_user_session_path %></p>
-<p><%= link_to '会員登録', new_user_registration_path %></p>
-
-</div>
-
-<script>
-	$(document).ready(function(){
-		$("#theTarget").skippr({
-			transition : 'slide',
-			speed : 500,
-			easing : 'easeOutQuart',
-			navType : 'block',
-			childrenElementType: 'div',
-			arrows : true,
-			autoPlayDuration : 3000,
-			keyboardOnAlways : true,
-			hidePrevious : false
+	<script>
+		$(document).ready(function(){
+			$('#theTarget').skippr({
+				transition : 'fade',
+				speed : 3000,
+				easing : 'easeOutQuart',
+				navType : 'bubble',
+				childrenElementType : 'div',
+				arrows : false,
+				autoPlay : true,
+				autoPlayDuration : 4000,
+				keyboardOnAlways : true,
+				hidePrevious : false
+			});
 		});
-	});
-</script>
+	</script>

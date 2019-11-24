@@ -112,7 +112,7 @@ footer {
 }
 
 .top {
-	background-color:rgba(255,255,255,0.5);
+	background-color:rgba(255,255,255,0.4);
 	text-align: center;
 	padding: 50px 0px;
 	margin: 40px 0px;
@@ -120,6 +120,7 @@ footer {
 
 .top p {
 	color: #ffffff;
+	padding: 15px 0px;
 }
 
 .top li {
@@ -129,6 +130,16 @@ footer {
 .top h1 {
 	padding: 100px 0px;
 	color: #404040;
+}
+
+.top-new {
+	padding: 15px;
+}
+
+.top-login{
+	padding: 15px;
+	margin-bottom: 100px;
+
 }
 
 .top-image-slide {
@@ -141,7 +152,7 @@ footer {
 }
 
 .top-img2 {
-	background-image: url(food_img_003);
+	background-image: url(food_img_014);
 	background-size: cover;
 }
 
@@ -151,17 +162,17 @@ footer {
 }
 
 .top-img4 {
-	background-image: url(food_img_009);
+	background-image: url(food_img_013);
 	background-size: cover;
 }
 
 .top-img5 {
-	background-image: url(food_img_004);
+	background-image: url(food_img_011);
 	background-size: cover;
 }
 
 #top-image-container {
-	height: 400px;
+	height: 450px;
 	width: 1000px;
 	margin: 0 auto;
 }
