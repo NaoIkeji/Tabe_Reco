@@ -94,3 +94,5 @@ gem 'gon'
 
 gem 'ransack'
 
+gem 'rails-i18n'
+

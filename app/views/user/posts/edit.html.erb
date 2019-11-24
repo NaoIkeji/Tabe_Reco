@@ -7,16 +7,19 @@
 	<div class="col-lg-3"></div>
 
 	<div class="new-post-container col-lg-6">
-		<div>
-			<% if @post.errors.any? %>
-			<%= @post.errors.count %>error!
-			<% @post.errors.full_messages.each do |message| %>
-			<%= message %>
-			<% end %>
-			<% end %>
-		</div>
 
 		<div class="post-form">
+			<div class="error-message">
+				<% if @post.errors.any? %>
+					<div class="alert alert-warning">
+						<% @post.errors.full_messages.each do |message| %>
+							<ul>
+								<li><%= message %></li>
+							</ul>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
 			<%= form_for(@post, url:user_post_path(@post.id) ,method: :patch) do |f| %>
 			<div class="post-form-image">
 				<!-- editの時だけ登録済みの写真を表示させる-->
@@ -51,12 +54,10 @@
 				<div class="post-submit">
 					<%= f.submit "投稿する", class:"btn btn-info" %>
 				</div>
-
+				<% end %>
 				<div class="post-show-link">
 					<%= link_to '詳細ページへ戻る', user_post_path(@post.id) %>
 				</div>
-
-				<% end %>
 			</div>
 
 		</div><!-- new-post-container -->

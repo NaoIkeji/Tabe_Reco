@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#nav-list a {
+	color: #ffffff;
+}
+
+#nav-list a:hover {
+	color: #696969;
+}
 
 .my-calender{
 	background-color: #ffffff;
@@ -23,6 +30,10 @@ my-data-target-list ul {
 	list-style-type: none;
 }
 
+.my-data-target-list ul {
+	color: #696969;
+}
+
 .my-data-contant {
 	background-color: #ffffff;
 	margin-right: 15px;
@@ -35,7 +46,7 @@ my-data-target-list ul {
 
 .daily_meal_list {
 	background-color: #ffffff;
-	padding: 10px 60px;
+	padding: 30px 60px 10px 60px;
 	margin-bottom: 25px;
 }
 

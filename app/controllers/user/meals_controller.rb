@@ -19,11 +19,12 @@ class User::MealsController < ApplicationController
 		@meal.user_id = current_user.id
 		if @meal.save
 			@date = params[:commit]
-            redirect_to user_my_page_path(current_user.id)
+            redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + @meal.ate_date.strftime("%F")
         else
          @text = "食事を登録する"
          @url = user_meals_path
          render :new
+         return
        end
 	end
 
@@ -47,7 +48,7 @@ class User::MealsController < ApplicationController
 	end
 
 	def destroy
-		@meal = Meal.find(params[:id])
+		meal = Meal.find(params[:id])
 		Meal.find(params[:id]).destroy
 		redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
 	end

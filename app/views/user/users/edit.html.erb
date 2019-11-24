@@ -6,12 +6,26 @@
 	<div class="edit-prof-container col-lg-6">
 		<div class="edit-prof-in">
 			<%= form_for(@user, url: user_user_path(current_user.id), method: :patch )do |f| %>
+
+			<div class="error-message">
+				<% if @user.errors.any? %>
+					<div class="alert alert-warning">
+	  					<% @user.errors.full_messages.each do |message| %>
+	  						<ul>
+	  							<li><%= message %></li>
+	  						</ul>
+	  					<% end %>
+	  				</div>
+				<% end %>
+			</div>
+
 			<div class="user-prof row">
 				<div class="user-prof-form-image col-lg-6">
 					<p><b>プロフィール画像</b></p>
 					<img id="preview" width="150" height="150">
 					<%= f.file_field :profile_image, id:"myImage" %>
 				</div>
+
 				<div class="user-prof-image-edit col-lg-6">
 					<% if request.path_info.include?('edit') %>
 						<p><b>登録済みの写真</b><p>

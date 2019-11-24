@@ -6,7 +6,19 @@
     <div class="user-form">
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource, class:"form-control" %>
+        <%= render "users/shared/error_messages", resource: resource, class:"form-control" %>
+
+        <div class="error-message">
+          <% if current_user.errors.any? %>
+            <div class="alert alert-warning">
+                <% current_user.errors.full_messages.each do |message| %>
+                  <ul>
+                    <li><%= message %></li>
+                  </ul>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
 
         <div class="user-form-item field">
           <p><b>お名前</b></p>

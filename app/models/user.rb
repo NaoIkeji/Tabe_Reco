@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_ruby, presence: true
+  validates :first_name_ruby, presence: true
+  validates :nickname, presence: true
+
+  validates :introduction, length: { maximum: 200 }
+
   attachment :profile_image
 
   has_many :meals, dependent: :destroy

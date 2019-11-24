@@ -8,6 +8,4 @@ class Meal < ApplicationRecord
 	validates :ate_time, presence: true
 	validates :meal_item, presence: true
 	validates :meal_text, length: { maximum: 200}
-	validates :ate_time, presence: true
-	validates :ate_time, presence: true
 end
