@@ -26,10 +26,6 @@
 	padding: 10px 35px;
 }
 
-my-data-target-list ul {
-	list-style-type: none;
-}
-
 .my-data-target-list ul {
 	color: #696969;
 }
@@ -284,4 +280,23 @@ my-data-target-list ul {
 
 .daily-meal-check-btn {
 	color: #ffffff;
+}
+
+.point-content {
+	margin: 20px 0px;
+}
+
+.advice {
+	background-color: #e0efff;
+	border-radius: 8px;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+}
+
+.advice p {
+	margin-bottom: 30px;
+}
+
+.meal-advice {
+	padding: 10px;
 }
