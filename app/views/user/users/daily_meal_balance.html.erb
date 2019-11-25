@@ -1,21 +1,148 @@
-<h2>１日の食事バランス</h2>
+<%= render 'nav' %>
+
+<p class="headline"><%= @m_date %>の栄養バランス</p>
+
+<div class="daily-meal-balance-body row">
+	<div class="col-lg-7">
+		<div class="reader-chart col-lg-12">
+			<h4>栄養バランス</h4>
+			<canvas id="myRaderChart" width="100" height="100"></canvas>
+	    </div>
+		<div class="meal-advice col-lg-12">
+			<h4>食事アドバイス</h4>
+			<div class="advice">
+				<p><% if @yellow_food_points > 18 %>
+						<p>黄色の食品：炭水化物、脂質が多い食品<br>
+						 → <b>食べ過ぎです！太る原因になるので控えましょう。</b></p>
+					<% elsif @yellow_food_points < 18 %>
+						<p>黄色の食品：炭水化物、脂質が多い食品<br>
+							→ <b>もう少し食べましょう！体のエネルギーが足りていません。</b></p>
+					<% elsif @yellow_food_points = 18 %>
+						<p>黄色の食品：炭水化物、脂質が多い食品<br>
+							→ <b>適正量です！この調子です！</b></p>
+				   <% end %>
+				</p>
+				<p><% if @red_food_points > 12 %>
+						<p>赤色の食品：たんぱく質が多い食品<br>
+							→ <b>食べ過ぎです！太る原因になるので、控えましょう。</b></p>
+					<% elsif @red_food_points < 12 %>
+						<p>赤色の食品：たんぱく質が多い食品<br>
+							→ <b>もう少し食べましょう！体をつくるもとが足りていません。</b></p>
+					<% elsif @red_food_points = 12 %>
+						<p>赤色の食品：たんぱく質が多い食品<br>
+							→ <b>適正量です！この調子です！</b></p>
+				   <% end %>
+				</p>
+				<p><% if @green_food_points > 12 %>
+						<p>緑色の食品：ビタミン、ミネラルが多い食品<br>
+							→ <b>食べ過ぎです！不足しがちな食品ですが、もう少し少なめの量でも大丈夫です。</b></p>
+					<% elsif @green_food_points < 12 %>
+						<p>緑色の食品：ビタミン、ミネラルが多い食品<br>
+							→ <b>もう少し食べましょう！体の調子を良くする栄養素が足りていません。意識して食べましょう。</b></p>
+					<% elsif @green_food_points = 12 %>
+						<p>緑色の食品：ビタミン、ミネラルが多い食品
+							→ <b>適正量です！この調子です！</b></p>
+				   <% end %>
+				</p>
+				<p>
+					<% if @goody_food_points > 3 %>
+						<p>菓子類<br>
+							→ <b>食べ過ぎです。お菓子など甘いものは控えめにしましょう。</b></p>
+					<% end %>
+				</p>
+				<p>
+					<% if @alcohol_food_points > 3 %>
+						<p>お酒<br>
+							→ <b>飲み過ぎです。お酒を控えましょう。休肝日も作りましょう。</p>
+					<% end %>
+				</p>
+		    </div>
+		</div>
+	</div><!-- col-lg-7_end -->
+
+	<div class="col-lg-5">
+		<div class="total-points">
+			<div class="point-content yellow-food">
+				<p><b>黄色の食品：合計<%= @yellow_food_points %>点</b>（適正量18点）</p>
+				<p>体のエネルギー源になる食品グループです。</p>
+				<p>熱を生み、エネルギーを作り出す<b>炭水化物</b>や<b>脂質</b><br>を多く含みます。</p>
+			</div>
+			<div class="point-content red-food">
+				<p><b>赤色の食品：合計<%= @red_food_points %>点</b>（適正量12点）</p>
+				<p>体をつくるもととなる食品グループです。</p>
+				<p>筋肉や血液、骨など、体の構成成分となる<b>たんぱく質</b><br>を含みます。</p>
+			</div>
+			<div class="point-content green-food ">
+				<p><b>緑色の食品：合計<%= @green_food_points %>点</b>（適正量12点）</p>
+				<p>体の調子を整える食品グループです。</p>
+				<p><b>ビタミン</b>や<b>ミネラル</b>など、身体機能を調節する栄養素<br>を含みます。</p>
+			</div>
+		</div>
+
+		<div class="daily-meal-balance-list">
+			<h4 class="daily-meal-balance-list-headline"><%= @m_date %>の食事一覧</h4>
+			<% @meals.each do |meal| %>
+				<p><b><%= meal.meal_item %></b>
+					<%= meal.ate_time.strftime('%R') %>
+				</p>
+				<div class="row">
+					<div class="col-lg-6">
+						<p><%= attachment_image_tag meal, :meal_image, :fill, 200, 150, fallback: "no_image_02.jpg", size:'200x150' %></p>
+					</div>
+					<div class="col-lg-6">
+						<p><b>食事メモ</b></p><%= meal.meal_text %>
+			    	</div>
+			    </div>
+			    <hr>
+			<% end %>
+			<p><%= link_to "#{@m_date}の食事一覧へ戻る", @urln %></p>
+		</div>
+	</div><!-- col-lg-5 -->
+</div><!-- row_end -->
 
 
-<h3>カレンダー</h3>
-<p>※日付を選ぶとその日の食事一覧が見れる</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+	<script>
+		    var ctx = document.getElementById("myRaderChart");
+		    var myRadarChart = new Chart(ctx, {
+		        type: 'radar',
+		        data: {
+		            labels: ["黄色", "赤色", "緑色"],
+		            datasets: [{
+		                label: '適正量',
+		                data: [18, 12, 12 ],
+		                backgroundColor: 'RGBA(250, 50, 50, 0.3)',
+		                borderColor: 'RGBA(200, 50, 50, 0.3)',
+		                pointHoverBackgroundColor: 'RGBA(200, 50, 50, 0.3)',
+		                pointHoverBorderColor: 'RGBA(200, 50, 50, 0.3)',
+		            }, {
+		                label: '1日の食事',
+		                data: [gon.yellow_food_points, gon.red_food_points, gon.green_food_points ],
+		                backgroundColor: 'RGBA(50, 50, 250, 0.4)',
+		                borderColor: 'RGBA(50, 50, 200, 0.3)',
+		                pointHoverBackgroundColor: 'RGBA(50, 50, 200, 0.3)',
+		                pointHoverBorderColor: 'RGBA(50, 50, 200, 0.3)',
+		            }]
+		        },
+		        options: {
+		            title: {
+		                display: true,
+		                text: '栄養バランス'
+		            },
+		            scale:{
+		                ticks:{
+		                    suggestedMin: 0,
+		                    suggestedMax: 30,
+		                    stepSize: 10,
+		                    callback: function(value, index, values){
+		                        return  value +  '点'
+		                    }
+		                }
+		            }
+		        }
+		    });
+	</script>
 
 
-<h3>xx月xx日の食事一覧</h3>
-
-<p>朝食</p>
-<p>時間</p>
-<p>画像</p>
-<p>食事メモ</p>
-
-<h3>栄養バランス</h3>
-<p>※レーダーチャートを表示させる</p>
-
-
-<h3>食事アドバイス</h3>
-<p>※食品分類や食品項目の各点数の合計値によって表示を変える(少ない、普通、食べ過ぎなど)</p>
 

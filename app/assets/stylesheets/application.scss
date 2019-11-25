@@ -1,0 +1,197 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require fullcalendar
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: bouth;
+}
+
+a, li, p, th, td, label, h4 {
+	color: #696969;
+}
+
+a {
+	display: block;
+}
+
+header {
+	background-color: #ffffff;
+	padding: 10px 40px 0px 40px;
+	border-bottom: solid 1px #bfbfbf;
+}
+
+body {
+	background-color: #f5f5f5;
+	background-image: url(food_img_001);
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+body,
+#wrapper{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.main {
+	padding: 30px 0px 120px 0px;
+}
+
+footer {
+	background-color: #ffffff;
+	border-top: solid 1px #bfbfbf;
+	margin-top: auto;
+	padding: 10px 0px;
+}
+
+.footer-copyright {
+	text-align: center;
+}
+
+
+.header-nav-list1 ul {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 15px 0px;
+}
+
+.header-nav-list2 ul {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+}
+
+.header-nav-list1 li {
+	list-style: none;
+	float: left;
+	padding: 0px 20px 20px 0px;
+	text-align: right;
+}
+
+.header-nav-list2 li {
+	list-style: none;
+	float: left;
+	padding:  0 20px;
+	text-align: right;
+}
+
+.header-user-image {
+	paddig-right: 10px;
+}
+
+.headline {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 15px 0px 10px 0px;
+	margin: 0px;
+	color: #ffffff;
+}
+
+.top {
+	background-color:rgba(255,255,255,0.5);
+	text-align: center;
+	padding: 50px 0px;
+	margin: 40px 0px;
+}
+
+.top p {
+	color: #ffffff;
+	padding: 15px 0px;
+}
+
+.top li {
+	color: #ffffff;
+}
+
+.top h1 {
+	padding: 100px 0px;
+	color: #404040;
+}
+
+.top-new {
+	padding: 15px;
+}
+
+.top-login{
+	padding: 15px;
+	margin-bottom: 100px;
+}
+
+.top-image-slide {
+	margin: 50px 0px;
+}
+
+.top-img1 {
+	background-image: url(food_img_005);
+	background-size: cover;
+}
+
+.top-img2 {
+	background-image: url(food_img_014);
+	background-size: cover;
+}
+
+.top-img3 {
+	background-image: url(food_img_007);
+	background-size: cover;
+}
+
+.top-img4 {
+	background-image: url(food_img_013);
+	background-size: cover;
+}
+
+.top-img5 {
+	background-image: url(food_img_011);
+	background-size: cover;
+}
+
+#top-image-container {
+	height: 450px;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.error-message {
+	padding: 20px 70px;
+}
+
+.error-message li {
+	padding: 5px;
+	margin-left: 20px;
+}
+
+.user-error-text {
+	padding: 0px 50px;
+}

@@ -1,0 +1,51 @@
+<p class="headline">お問い合わせページ</p>
+
+<div class="row">
+	<div class="col-lg-3"></div>
+	<div class="contact col-lg-6">
+		<div>
+			<% if @contact.errors.any? %>
+				<%= @contact.errors.count %>error!
+				<% @contact.errors.full_messages.each do |message| %>
+					<%= message %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="contact-form">
+			<%= form_for(@contact, url: {controller: 'user/contacts', action: 'create' }) do |f| %>
+				<p><b>お名前</b></p>
+				<div class="contact-form-item">
+					<%= f.label :姓 %>
+					<%= f.text_field :last_name, class:"form-control" %>
+				</div>
+				<div class="contact-form-item">
+					<%= f.label :名 %>
+					<%= f.text_field :first_name, class:"form-control" %>
+				</div>
+				<div class="contact-form-item">
+					<%= f.label :セイ %>
+					<%= f.text_field :last_name_ruby, class:"form-control" %>
+				</div>
+				<div class="contact-form-item">
+					<%= f.label :メイ %>
+					<%= f.text_field :first_name_ruby, class:"form-control" %>
+				</div>
+				<hr>
+				<div class="contact-form-item">
+					<%= f.label :email %>
+					<%= f.email_field :email, class:"form-control" %>
+				</div>
+				<hr>
+				<div class="contact-form-item">
+					<p><b>お問い合わせ内容</b></p>
+					<%= f.text_area :contact_body, size: "30x5", class:"form-control" %>
+				</div>
+
+				<div class="comment-submit">
+				<%= f.submit '送信', class:"btn btn-info" %>
+				</div>
+			<% end %>
+		</div><!-- contact-form_end -->
+	</div><!-- contact col-lg-6_end -->
+	<div class="col-lg-3"></div>
+</div><!-- row_end -->

@@ -1,0 +1,15 @@
+<%= render 'user/users/nav' %>
+
+<p class="headline">設定の変更</p>
+
+<div class="row">
+	<div class="col-lg-3"></div>
+	<div class="user-setting col-lg-6">
+		<div class="user-setting-content">
+			<p class="setting-changing-btn"><%= link_to '登録内容編集', edit_user_registration_path, class:"btn btn-default btn-lg btn-block" %></p>
+			<p class="setting-changing-btn"><%= link_to 'プロフィール編集', edit_user_user_path(current_user.id), class:"btn btn-default btn-lg btn-block" %></p>
+		</div>
+	</div>
+	<div class="col-lg-3"></div>
+</div><!-- row_end -->
+

@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   # def create
-  #   super
+  # #   super
   # end
 
   # GET /resource/edit
@@ -20,8 +20,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
+  def update
+    user = current_user
+    if user.update(user_params)
+      bypass_sign_in(user)
+      redirect_to user_my_page_path(user.id)
+    else
+      render "edit"
+    end
+     # super
+  end
+
+  # def after_sign_up_path_for(resource)
+  #       user_my_page_path(current_user.id)
   # end
 
   # DELETE /resource
@@ -56,7 +67,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+   # def after_inactive_sign_up_path_for(resource)
+   #   super(resource)
+   # end
+
+
+  private
+  def user_params
+    params.require(:user).permit(:last_name, :first_name, :last_name_ruby, :first_name_ruby, :nickname, :email, :password)
+  end
 end

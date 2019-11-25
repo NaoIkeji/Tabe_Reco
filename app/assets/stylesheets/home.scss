@@ -1,3 +1,26 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.about-page {
+	background-color:rgba(255,255,255,0.9);
+	padding: 20px 0px;
+}
+
+.about-contents {
+	padding: 10px 30px;
+}
+
+.about-contents h4 {
+	padding: 25px 0px;
+	text-align: center;
+}
+
+.about-contents p {
+	padding: 3px 0px;
+}
+
+.about-text {
+	margin-left: 15px;
+}

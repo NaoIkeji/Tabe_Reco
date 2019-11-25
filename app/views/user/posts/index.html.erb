@@ -1,0 +1,66 @@
+
+<%= render 'user/posts/nav' %>
+
+<div>
+	<p class="headline">ホーム</p>
+		<div class="row ">
+			<div class="col-lg-3"></div>
+
+			<div class="post-list col-lg-6">
+				<% @posts.each do |post| %>
+				<div class="post">
+					<div class="post-user">
+						<%= link_to user_user_path(post.user.id) do %>
+						<%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50', class:"img-circle" %><span class="user-nickname"><%= post.user.nickname %></span>
+						<% end %>
+					</div>
+
+					<div class="post-image">
+						<%= link_to user_post_path(post.id) do %>
+						<%= attachment_image_tag post, :post_image, :fill, 530, 460, fallback: "no_image_02.jpg", size:'530x460' %>
+						<% end %>
+					</div>
+
+					<div class="post-text">
+						<div class="post-target">
+							<p><b>目標：<%= post.post_target %></b></p>
+						</div>
+
+						<hr>
+
+						<div class="post-body">
+							<%= post.post_body %>
+						</div>
+					</div>
+
+					<div class="post-stats clearfix">
+						<ul>
+							<li>
+								<div id="favorites_buttons_<%= post.id %>">
+									<%= render partial: 'user/posts/favorite', locals: {post: post} %>
+								</div>
+							</li>
+							<li>
+								<div id="cheers_buttons_<%= post.id %>">
+									<%= render partial: 'user/posts/cheer', locals: {post: post} %>
+								</div>
+							</li>
+							<li>
+								<div>
+									<%= image_tag 'comment_icon.jpg'%>
+									<%= link_to "#{post.comments.count}コメント", user_user_path(post.user.id) %>
+								</div>
+							</li>
+						</ul>
+					</div><!-- post-stats_end -->
+
+				</div><!-- post_end -->
+				<% end %>
+			</div><!-- post-list_end -->
+
+			<div class="col-lg-3"></div>
+
+		</div>
+		<!-- row_end -->
+</div>
+

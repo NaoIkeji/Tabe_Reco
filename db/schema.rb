@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_093525) do
+ActiveRecord::Schema.define(version: 2019_11_20_173850) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,58 @@ ActiveRecord::Schema.define(version: 2019_11_07_093525) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "article_genres", force: :cascade do |t|
+    t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "article_title"
+    t.string "article_category"
+    t.string "article_image_id"
+    t.text "article_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "article_genre_id"
+  end
+
+  create_table "cheers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.text "comment_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "post_target"
+    t.text "post_body"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_ruby"
+    t.string "first_name_ruby"
+    t.string "email"
+    t.text "contact_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "未対応"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "food_points", force: :cascade do |t|
@@ -48,6 +100,32 @@ ActiveRecord::Schema.define(version: 2019_11_07_093525) do
     t.datetime "updated_at", null: false
     t.date "ate_date"
     t.time "ate_time"
+    t.integer "user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "post_image_id"
+    t.string "post_target"
+    t.text "post_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "targets", force: :cascade do |t|
+    t.text "target_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_id"
   end
 

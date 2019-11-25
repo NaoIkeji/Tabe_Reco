@@ -1,0 +1,11 @@
+<!-- 目標の部分テンプレート -->
+<div class="nested-fields">
+	<div class="target-body-form row">
+		<div class="col-lg-9">
+			<%= f.text_field :target_body, class:"form-control" %>
+	    </div>
+	    <div class="col-lg-3">
+			<%= link_to_remove_association "目標を削除", f %>
+		</div>
+	</div>
+</div>

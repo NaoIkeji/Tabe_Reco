@@ -1,0 +1,73 @@
+
+<%= render 'user/posts/nav' %>
+
+
+<p class="headline">新規投稿ページ</p>
+
+<div class="row">
+	<div class="col-lg-3"></div>
+
+	<div class="new-post-container col-lg-6">
+
+		<div class="post-form">
+			<div class="error-message">
+				<% if @post.errors.any? %>
+					<div class="alert alert-warning">
+						<% @post.errors.full_messages.each do |message| %>
+							<ul>
+								<li><%= message %></li>
+							</ul>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<%= form_for(@post, url:user_posts_path ,method: :post) do |f| %>
+			<div class="post-form-image">
+				<div>
+					<p><b>投稿画像</b></p>
+					<img id="preview" width="350" height="250">
+					<%= f.file_field :post_image, id:"myImage" %>
+				</div>
+				<br>
+				<!-- editの時だけ登録済みの写真を表示させる-->
+				<div class="post-image-edit">
+					<% if request.path_info.include?('edit') %>
+					<p><b>登録済みの写真</b><p>
+						<%= attachment_image_tag @meal, :meal_image, :fill, 400,300, format: 'jpeg', fallback: "no_image.jpg", size: '400x300' %>
+						<% end %>
+				</div>
+			</div>
+
+				<div class="post-form-target">
+					<p><b>目標</b></p>
+					<% current_user.targets.each do |u| %>
+						<%= f.radio_button :post_target, u.target_body %>
+						<%= u.target_body %>
+						<br>
+					<% end %>
+				</div>
+
+				<div class="post-form-text">
+					<p><b>テキスト</b></p>
+					<%= f.text_area :post_body, size:'50x5' %>
+				</div>
+
+				<div class="post-submit">
+					<%= f.submit "投稿する", class:"btn btn-info" %>
+				</div>
+				<% end %>
+			</div>
+
+	</div><!-- new-post-container -->
+	<div class="col-lg-3"></div>
+</div><!-- row_end -->
+
+<script>
+	$('#myImage').on('change', function (e) {
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$("#preview").attr('src', e.target.result);
+		}
+		reader.readAsDataURL(e.target.files[0]);
+	});
+</script>

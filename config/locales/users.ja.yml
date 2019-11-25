@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models: ユーザー
+    attributes:
+      user:
+        introduction: 自己紹介
+      user/targets:
+        target_body: 目標

@@ -1,3 +1,101 @@
 // Place all the styles related to the user/meals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_daily_meal {
+	background-color: #ffffff;
+	padding: 20px 30px;
+	margin-bottom: 50px;
+}
+
+.meal-form  {
+	padding: 5px 0px;
+}
+
+.meal-headline {
+	font-weight: bold;
+}
+
+.meal-headline-about {
+	text-align: right;
+}
+
+.meal-image-edit {
+}
+
+.food-select {
+	margin-bottom: 20px;
+}
+
+.yellow-food {
+	background-color: #ffffea;
+	border: solid 1px #ffffc6;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.red-food {
+	background-color: #ffeaea;
+	border: solid 1px #ffdbdb;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.green-food {
+	background-color: #f4ffea;
+	border: solid 1px #e2ffc6;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.other-food {
+	background-color: #f8f8f8;
+	border: solid 1px #ebebeb;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.add-food {
+	padding: 15px 0px;
+}
+
+.meal-submit {
+	text-align: right;
+}
+
+.meal-edit {
+	text-align: right;
+	padding: 10px 0px;
+}
+
+
+.meal_indication-page-link {
+	text-align: right;
+	padding: 15px 0px;
+}
+
+.meal-about-content {
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 20px;
+}
+
+.food-remove-btn {
+	padding: 10px 0px;
+}
+
+.food-select-item {
+    padding: 2px 10px 2px 0px;
+    color: #696969;
+}
+
+.food-select-form {
+	padding: 0px 10px;
+}
+
+.glyphicon-exclamation-sign {
+	padding-right: 5px;
+}
+
+.icon {
+	margin-right: 5px;
+}

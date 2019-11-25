@@ -1,0 +1,21 @@
+<!-- 応援するの部分テンプレート -->
+<% if post.user.id == current_user.id %>
+	<div>
+		<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
+		<p><%= post.cheers.count %>応援する</p>
+	</div>
+<% else %>
+	<div>
+		<% if post.cheered_by?(current_user) %>
+			<%= link_to user_post_cheers_path(post), method: :delete, remote: true do %>
+				<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
+			<% end %>
+			<%= post.cheers.count %>応援する
+		<% else %>
+			<%= link_to user_post_cheers_path(post), method: :post, remote: true do %>
+				<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+			<% end %>
+			<%= post.cheers.count %>応援する
+		<% end %>
+	</div>
+<% end %>

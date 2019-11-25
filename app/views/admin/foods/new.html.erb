@@ -1,25 +1,37 @@
-<h2>食品新規追加</h2>
+<p class="headline">食品新規追加</p>
 
-
-<%= form_for(@food, url:admin_foods_path, method: :post) do |f|%>
-	<div>
-		<%= f.label :food_item, "食品名" %>
-		<%= f.text_field :food_item %>
-
-    </div>
-
-    <div>
-		<%= f.label :food_category, "食品の分類" %>
-		<%= f.select :food_category, [["主食", "主食"],["主菜", "主菜"],["副菜", "副菜"],["果物", "果物"],["牛乳・乳製品", "牛乳・乳製品"],["油脂","油脂"],["嗜好品","嗜好品"]], {include_blank: "選択してください"} %>
-    </div>
-
-    <div>
-		<%= f.label :food_color, "色の分類" %>
-		<%= f.select :food_color, [["黄色", "黄色"],["赤色", "赤色"],["緑色", "赤色"],["その他", "その他"]],{include_blank: "選択してください"} %>
-    </div>
-
-
-
-	<%= f.submit '登録' %>
-
-<% end %>
+<div class="row">
+  <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div>
+          <% if @food.errors.any? %>
+              <%= @food.errors.count %>error!
+              <% @food.errors.full_messages.each do |message| %>
+                  <%= message %>
+              <% end %>
+          <% end %>
+        </div>
+        <div class="food-form">
+              <%= form_for(@food, url:admin_foods_path, method: :post) do |f|%>
+                  	<div class="food-form-item">
+                  		<%= f.label :food_item, "食品名" %>
+                  		<%= f.text_field :food_item, class:"form-control" %>
+                    </div>
+                    <div class="food-form-item">
+                  		<%= f.label :food_category, "食品の分類" %>
+                  		<%= f.select :food_category, [["主食", "主食"],["主菜", "主菜"],["副菜", "副菜"],["果物", "果物"],["牛乳・乳製品", "牛乳・乳製品"],["油脂","油脂"],["嗜好品","嗜好品"]], {include_blank: "選択してください"}, class:"form-control" %>
+                    </div>
+                    <div class="food-form-item">
+                  		<%= f.label :food_color, "色の分類" %>
+                  		<%= f.select :food_color, [["黄色", "黄色"],["赤色", "赤色"],["緑色", "赤色"],["その他", "その他"]],{include_blank: "選択してください"}, class:"form-control" %>
+                    </div>
+                    <div class="food-submit">
+                    	<%= f.submit '登録', class:"btn btn-info" %>
+                    </div>
+              <% end %>
+              <br>
+              <p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+        </div><!-- food-form -->
+    </div><!-- col-lg-6_end -->
+  <div class="col-lg-3"></div>
+</div><!-- row_end -->

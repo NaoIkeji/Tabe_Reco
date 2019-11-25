@@ -1,0 +1,28 @@
+<p class="headline">お問い合わせ詳細</p>
+
+<div class="row">
+	<div class="col-lg-3"></div>
+	<div class="admin-contact col-lg-6">
+		<div class="admin-contact-content">
+			<p><b><%= @contact.created_at.strftime('%Y/%m/%d') %>
+				<%= @contact.created_at.strftime('%R') %></b>
+			</p>
+			<p>お名前：<%= @contact.last_name %><%= @contact.first_name %></p>
+			<p>フリガナ：<%= @contact.last_name_ruby %><%= @contact.first_name_ruby %></p>
+			<p>メールアドレス：<%= @contact.email %></p>
+			<p>お問い合わせ内容</p>
+			<div class="admin-contact-text">
+				<%= @contact.contact_body %>
+			</div>
+			<div class="admin-contact-status">
+				<% if @contact.status == "未対応" %>
+					<%= button_to "未対応", {controller: 'admin/contacts', action: 'update'},{method: :patch} %>
+				<% elsif @contact.status == "対応済み" %>
+					<%= button_to "対応済み",{controller: 'admin/contacts', action: 'update'},{method: :patch} %>
+				<% end %>
+			</div>
+		</div>
+		<p class="admin-top-link"><%= link_to 'お問い合わせ一覧へ戻る', admin_contacts_path %></p>
+	</div>
+	<div class="col-lg-3"></div>
+</div>

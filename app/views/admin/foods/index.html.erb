@@ -1,20 +1,31 @@
-<h2>登録食品一覧</h2>
-
-<%= link_to "新規登録", new_admin_food_path %>
-
-<table>
-		<tr>
-			<th>食品名</th>
-			<th>食品の分類</th>
-			<th>色の分類</th>
-		</tr>
-	<% @foods.each do |food| %>
-		<tr>
-			<td><%= food.food_item %></td>
-			<td><%= food.food_category %></td>
-			<td><%= food.food_color %></td>
-			<td><%= link_to '編集', edit_admin_food_path(food) %></td>
-			<td><%= link_to '削除', admin_food_path(food), method: :delete %></td>
-	    </tr>
-    <% end %>
-</table>
+<p class="headline">登録食品一覧</p>
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="admin-food-list col-lg-10">
+		<p><%= link_to "新規登録", new_admin_food_path, class:"btn btn-default" %></p>
+		<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>食品名</th>
+					<th>食品の分類</th>
+					<th>色の分類</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @foods.each do |food| %>
+					<tr>
+						<td><%= food.food_item %></td>
+						<td><%= food.food_category %></td>
+						<td><%= food.food_color %></td>
+						<td><%= link_to '編集', edit_admin_food_path(food) %></td>
+						<td><%= link_to '削除', admin_food_path(food), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div><!-- admin-food-list col-lg-10 -->
+	<div class="col-lg-1"></div>
+</div><!-- row_end -->

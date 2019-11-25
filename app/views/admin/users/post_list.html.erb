@@ -1,0 +1,41 @@
+<p class="headline"><%= @user.last_name %><%= @user.first_name %>さんの投稿一覧</p>
+
+
+<div class="row">
+	<div class="col-lg-1"></div>
+
+	<div class="admin-user-post-list col-lg-10">
+
+		<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>日付</th>
+					<th>時間</th>
+					<th>投稿画像</th>
+					<th>目標</th>
+					<th>テキスト</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @posts.each do |post| %>
+					<tr>
+						<th><%= post.created_at.strftime('%Y/%m/%d') %></th>
+						<th><%= post.created_at.strftime('%R') %></th>
+						<th><%= attachment_image_tag post, :post_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %></p></th>
+						<th><%= post.post_target %></th>
+						<th><%= post.post_body %></th>
+						<th><%= link_to '編集', edit_admin_post_path(post) %></th>
+						<th><%= link_to '削除', admin_post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" %></th>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<p class="admin-top-link"><%= link_to 'ユーザーの詳細へ戻る', admin_user_path(@user.id) %></p>
+        <p class="admin-top-link"><%= link_to 'ユーザー一覧へ戻る', admin_users_path %></p>
+	</div><!-- admin-article-list col-lg-10 -->
+	<div class="col-lg-1"></div>
+</div><!-- row_end -->

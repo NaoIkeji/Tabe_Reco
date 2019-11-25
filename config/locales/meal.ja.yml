@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models: 食事
+    attributes:
+      meal:
+        ate_date: 食事の日付
+        ate_time: 食事の時間
+        meal_item: 食事の項目
+      meal/food_points:
+        food_id: 食品項目
+        point: 食品分量
+        food: 1食のバランスチェック

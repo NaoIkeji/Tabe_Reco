@@ -1,0 +1,68 @@
+<p class="headline"><%= @user.last_name %><%= @user.first_name %>さん編集ページ</p>
+
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="user-form-page col-lg-6">
+    <div class="user-form">
+
+      <%= form_for(@user, url:admin_user_path, method: :patch) do |f| %>
+
+          <div class="user-form-item field">
+            <p><b>お名前</b></p>
+            <%= f.label :姓　%><br>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :名　%><br>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :セイ %><br>
+            <%= f.text_field :last_name_ruby, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :メイ %><br>
+            <%= f.text_field :first_name_ruby, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :ニックネーム %><br>
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :email %><br /><br>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :password %><br> <i>(変更しない場合は空白のままにしてください)</i>
+            <% if @minimum_password_length %>
+            <em>※<%= @minimum_password_length %> 字以上で入力してください</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control",placeholder: "パスワードを入力" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "確認用のパスワードを入力" %>
+          </div>
+
+          <div class="user-form-item field">
+            <%= f.label :current_password %><br> <i>(変更を確認するには現在のパスワードが必要です)</i><br />
+            <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", placeholder: "現在のパスワードを入力" %>
+          </div>
+
+          <div class="user-form-item user-form-submit actions">
+            <%= f.submit "編集", class: "btn btn-info" %>
+          </div>
+      <% end %>
+        <p class="admin-top-link"><%= link_to 'ユーザーの詳細へ戻る', admin_user_path(@user.id) %></p>
+        <p class="admin-top-link"><%= link_to 'ユーザー一覧へ戻る', admin_users_path %></p>
+    </div><!-- user-form_end -->
+  </div><!-- user-form-page_end -->
+  <div class="col-lg-3"></div>
+</div><!-- row_end -->
