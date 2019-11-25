@@ -11,7 +11,7 @@
 					<%= attachment_image_tag @article, :article_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: '300x300' %>
 				</div>
 				<div class="admin-article-body ">
-					<%= @article.article_body %>
+					<p><%= safe_join(@article.article_body.split("\n"),tag(:br))%></p>
 			    </div>
 
 				<div class="admin-article-action clearfix">

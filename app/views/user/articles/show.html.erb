@@ -13,7 +13,7 @@
 				    </div>
 				</div>
 				<div class="article-text col-lg-6">
-					<p><%= @article.article_body %></p>
+					<p><%= safe_join(@article.article_body.split("\n"),tag(:br))%></p>
 				</div>
 			</div>
 		</div>
