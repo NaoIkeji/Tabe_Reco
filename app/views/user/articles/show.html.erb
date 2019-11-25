@@ -4,7 +4,7 @@
 			<div class="article-item-in">
 				<div class="col-lg-6">
 					<p><b><%= @article.article_title %></b></p>
-					<p>カテゴリー：<%= @article.article_genre.genre_name %></p>
+					<p><%= @article.article_genre.genre_name %></p>
 					<div class="atricle-image">
 						<%= attachment_image_tag @article, :article_image, :fill, 300, 250, format: 'jpeg', fallback: "no_image.jpg", size: '300x250' %>
 					</div>

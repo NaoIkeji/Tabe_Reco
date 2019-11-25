@@ -13,103 +13,107 @@
 
   <body>
 
-  <header>
-  <div class="row">
-      <% if request.path_info.include?('admin') %>
-          <div>
-              <% if admin_signed_in? %>
-                <div class="logo col-lg-3">
-                    <%= link_to admin_home_top_path do %>
-                        <%= image_tag 'logo.jpg', size: '280x120'%>
-                    <% end %>
-                </div>
-                <div class="header-list col-lg-9 ">
-                  <div class="header-nav-list1">
-                    <ul>
-                      <li>管理者としてログイン中</li>
-                      <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-                    </ul>
-                  </div>
-                </div>
-              <% else %>
+  <div id="wrapper">
+
+    <header>
+    <div class="row">
+        <% if request.path_info.include?('admin') %>
+            <div>
+                <% if admin_signed_in? %>
                   <div class="logo col-lg-3">
-                      <%= link_to new_admin_session_path do %>
-                        <%= image_tag 'logo.jpg', size: '280x120'%>
+                      <%= link_to admin_home_top_path do %>
+                          <%= image_tag 'logo.jpg', size: '280x120'%>
                       <% end %>
                   </div>
-
-
                   <div class="header-list col-lg-9 ">
                     <div class="header-nav-list1">
                       <ul>
-                        <li><%= link_to 'ログイン', admin_session_path %></li>
-                     </ul>
+                        <li>管理者としてログイン中</li>
+                        <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+                      </ul>
                     </div>
                   </div>
+                <% else %>
+                    <div class="logo col-lg-3">
+                        <%= link_to new_admin_session_path do %>
+                          <%= image_tag 'logo.jpg', size: '280x120'%>
+                        <% end %>
+                    </div>
 
-              <% end %>
-            </ul>
-          </div>
 
-      <% else%>
+                    <div class="header-list col-lg-9 ">
+                      <div class="header-nav-list1">
+                        <ul>
+                          <li><%= link_to 'ログイン', admin_session_path %></li>
+                       </ul>
+                      </div>
+                    </div>
 
-            <div class="logo col-lg-3">
-                  <%= link_to root_path do %>
-                    <%= image_tag 'logo.jpg', size: '280x120'%>
-                  <% end %>
+                <% end %>
+              </ul>
             </div>
 
-            <div class="header-list col-lg-9 ">
-                <div class="header-nav-list1 row clearfix">
-                  <ul>
-                    <% if user_signed_in? %>
-                        <li><%= link_to '使い方', about_path %></li>
-                        <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
-                        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-                    <% else %>
-                        <li><%= link_to '使い方', about_path %></li>
-                        <li><%= link_to '会員登録', new_user_registration_path %></li>
-                        <li><%= link_to 'ログイン', user_session_path %></li>
-                        <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
+        <% else%>
+
+              <div class="logo col-lg-3">
+                    <%= link_to root_path do %>
+                      <%= image_tag 'logo.jpg', size: '280x120'%>
                     <% end %>
-                  </ul>
-                </div>
+              </div>
 
-              <% if user_signed_in? %>
-                <div>
-                  <ul class="nav nav-pills nav-justified">
-                      <li role="presentation">
-                        <%= link_to '自分の記録',user_my_page_path(current_user.id) %>
-                      </li>
-                      <li role="presentation">
-                        <%= link_to 'みんなの広場', user_posts_path %>
-                      </li>
-                      <li role="presentation">
-                        <%= link_to '栄養の知識', user_articles_path %>
-                      </li>
-                      <li role="presentation">
-                        <%= link_to user_setting_changing_path(current_user.id) do %>
-                          <span class="header-user-image"><%= attachment_image_tag current_user, :profile_image, :fill, 28, 28, format: 'jpeg', fallback: "no_image.jpg", size: '28x28', class:"img-circle" %></span>
-                        <%= current_user.nickname %>
-                        <% end %>
-                      </li>
-                  </ul>
-                </div>
-              <% end %>
-          </div>
-      <% end %>
-    </div>
-    </header>
+              <div class="header-list col-lg-9 ">
+                  <div class="header-nav-list1 row clearfix">
+                    <ul>
+                      <% if user_signed_in? %>
+                          <li><%= link_to '使い方', about_path %></li>
+                          <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
+                          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                      <% else %>
+                          <li><%= link_to '使い方', about_path %></li>
+                          <li><%= link_to '会員登録', new_user_registration_path %></li>
+                          <li><%= link_to 'ログイン', user_session_path %></li>
+                          <li><%= link_to 'お問い合わせ', new_user_contact_path %></li>
+                      <% end %>
+                    </ul>
+                  </div>
 
-    <div class="container main">
-        <%= yield %>
-    </div>
-
-    <footer>
-      <div>
-          <p class="footer-copyright"><small>Copyright © 2019 TabeReco. All Rights Reserved.</small></p>
+                <% if user_signed_in? %>
+                  <div>
+                    <ul class="nav nav-pills nav-justified">
+                        <li role="presentation">
+                          <%= link_to '自分の記録',user_my_page_path(current_user.id) %>
+                        </li>
+                        <li role="presentation">
+                          <%= link_to 'みんなの広場', user_posts_path %>
+                        </li>
+                        <li role="presentation">
+                          <%= link_to '栄養の知識', user_articles_path %>
+                        </li>
+                        <li role="presentation">
+                          <%= link_to user_setting_changing_path(current_user.id) do %>
+                            <span class="header-user-image"><%= attachment_image_tag current_user, :profile_image, :fill, 28, 28, format: 'jpeg', fallback: "no_image.jpg", size: '28x28', class:"img-circle" %></span>
+                          <%= current_user.nickname %>
+                          <% end %>
+                        </li>
+                    </ul>
+                  </div>
+                <% end %>
+            </div>
+        <% end %>
       </div>
-    </footer>
+      </header>
+
+      <div class="container main">
+          <%= yield %>
+      </div>
+
+      <footer>
+        <div>
+            <p class="footer-copyright"><small>Copyright © 2019 TabeReco. All Rights Reserved.</small></p>
+        </div>
+      </footer>
+
+    </div>
   </body>
 
 </html>

@@ -52,14 +52,21 @@ body {
 	background-size: cover;
 }
 
+body,
+#wrapper{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 .main {
-	padding: 30px 0px;
+	padding: 30px 0px 120px 0px;
 }
 
 footer {
 	background-color: #ffffff;
 	border-top: solid 1px #bfbfbf;
-	margin-top: 50px;
+	margin-top: auto;
 	padding: 10px 0px;
 }
 

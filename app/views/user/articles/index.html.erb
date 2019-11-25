@@ -7,7 +7,7 @@
 	<div class="article-content-item">
 		<div class="atricle-index-headline">
 			<p><b><%= article.article_title %></b></p>
-			<p>カテゴリー：<%= article.article_genre.genre_name %></p>
+			<p><%= article.article_genre.genre_name %></p>
 		</div>
 		<div class="atricle-index-image">
 			<%= link_to user_article_path(article.id) do %>
