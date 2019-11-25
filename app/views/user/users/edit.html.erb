@@ -2,60 +2,51 @@
 
 <div class="row">
 	<div class="col-lg-3"></div>
-
 	<div class="edit-prof-container col-lg-6">
 		<div class="edit-prof-in">
 			<%= form_for(@user, url: user_user_path(current_user.id), method: :patch )do |f| %>
-
-			<div class="error-message">
-				<% if @user.errors.any? %>
-					<div class="alert alert-warning">
-	  					<% @user.errors.full_messages.each do |message| %>
-	  						<ul>
-	  							<li><%= message %></li>
-	  						</ul>
-	  					<% end %>
-	  				</div>
-				<% end %>
-			</div>
-
-			<div class="user-prof row">
-				<div class="user-prof-form-image col-lg-6">
-					<p><b>プロフィール画像</b></p>
-					<img id="preview" width="150" height="150">
-					<%= f.file_field :profile_image, id:"myImage" %>
-				</div>
-
-				<div class="user-prof-image-edit col-lg-6">
-					<% if request.path_info.include?('edit') %>
-						<p><b>登録済みの写真</b><p>
-						<%= attachment_image_tag @user, :profile_image, :fill, 150,150, format: 'jpeg', fallback: "no_image.jpg", size: '150x150' %>
+				<div class="error-message">
+					<% if @user.errors.any? %>
+						<div class="alert alert-warning">
+		  					<% @user.errors.full_messages.each do |message| %>
+		  						<ul>
+		  							<li><%= message %></li>
+		  						</ul>
+		  					<% end %>
+		  				</div>
 					<% end %>
 				</div>
-			</div>
-
-			<div class="user-prof-form-target">
-				<p><b>目標</b></p>
-					<%= f.fields_for :targets do |target| %>
-					<%= render "target_fields", f: target %>
-				<% end %>
-
-				<div class="links">
-					<p><%= link_to_add_association "目標を追加", f, :targets, class:"btn btn-default btn-sm" %></p>
+				<div class="user-prof row">
+					<div class="user-prof-form-image col-lg-6">
+						<p><b>プロフィール画像</b></p>
+						<img id="preview" width="150" height="150">
+						<%= f.file_field :profile_image, id:"myImage" %>
+					</div>
+					<div class="user-prof-image-edit col-lg-6">
+						<% if request.path_info.include?('edit') %>
+							<p><b>登録済みの写真</b><p>
+							<%= attachment_image_tag @user, :profile_image, :fill, 150,150, format: 'jpeg', fallback: "no_image.jpg", size: '150x150' %>
+						<% end %>
+					</div>
 				</div>
-			</div>
-
-			<div class="user-prof-form-introduction">
-				<p><b>自己紹介</b></p>
-				<%= f.text_area :introduction, size:"65x4", placeholder:"自己紹介を入力してください", class:"form-control"%>
-			</div>
-
-			<div class="user-prof-form-submit">
-				<%= f.submit "登録する", class:"btn btn-info" %>
-			</div>
-
+				<div class="user-prof-form-target">
+					<p><b>目標</b></p>
+					<%= f.fields_for :targets do |target| %>
+						<%= render "target_fields", f: target %>
+					<% end %>
+					<div class="links">
+						<p><%= link_to_add_association "目標を追加", f, :targets, class:"btn btn-default btn-sm" %></p>
+					</div>
+				</div>
+				<div class="user-prof-form-introduction">
+					<p><b>自己紹介</b></p>
+					<%= f.text_area :introduction, size:"65x4", placeholder:"自己紹介を入力してください", class:"form-control"%>
+				</div>
+				<div class="user-prof-form-submit">
+					<%= f.submit "登録する", class:"btn btn-info" %>
+				</div>
 		  <% end %>
-		</div>
+		</div><!-- edit-prof-in -->
 	</div><!-- new-post-container -->
 	<div class="col-lg-3"></div>
 </div><!-- row_end -->

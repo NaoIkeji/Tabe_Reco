@@ -1,69 +1,56 @@
 <%= render 'nav' %>
 
-
-
 <p class="headline"><%= @date[0] %>年<%= @date[1] %>月<%= @date[2] %>日の食事一覧</p>
 
-
 <div class="daily_meal_body row">
-
-<div class="col-lg-1"></div>
-
-
-<div class="col-lg-10">
-<% @meals.each do |meal| %>
-<div class="daily_meal_list col-lg-12">
-	<div>
-		<p><b><%= meal.meal_item %></b>
-		<b><%= meal.ate_time.strftime('%R') %></b></p>
-	</div>
-
-	<div class="daily_meal_content row">
-		<div class="meal-image col-lg-3">
-			<%= attachment_image_tag meal, :meal_image, :fill, 200, 150, fallback: "no_image_02.jpg", size:'200x150' %>
-		</div>
-
-		<div class="meal-memo col-lg-4">
-			<p><b>食事メモ</b></p>
-			<p><%= meal.meal_text %></p>
-		</div>
-
-		<div class="meal-date col-lg-5">
-			<p><b>食品項目と分量</b></p>
-			<% meal.food_points.each do |food_point| %>
-				<ul>
-					<li>
-						<%= food_point.food.food_item %>：
-							<% if food_point.point == 1 %>
-								<%= "少ない" %>
-							<% elsif food_point.point == 2 %>
-								<%= "やや少ない" %>
-							<% elsif food_point.point == 3 %>
-								<%= "ふつう" %>
-							<% elsif food_point.point == 4 %>
-								<%= "やや多い" %>
-							<% elsif food_point.point == 5 %>
-								<%= "多い" %>
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<% @meals.each do |meal| %>
+			<div class="daily_meal_list col-lg-12">
+				<div>
+					<p><b><%= meal.meal_item %></b>
+					<b><%= meal.ate_time.strftime('%R') %></b></p>
+				</div>
+				<div class="daily_meal_content row">
+					<div class="meal-image col-lg-3">
+						<%= attachment_image_tag meal, :meal_image, :fill, 200, 150, fallback: "no_image_02.jpg", size:'200x150' %>
+					</div>
+					<div class="meal-memo col-lg-4">
+						<p><b>食事メモ</b></p>
+						<p><%= meal.meal_text %></p>
+					</div>
+					<div class="meal-date col-lg-5">
+						<p><b>食品項目と分量</b></p>
+						<% meal.food_points.each do |food_point| %>
+							<ul>
+								<li>
+									<%= food_point.food.food_item %>：
+										<% if food_point.point == 1 %>
+											<%= "少ない" %>
+										<% elsif food_point.point == 2 %>
+											<%= "やや少ない" %>
+										<% elsif food_point.point == 3 %>
+											<%= "ふつう" %>
+										<% elsif food_point.point == 4 %>
+											<%= "やや多い" %>
+										<% elsif food_point.point == 5 %>
+											<%= "多い" %>
+									<% end %>
+								</li>
+							</ul>
 						<% end %>
-					</li>
-				</ul>
-			<% end %>
-		</div>
-    </div>
-
-	<div class="meal-action clearfix">
-		<ul>
-			<li><p><%= link_to '編集', edit_user_meal_path(meal.id) ,class:"btn btn-default btn-ms"%></p></li>
-			<li><%= link_to '削除', user_meal_path(meal.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-ms" %></li>
-		</ul>
-	</div>
-</div>
-<% end %>
-
-</div>
-
-<div class="col-lg-1"></div>
-
+					</div><!-- meal-date col-lg-5 -->
+			    </div><!-- daily_meal_content row_end -->
+				<div class="meal-action clearfix">
+					<ul>
+						<li><p><%= link_to '編集', edit_user_meal_path(meal.id) ,class:"btn btn-default btn-ms"%></p></li>
+						<li><%= link_to '削除', user_meal_path(meal.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-ms" %></li>
+					</ul>
+				</div>
+			</div><!--  daily_meal_list col-lg-12_end -->
+		<% end %>
+	</div><!-- col-lg-10_end -->
+	<div class="col-lg-1"></div>
 </div><!-- row_end -->
 
 

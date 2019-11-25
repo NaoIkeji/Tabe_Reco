@@ -5,13 +5,12 @@
     <div class="col-lg-6">
     	 <div>
           <% if @genre.errors.any? %>
-            <%= @genre.errors.count %>error!
-            <% @genre.errors.full_messages.each do |genre| %>
-              <%= message %>
-            <% end %>
+              <%= @genre.errors.count %>error!
+              <% @genre.errors.full_messages.each do |genre| %>
+                  <%= message %>
+              <% end %>
           <% end %>
         </div>
-
         <div class="genre-form">
         	<%= form_for(@genre, url: admin_article_genres_path ,method: :post) do |f| %>
         		<div class="genre-form-item">
@@ -20,11 +19,10 @@
         		<div class="genre-submit">
         			<%= f.submit "登録する", class:"btn btn-info" %>
         		</div>
-			<% end %>
-			<br>
-			<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+			    <% end %>
+			    <br>
+			    <p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
         </div>
-
     </div>
   <div class="col-lg-3"></div>
 </div><!-- row_end -->

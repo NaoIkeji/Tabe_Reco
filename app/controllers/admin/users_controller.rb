@@ -5,9 +5,6 @@ class Admin::UsersController < ApplicationController
 		@users = User.page(params[:page]).reverse_order
 		@search = User.ransack(params[:q])
 		@users = @search.result
-		# @users = User.where(deleted_at: nil).page(params[:page]).reverse_order
-		# @users = User.all
-		# @users = User.where(deleted_at: nil).all.order(created_at: "DESC")
 	end
 
 	def show

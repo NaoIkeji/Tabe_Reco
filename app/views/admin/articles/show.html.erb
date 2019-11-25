@@ -13,7 +13,6 @@
 				<div class="admin-article-body ">
 					<p><%= safe_join(@article.article_body.split("\n"),tag(:br))%></p>
 			    </div>
-
 				<div class="admin-article-action clearfix">
 					<ul>
 						<li><%= link_to "編集", edit_admin_article_path(@article.id), class:"btn btn-default btn-sm" %></li>

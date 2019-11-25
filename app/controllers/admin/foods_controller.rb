@@ -38,6 +38,7 @@ class Admin::FoodsController < ApplicationController
 
 
 	private
+
 	def food_params
 		params.require(:food).permit(:food_item, :food_category, :food_color)
 	end

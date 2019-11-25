@@ -1,31 +1,23 @@
 <p class="headline"><b><%= @article_genre.genre_name %>の記事一覧</b></p>
 
 <div class="row">
-
-<div class="f-container clearfix col-lg-9">
-
-<% @articles.each do |article| %>
-<div class="f-item article-content col-lg-4">
-	<div class="article-content-item">
-		<p><b><%= article.article_title %></b></p>
-		<p>カテゴリー：<%= article.article_genre.genre_name %></p>
-		<p>
-			<%= link_to user_article_path(article.id) do %>
-				<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
-			<% end %>
-		</p>
-		<p><%= article.created_at.strftime('%Y/%m/%d') %></p>
+	<div class="f-container clearfix col-lg-9">
+		<% @articles.each do |article| %>
+			<div class="f-item article-content col-lg-4">
+				<div class="article-content-item">
+					<p><b><%= article.article_title %></b></p>
+					<p>カテゴリー：<%= article.article_genre.genre_name %></p>
+					<p>
+						<%= link_to user_article_path(article.id) do %>
+							<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: '200x200' %>
+						<% end %>
+					</p>
+					<p><%= article.created_at.strftime('%Y/%m/%d') %></p>
+				</div>
+			</div>
+		<% end %>
 	</div>
-</div>
-<% end %>
-
-</div>
-
-
-<div class="col-lg-3">
-<%= render 'user/articles/nav' %>
-</div>
-
-
-
+	<div class="col-lg-3">
+		<%= render 'user/articles/nav' %>
+	</div>
 </div>

@@ -21,4 +21,5 @@ class Admin::ContactsController < ApplicationController
 			redirect_to admin_contacts_path
 		end
 	end
+
 end

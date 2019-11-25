@@ -15,9 +15,9 @@
 			<% @users.each do |user| %>
 				<div class="user-list-in row">
 					<div class="user-prof col-lg-4">
-							<%= link_to user_user_path(user.id) do %>
-								<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50', class:"img-circle" %><span class="user-nickname"><%= user.nickname %></span>
-							<% end %>
+						<%= link_to user_user_path(user.id) do %>
+							<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50', class:"img-circle" %><span class="user-nickname"><%= user.nickname %></span>
+						<% end %>
 					</div>
 					<div id="follow_buttons_<%= user.id %>" class="col-lg-8">
 						<%= render 'user/users/follow_form' , user: user %>

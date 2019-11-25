@@ -39,4 +39,5 @@ class Admin::ArticleGenresController < ApplicationController
 	def genre_params
 		params.require(:article_genre).permit(:genre_name)
 	end
+
 end

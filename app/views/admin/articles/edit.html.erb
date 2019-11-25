@@ -3,16 +3,14 @@
 <div class="row">
   <div class="col-lg-3"></div>
     <div class="col-lg-6">
-
 		<div>
 			<% if @article.errors.any? %>
-			  <%= @article.errors.count %>error!
-			  <% @article.errors.full_messages.each do |message| %>
-			    <%= message %>
-			  <% end %>
+			  	<%= @article.errors.count %>error!
+			  	<% @article.errors.full_messages.each do |message| %>
+			    	<%= message %>
+			  	<% end %>
 			<% end %>
 		</div>
-
 		<div class="article-form">
 			<%= form_for(@article, url: admin_article_path(@article.id) ,method: :patch) do |f| %>
         		<div class="article-form-item">
@@ -47,8 +45,8 @@
 			<% end %>
 			<br>
 			<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
-		</div>
-    </div>
+		</div><!-- article-form_end -->
+    </div><!-- col-lg-6_end -->
   <div class="col-lg-3"></div>
 </div><!-- row_end -->
 

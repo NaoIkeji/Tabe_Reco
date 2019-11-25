@@ -1,17 +1,15 @@
 <p class="headline">食品の編集</p>
-
 <div class="row">
   <div class="col-lg-3"></div>
   <div class="col-lg-6">
   		<div>
           <% if @food.errors.any? %>
-            <%= @food.errors.count %>error!
-            <% @food.errors.full_messages.each do |message| %>
-              <%= message %>
-            <% end %>
+            	<%= @food.errors.count %>error!
+            	<% @food.errors.full_messages.each do |message| %>
+             		<%= message %>
+           		 <% end %>
           <% end %>
         </div>
-
         <div class="food-form">
         	<%= form_for(@food, url:admin_food_path, method: :patch) do |f|%>
 				<div class="food-form-item">
@@ -33,6 +31,6 @@
 			<br>
 			<p class="admin-top-link"><%= link_to '食品一覧へ戻る', admin_foods_path%></p>
         </div><!-- food-form_end -->
-	</div>
+	</div><!-- col-lg-6 _end -->
   <div class="col-lg-3"></div>
 </div><!-- row_end -->

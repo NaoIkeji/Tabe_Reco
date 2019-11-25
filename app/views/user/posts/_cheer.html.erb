@@ -4,7 +4,6 @@
 		<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
 		<p><%= post.cheers.count %>応援する</p>
 	</div>
-
 <% else %>
 	<div>
 		<% if post.cheered_by?(current_user) %>

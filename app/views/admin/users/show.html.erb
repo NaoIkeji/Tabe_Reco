@@ -1,30 +1,23 @@
-
 <p class="headline"><%= @user.last_name %><%= @user.first_name %>さんの詳細ページ</p>
 
 <div class="row">
 	<div class="col-lg-1"></div>
-
 		<div class="admin-user-list col-lg-10 row">
-
 			<div class="col-lg-3">
 				<%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg", size: '150x150' %>
 			</div>
-
 			<div class="col-lg-5">
 				<p>お名前：<%= @user.last_name %><%= @user.first_name %></p>
 				<p>ニックネーム：<%= @user.nickname %></p>
 				<p>メールアドレス：<%= @user.email %></p>
 			</div>
-
 			<div class="col-lg-4">
 				<p><%= link_to '情報編集', edit_admin_user_path(@user) %></p>
 				<p><%= link_to '投稿一覧', admin_user_post_list_path(@user) %></p>
 				<p><%= link_to 'コメント一覧', admin_user_comments_path(@user) %></p>
 				<p><%= link_to '削除', admin_user_path(@user), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-sm" %></p>
 			</div>
-
 			<p class="admin-top-link"><%= link_to 'ユーザー一覧へ戻る', admin_users_path %></p>
-
 		</div><!-- admin-user-list col-lg-10 -->
 	<div class="col-lg-1"></div>
 </div><!-- row_end -->
