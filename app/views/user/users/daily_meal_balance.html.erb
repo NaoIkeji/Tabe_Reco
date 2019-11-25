@@ -16,25 +16,25 @@
 						<p>・黄色：炭水化物、脂質が多い食品　→ <b>食べ過ぎです！</b></p>
 					<% elsif @yellow_food_points < 18 %>
 						<p>・黄色：炭水化物、脂質が多い食品　→ <b>もう少し食べましょう！</b></p>
-					<% elsif @yellow_food_points == 18 %>
+					<% elsif @yellow_food_points = 18 %>
 						<p>・黄色：炭水化物、脂質が多い食品　→ <b>適正量です！</b></p>
 				   <% end %>
 				</p>
 
 				<p><% if @red_food_points > 12 %>
 						<p>・赤色：たんぱく質が多い食品　→ <b>食べ過ぎです！</b></p>
-					<% elsif @yellow_food_points < 12 %>
+					<% elsif @red_food_points < 12 %>
 						<p>・赤色：たんぱく質が多い食品　→ <b>もう少し食べましょう！</b></p>
-					<% elsif @yellow_food_points == 12 %>
+					<% elsif @red_food_points = 12 %>
 						<p>・赤色：たんぱく質が多い食品　→ <b>適正量です！</b></p>
 				   <% end %>
 				</p>
 
 				<p><% if @green_food_points > 12 %>
 						<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>食べ過ぎです！</b></p>
-					<% elsif @yellow_food_points < 12 %>
+					<% elsif @green_food_points < 12 %>
 						<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>もう少し食べましょう！</b></p>
-					<% elsif @yellow_food_points == 12 %>
+					<% elsif @green_food_points = 12 %>
 						<p>・緑色：ビタミン、ミネラルが多い食品　→ <b>適正量です！</b></p>
 				   <% end %>
 				</p>

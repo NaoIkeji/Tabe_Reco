@@ -69,7 +69,8 @@
 }
 
 .meal-about-content {
-	background-color: gray;
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 20px;
 }
 
 .food-remove-btn {
@@ -83,4 +84,12 @@
 
 .food-select-form {
 	padding: 0px 10px;
+}
+
+.glyphicon-exclamation-sign {
+	padding-right: 5px;
+}
+
+.icon {
+	margin-right: 5px;
 }

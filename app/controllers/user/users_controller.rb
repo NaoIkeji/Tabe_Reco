@@ -81,7 +81,7 @@ class User::UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			redirect_to user_user_path(current_user.id)
+			redirect_to user_setting_changing_path(current_user.id)
 	    else
 	    	render :edit
 	    end

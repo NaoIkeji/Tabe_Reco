@@ -9,3 +9,4 @@ ja:
       meal/food_points:
         food_id: 食品項目
         point: 食品分量
+        food: 食品項目

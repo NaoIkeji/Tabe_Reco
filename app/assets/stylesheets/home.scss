@@ -4,10 +4,23 @@
 
 
 .about-page {
-	background-color: #ffffff;
+	background-color:rgba(255,255,255,0.9);
+	padding: 20px 0px;
 }
 
 .about-contents {
 	padding: 10px 30px;
 }
 
+.about-contents h4 {
+	padding: 25px 0px;
+	text-align: center;
+}
+
+.about-contents p {
+	padding: 3px 0px;
+}
+
+.about-text {
+	margin-left: 15px;
+}
