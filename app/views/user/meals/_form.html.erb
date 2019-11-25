@@ -169,7 +169,7 @@
 
 
 			<div class="food-select">
-				<div class="meal-headline green-food">
+				<div class="green-food">
 					<p class="meal-headline">
 						<span class="icon"><%= image_tag 'icon_apple.png'%></span>果物
 					</p>
@@ -223,7 +223,7 @@
 					<div class="food-select-form">
 						<% @kind = "嗜好品" %>
 						<%= f.fields_for :food_points do |food_point| %>
-							<% @foods = Food.where(food_category: "油脂") %>
+							<% @foods = Food.where(food_category: "嗜好品") %>
 							<% @foods.each do |t| %>
 								<% if t.id == food_point.object.food_id%>
 									<%= render "food_point_fields", f: food_point %>
@@ -241,6 +241,12 @@
 			<div>
 				<p class="meal-submit"><%= f.submit @text ,class:"btn btn-warning"%></p>
 			</div>
+
+			<% if request.path_info.include?('edit') %>
+				<div class="meal-edit">
+					<%= link_to "食事記録一覧へ戻る", user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + @meal.ate_date.strftime("%F") %>
+				</div>
+			<% end %>
 
 		</div><!-- balance-check-form_end -->
 

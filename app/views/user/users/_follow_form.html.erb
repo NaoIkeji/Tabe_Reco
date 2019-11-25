@@ -2,27 +2,27 @@
 
 <!-- フォロー、フォロワーの統計表示する -->
 <div class="row">
-<div class="follow-status clearfix col-lg-7">
-	<ul>
-		<li>
-			<a href = "<%= following_user_user_path(user) %>" %><%= user.following.count %>フォロー</a>
-		</li>
-		<li>
-			<a href = "<%= followers_user_user_path(user) %>" %><%= user.followers.count %>フォロワー</a>
-		</li>
-	</ul>
-</div>
+	<div class="follow-status clearfix col-lg-7">
+		<ul>
+			<li>
+				<a href = "<%= following_user_user_path(user) %>" %><%= user.following.count %>フォロー</a>
+			</li>
+			<li>
+				<a href = "<%= followers_user_user_path(user) %>" %><%= user.followers.count %>フォロワー</a>
+			</li>
+		</ul>
+	</div>
 
 <!-- フォローをやめる/フォローをするのボタンを表示する -->
 
-<div class="follow-btn col-lg-5">
-	<% if current_user != user %>
-		<% if Relationship.find_by(follower_id: current_user.id,followed_id: user.id) %>
-				<%= link_to "フォロー中", user_user_relationships_path(user.id), method: :delete, remote: true, class:"btn btn-info col-lg-12" %>
-		<% else %>
-	            <%= link_to "フォローする", user_user_relationships_path(user.id), method: :post, remote: true, class:"btn btn-default col-lg-12" %>
+	<div class="follow-btn col-lg-5">
+		<% if current_user != user %>
+			<% if Relationship.find_by(follower_id: current_user.id,followed_id: user.id) %>
+					<%= link_to "フォロー中", user_user_relationships_path(user.id), method: :delete, remote: true, class:"btn btn-info col-lg-12" %>
+			<% else %>
+		            <%= link_to "フォローする", user_user_relationships_path(user.id), method: :post, remote: true, class:"btn btn-default col-lg-12" %>
+			<% end %>
 		<% end %>
-	<% end %>
-</div>
+	</div>
 
 </div>

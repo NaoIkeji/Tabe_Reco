@@ -4,9 +4,9 @@ class User::MealsController < ApplicationController
 	def meal_indication
 	end
 
-	def index
-		@meals = Meal.all
-	end
+	# def index
+	# 	@meals = Meal.all
+	# end
 
 	def new
 		@meal = Meal.new
@@ -24,7 +24,7 @@ class User::MealsController < ApplicationController
          @text = "食事を登録する"
          @url = user_meals_path
          render :new
-         return
+         # return
        end
 	end
 

@@ -116,22 +116,19 @@ class User::UsersController < ApplicationController
 		@search = User.ransack(params[:q])
 	end
 
-	def user_search
-				# 検索オブジェクト
-		@users = User.all
-		@search = User.ransack(params[:q])
-		# 検索結果
-		# @users = @search.result
-	end
+	# def user_search
+	# 	# 検索オブジェクト
+	# 	@users = User.all
+	# 	@search = User.ransack(params[:q])
+	# 	# 検索結果
+	# 	# @users = @search.result
+	# end
 
 	def search_list
 		# 検索オブジェクト
 		@search = User.ransack(params[:q])
 		# 検索結果
 		@users = @search.result
-	end
-
-	def my_data
 	end
 
 

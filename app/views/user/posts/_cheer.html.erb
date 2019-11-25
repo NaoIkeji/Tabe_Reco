@@ -1,7 +1,9 @@
 <!-- 応援するの部分テンプレート -->
 <% if post.user.id == current_user.id %>
-	<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
-		<%= post.cheers.count %>
+	<div>
+		<span class="glyphicon glyphicon-star" aria-hidden="true" style="color: orange;"></span>
+		<p><%= post.cheers.count %>応援する</p>
+	</div>
 
 <% else %>
 	<div>
