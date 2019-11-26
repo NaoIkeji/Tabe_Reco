@@ -1,0 +1,54 @@
+<p class="headline">記事の新規投稿</p>
+
+<div class="row">
+  <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+
+		<div>
+			<% if @article.errors.any? %>
+			  <%= @article.errors.count %>error!
+			  <% @article.errors.full_messages.each do |message| %>
+			    <%= message %>
+			  <% end %>
+			<% end %>
+		</div>
+
+		<div class="article-form">
+        	<%= form_for(@article, url: admin_articles_path ,method: :post) do |f| %>
+        		<div class="article-form-item">
+        			<%= f.label :タイトル %>
+					<%= f.text_field :article_title, class:"form-control" %>
+        		</div>
+        		<div class="article-form-item">
+        			<%= f.label :ジャンル %>
+					<%= f.collection_select :article_genre_id, ArticleGenre.all, :id, :genre_name, {prompt: true}, class:"form-control" %>
+        		</div>
+        		<div class="article-form-item">
+        			<%= f.label :投稿画像 %><br>
+					<img id="preview" width="250" height="200">
+					<%= f.file_field :article_image, id:"myImage" %>
+        		</div>
+        		<div class="article-form-item">
+					<%= f.label :本文 %><br>
+					<%= f.text_area :article_body, size: "80x10", class:"form-control" %>
+        		</div>
+        		<div class="article-submit">
+        			<%= f.submit "投稿", class:"btn btn-info" %>
+        		</div>
+			<% end %>
+			<br>
+			<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+		</div>
+    </div>
+  <div class="col-lg-3"></div>
+</div><!-- row_end -->
+
+<script>
+	$('#myImage').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+	});
+</script>

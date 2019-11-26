@@ -1,0 +1,55 @@
+// Place all the styles related to the user/articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.f-container{
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.sidebar {
+	background-color: #ffffff;
+	padding: 10px 50px;
+}
+
+.article-content {
+	padding: 10px 0px;
+}
+
+.article-content-item {
+	background-color: #ffffff;
+	padding: 15px 30px;
+	-webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+}
+
+.article-content-item:hover {
+	background-color:rgba(255,255,255,0.8);
+}
+
+.article-item {
+	padding: 20px 70px;
+	background-color: #ffffff;
+}
+
+.article-text {
+	margin-top :55px;
+}
+
+.article-item-in {
+	margin-right: 35px;
+}
+
+.atricle-image {
+}
+
+.atricle-date {
+	padding: 10px 0px 0px 0px;
+}
+
+.atricle-index-headline p {
+	padding: 3px 0px;
+}

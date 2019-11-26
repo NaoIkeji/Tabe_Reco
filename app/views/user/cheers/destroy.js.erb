@@ -1,0 +1,1 @@
+$('#cheers_buttons_<%= @post.id %>').html("<%= j(render partial: 'user/posts/cheer', locals: {post: @post}) %>");

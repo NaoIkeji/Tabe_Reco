@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        post_target: 目標
+        post_body: テキスト
+
+
+

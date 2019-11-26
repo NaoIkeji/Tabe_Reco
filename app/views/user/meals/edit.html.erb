@@ -1,4 +1,8 @@
-<h2>１食の食事記録の編集ページ</h2>
+<%= render 'user/users/nav' %>
+
+<p class="headline">１食の食事記録の編集</p>
 
 
-<%= render 'form', meal: @meal %>
+<div>
+	<%= render 'form', meal: @meal, url: @url, text: @text %>
+</div>

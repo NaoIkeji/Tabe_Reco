@@ -1,0 +1,42 @@
+<p class="headline"><%= @user.last_name + @user.first_name %>さんのコメント一覧</p>
+
+<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="admin-user-comment-list col-lg-10">
+		<p class="admin-top-link"><%= link_to 'トップへ戻る', admin_home_top_path %></p>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>コメント日時</th>
+					<th>投稿ユーザー</th>
+					<th>投稿画像</th>
+					<th>目標/内容</th>
+					<th>コメント内容</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @comments.each do |comment| %>
+					<tr>
+						<th><%= comment.created_at.strftime('%Y/%m/%d') %><br>
+							<%= comment.created_at.strftime('%R') %>
+						</th>
+						<th><%= comment.post.user.nickname %></th>
+						<th><%= attachment_image_tag comment.post, :post_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size: '100x100' %>
+						</th>
+						<th><%= comment.post.post_target %><br>
+							<%= truncate(comment.post.post_body, length: 10) %>
+						</th>
+						<th><%= truncate(comment.comment_body, length: 10) %></th>
+						<th><%= link_to '編集', edit_admin_post_comment_path(comment.post.id, comment.id) %></th>
+						<th><%= link_to '削除', admin_post_comment_path(comment.post.id, comment.id),method: :delete, "data-confirm" => "本当に削除しますか？" %></th>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<p class="admin-top-link"><%= link_to 'ユーザーの詳細へ戻る', admin_user_path(@user.id) %></p>
+        <p class="admin-top-link"><%= link_to 'ユーザー一覧へ戻る', admin_users_path %></p>
+	</div><!-- admin-article-list col-lg-10 -->
+	<div class="col-lg-1"></div>
+</div><!-- row_end -->

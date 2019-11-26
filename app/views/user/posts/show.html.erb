@@ -1,0 +1,123 @@
+<%= render 'user/posts/nav' %>
+
+<p class="headline">投稿の詳細</p>
+
+<div class="row">
+	<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<div class="post">
+				<div class="post-user">
+					<%= link_to user_user_path(@post.user.id) do %>
+						<%= attachment_image_tag @post.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50', class:"img-circle" %><span class="user-nickname"><%= @post.user.nickname %></span>
+					<% end %>
+				</div>
+
+				<div class="post-image">
+					<%= attachment_image_tag @post, :post_image, :fill, 530, 460, fallback: "no_image.jpg", size:'530x460' %>
+				</div>
+
+				<div class="post-text">
+					<div class="post-target">
+						<p><b>目標：<%= @post.post_target %></b></p>
+					</div>
+					<hr>
+					<div class="post-body">
+						<%= @post.post_body %>
+					</div>
+				</div>
+
+				<div class="post-stats clearfix">
+					<ul>
+						<li>
+							<div id="favorites_buttons_<%= @post.id %>">
+								<%= render partial: 'user/posts/favorite', locals: {post: @post}%>
+							</div>
+						</li>
+						<li>
+							<div id="cheers_buttons_<%= @post.id %>">
+								<%= render partial: 'user/posts/cheer', locals: {post: @post} %>
+							</div>
+						</li>
+						<li>
+							<%= image_tag 'comment_icon.jpg'%>
+							<%= @post.comments.count %>件のコメント
+						</li>
+					</ul>
+				</div>
+
+				<div class="post-datetime">
+					<%= @post.created_at.strftime('%Y/%m/%d') %>
+					<%= @post.created_at.strftime('%R') %>
+				</div>
+
+				<div class="post-action clearfix">
+					<% if @user.id == current_user.id %>
+						<ul>
+							<li>
+								<%= link_to '編集', edit_user_post_path(@post.id), class:"btn btn-default btn-sm" %>
+							</li>
+							<li>
+								<%= link_to '削除', user_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-sm"%>
+							</li>
+						</ul>
+					<% end %>
+				</div>
+
+				<hr>
+
+				<div class="comment-form">
+					<div class="error-message">
+						<% if @comment.errors.any? %>
+							<div class="alert alert-warning">
+								<% @comment.errors.full_messages.each do |message| %>
+									<ul>
+										<li><%= message %></li>
+									</ul>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+
+					<% if @user.id != current_user.id %>
+						<%= form_for [@post, @comment], url: user_post_comments_path(post_id: @post.id), mthod: :post do |f| %>
+								<%= f.text_area :comment_body, size: '50x5', placeholder: "コメントをここに", class:"form-control" %>
+								<div class="comment-submit">
+									<%= f.submit "送信する", class:"btn btn-info" %>
+								</div>
+						<% end %>
+					<% end %>
+				</div><!-- comment-form_end -->
+
+				<div class="comments-index">
+					<% @comments.each do |comment| %>
+						<div class="comment-list">
+							<div class="user_comment_image">
+								<%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size: '50x50', class:"img-circle" %><span class="user-nickname"><%= comment.user.nickname %></span>
+							</div>
+							<div class="comment-text">
+									<%= comment.comment_body %>
+							</div>
+							<div class="comment-datetime">
+								<%= comment.created_at.strftime('%Y/%m/%d') %>
+								<%= comment.created_at.strftime('%R') %>
+							</div>
+							<div class="comment-action clearfix">
+								<% if comment.user.id == current_user.id %>
+									<ul>
+										<li>
+											<%= link_to "編集", edit_user_post_comment_path(comment.post.id, comment.id), class:"btn btn-default btn-sm" %>
+										</li>
+										<li>
+											<%= link_to "削除", user_post_comment_path(comment.post.id,comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default btn-sm"%>
+										</li>
+									</ul>
+								<% end %>
+							</div><!-- comment-action_end -->
+						</div><!-- comment-list -->
+					<% end %>
+				</div><!-- comments-index_end -->
+			</div><!-- post_end -->
+		</div><!-- col-lg-6_end -->
+	<div class="col-lg-3"></div>
+</div><!-- row_end -->
+

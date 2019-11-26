@@ -1,60 +1,63 @@
-<div class="container">
-  <h2>Sign up</h2>
+<p class="headline">会員登録</p>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="user-form-page col-lg-6">
+    <div class="user-form">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="user-error-text">
+            <%= render "devise/shared/error_messages", resource: resource %>
+          </div>
+          <div class="user-form-item field">
+            <p><b>お名前</b></p>
+            <%= f.label :姓　%>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
 
+          <div class="user-form-item field">
+            <%= f.label :名　%>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
 
-    <p>お名前</p>
+          <div class="user-form-item field">
+            <%= f.label :セイ %>
+            <%= f.text_field :last_name_ruby, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :姓　%>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
-    </div>
+          <div class="user-form-item field">
+            <%= f.label :メイ %>
+            <%= f.text_field :first_name_ruby, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :名　%>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
-    </div>
+          <div class="user-form-item field">
+            <%= f.label :ニックネーム %>
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :セイ %>
-      <%= f.text_field :last_name_ruby, autofocus: true, autocomplete: "name" %>
-    </div>
+          <div class="user-form-item field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :メイ %>
-      <%= f.text_field :first_name_ruby, autofocus: true, autocomplete: "name" %>
-    </div>
+          <div class="user-form-item field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>※(<%= @minimum_password_length %> 字以上で入力してください)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "パスワードを入力" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :ニックネーム %>
-      <%= f.text_field :nickname, autofocus: true, autocomplete: "name" %>
-    </div>
+          <div class="user-form-item field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "確認用のパスワードを入力" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
-
+          <div class="user-form-item user-form-submit actions">
+            <%= f.submit "会員登録", class: "btn btn-info" %>
+            <br>
+          </div>
+        <% end %>
+    </div><!-- user-form_end -->
+  </div><!-- user-form-page_end -->
+  <div class="col-lg-3"></div>
 </div>

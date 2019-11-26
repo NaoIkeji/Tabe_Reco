@@ -1,0 +1,24 @@
+// Place all the styles related to the admin/contacts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.admin-contact {
+	background-color: #ffffff;
+	padding: 20px;
+}
+
+.admin-contact-content {
+	padding: 0px 50px;
+}
+
+.admin-contact-text {
+	background-color: #eaeaea;
+	border-radius: 5px;
+	padding: 30px;
+}
+
+.admin-contact-status {
+	padding: 20px 0px;
+	text-align: right;
+}
