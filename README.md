@@ -9,7 +9,6 @@ TABE RECO (タベレコ）
 
 # DEMO
 
-写真
 
 # Features
 
@@ -21,7 +20,6 @@ TABE RECO (タベレコ）
 
 
 # Note
-注意点
 
 
 # Author
