@@ -15,7 +15,6 @@ TABE RECO (タベレコ）
 
 
 # Usage
-使い方。なるべく具体的に書く。サンプルも書く
 
 
 # Requirement
