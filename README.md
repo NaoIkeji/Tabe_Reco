@@ -2,10 +2,14 @@
 
 ![tabereco_logo](https://user-images.githubusercontent.com/49096883/69711891-2fc3d400-1145-11ea-8cbb-55ee3b0f13b7.jpg)
 
-食事記録ができるサイトです。
+食べたものを記録（レコード）できるサイト。
+TABE RECO (タベレコ）
+
+日々の食事を記録して健康的な食生活を送るサポートをします。
 
 # DEMO
 
+写真
 
 # Features
 
