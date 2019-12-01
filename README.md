@@ -10,21 +10,26 @@ TABE RECO(タベレコ)は食べたものを記録できるサイトです。
 **食事の自己管理**を目的とした方におすすめのサイトとなっています。
 
 ## 目次(Table of contents)
-- [機能](#feature)
-- [デモ](#demo)
-- [使い方](#usage)
+- [機能(Feature)](#feature)
+- [デモ(Demo)](#demo)
+- [使い方(Usage)](#usage)
   - [自分の記録](#feature_1)
   - [みんなの広場](#feature_2)
   - [栄養の知識](#feature_3)
-- [要件](#requirement)
-- [著者](#author)
-- [ライセンス](#licence)
+- [要件(Requirement)](#requirement)
+  - [フロントエンド](#requirement_01)
+  - [サーバサイド](#requirement_02)
+  - [インフラ](requirement_03)
+  - [その他](requirement_04)
+- [著者(Author)](#author)
+- [ライセンス(Licence)](#licence)
+- [謝辞(Acknowledgments)](#acknowledgments)
 
 <a id="feature"></a>
 ## 機能(Feature)
 - 食事を自己管理することができる
 - 食事の入力が簡単に短時間でできる
-- 栄養バランスがグラフでわかる
+- 1日の栄養バランスがグラフでわかる
 - 目標に向かって頑張る仲間同士で応援しあうことができる
 - 栄養や食の知識をつけることができる
 
@@ -66,11 +71,13 @@ TABE RECO(タベレコ)は食べたものを記録できるサイトです。
 
 <a id="requirement"></a>
 ## 要件(Requirement)
+<a id="requirement_01"></a>
 ### フロントエンド
 - HTML / CSS
 - Bootstrap
 - JavaScript / jQuery / Ajax
 
+<a id="requirement_02"></a>
 ### サーバサイド
 - Ruby / Ruby on Rails
 - 利用したライブラリ
@@ -83,10 +90,12 @@ TABE RECO(タベレコ)は食べたものを記録できるサイトです。
   
    pry-byebug, ransack, rails-i18n
 
+<a id="requirement_03"></a>
 ### インフラ
 - AWS(EC2, RDS, AMI, EIP)
 - Vagrant / VirtualBox
 
+<a id="requirement_04"></a>
 ### その他
 - SQL
 
@@ -104,6 +113,8 @@ TABE RECO(タベレコ)は食べたものを記録できるサイトです。
 詳細はLICENSE.mdをご覧ください。
 Copyright © 2019 TabeReco. All Rights Reserved.
 
+
+<a id="acknowledgments"></a>
 ## 謝辞(Acknowledgments)
 #### インスピレーション(Inspiration)
 - [あすけん](https://www.asken.jp/)
