@@ -1,5 +1,5 @@
 # TABE RECO
-TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイトです。
+TABE RECO(タベレコ)は食べたものを記録できるサイトです。
   
 日々の食事を管理して、**健康的な食生活を送るサポート**をします。
 
@@ -13,6 +13,10 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 - [機能](#feature)
 - [デモ](#demo)
 - [使い方](#usage)
+  - [自分の記録](#feature_1)
+  - [みんなの広場](#feature_2)
+  - [栄養の知識](#feature_3)
+- [要件](#requirement)
 - [著者](#author)
 - [ライセンス](#licence)
 
@@ -29,9 +33,9 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 [TABE RECO] (http://www.tabereco.xyz/)
 
 
-
 <a id="usage"></a>
 ## 使い方(Usage)
+<a id="feature_1"></a>
 ### 自分の記録
 #### ご自身の食事管理にご利用ください。
 1. まずは「食事記録する」から食べたものを記録します。
@@ -42,8 +46,9 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 6. 適正量に近づけることができるように、日々の食事管理に役立てていただければ幸いです。
 - 食事記録の「1日のバランスチェック」項目は詳細に入力することをおすすめします。
 
+<a id="feature_2"></a>
 ### みんなの広場
-#### 一人で頑張れない方は登録済みユーザーとつながって一緒に頑張りましょう。
+#### ひとりで頑張れない方は登録済みユーザーとつながって一緒に頑張りましょう。
 1. プロフィール登録で自分の目標や自己紹介を登録します。
 2. 「新規投稿する」から登録済みの目標を選択して仲間に宣言しましょう。
 3. 他のユーザーが目標を達成できていたら「いいね」をすることができます。
@@ -51,6 +56,7 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 5. コメントも可能ですので、仲間同士で情報共有などにご利用ください。
 6. お気に入りユーザーをフォローすることも可能です。
 
+<a id="feature_3"></a>
 ### 栄養の知識
 #### 運営側から栄養や食に関する情報を発信いたします。
 1. 一覧ページから投稿記事を選択すると詳細を確認することができます。 
@@ -58,7 +64,8 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 3. 日々の食生活の参考にしていただければ幸いです。
 
 
-## 必要条件(Requirements)
+<a id="requirement"></a>
+## 要件(Requirement)
 ### フロントエンド
 - HTML / CSS
 - Bootstrap
@@ -66,21 +73,22 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 
 ### サーバサイド
 - Ruby / Ruby on Rails
-#### 利用したライブラリ
-devise, refile, refile-mini_magick, kaminari, cocoon
+- 利用したライブラリ
   
-bootstrap-sass, chart-js-rails, gon
+   devise, refile, refile-mini_magick, kaminari, cocoon
   
-fullcalendar-rails, momentjs-rails, jquery-rails
+   bootstrap-sass, chart-js-rails, gon
   
-pry-byebug, ransack, rails-i18n
+   fullcalendar-rails, momentjs-rails, jquery-rails
+  
+   pry-byebug, ransack, rails-i18n
 
 ### インフラ
-AWS(EC2, RDS, AMI, EIP)
-Vagrant / VirtualBox
+- AWS(EC2, RDS, AMI, EIP)
+- Vagrant / VirtualBox
 
 ### その他
-SQL
+- SQL
 
 
 <a id="author"></a>
@@ -97,7 +105,10 @@ SQL
 Copyright © 2019 TabeReco. All Rights Reserved.
 
 ## 謝辞(Acknowledgments)
-### インスピレーション(Inspiration)
+#### インスピレーション(Inspiration)
 - [あすけん](https://www.asken.jp/)
 - [FiNC](https://finc.com/)
 - [DietPlus](https://dietplus.jp/)
+#### 感謝(Thanks)
+- [DMM WEB CAMP 難波校](https://web-camp.io/)
+
