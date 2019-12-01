@@ -10,17 +10,22 @@ TABE RECO (タベレコ）
 # DEMO
 
 
-# Features
 
+
+# Features
+食事を自己管理することができる
+入力が簡単に短時間でできる
+栄養バランスがグラフでわかる
+目標に向かって頑張る仲間と応援しあうことができる
+栄養や食の知識をつけることができる
 
 # Usage
+1.食事を記録して1日の栄養バランスを確認することができます
+2.仲間と繋がって目標を共有して応援しあうことができます
+3.栄養の知識をつけることができます
 
 
-# Requirement
-
-
-# Note
-
+#
 
 # Author
 Nao Ikeji
@@ -30,26 +35,3 @@ na3o.g.7@gmail.com
 
 
 
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
