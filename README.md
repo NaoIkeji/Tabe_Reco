@@ -59,20 +59,29 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 
 
 ## 必要条件(Requirements)
-### 言語
-- HTML
-- CSS
-- Ruby
-- Ruby on Rails
-- JavaScript
-- jQuery
+### フロントエンド
+- HTML / CSS
+- Bootstrap
+- JavaScript / jQuery / Ajax
 
-### 使用Gem
-- device
-- coccon
-- 
-- 
-- 
+### サーバサイド
+- Ruby / Ruby on Rails
+#### 利用したライブラリ
+devise, refile, refile-mini_magick, kaminari, cocoon
+  
+bootstrap-sass, chart-js-rails, gon
+  
+fullcalendar-rails, momentjs-rails, jquery-rails
+  
+pry-byebug, ransack, rails-i18n
+
+### インフラ
+AWS(EC2, RDS, AMI, EIP)
+Vagrant / VirtualBox
+
+### その他
+SQL
+
 
 <a id="author"></a>
 ## 著者(Author)
@@ -89,6 +98,6 @@ Copyright © 2019 TabeReco. All Rights Reserved.
 
 ## 謝辞(Acknowledgments)
 ### インスピレーション(Inspiration)
-[あすけん](https://www.asken.jp/)
-[FiNC](https://finc.com/)
-[DietPlus](https://dietplus.jp/)
+- [あすけん](https://www.asken.jp/)
+- [FiNC](https://finc.com/)
+- [DietPlus](https://dietplus.jp/)
