@@ -42,7 +42,7 @@ TABE RECO (http://www.tabereco.xyz/)
 ## 使い方(Usage)
 <a id="feature_1"></a>
 ### 自分の記録
-#### ご自身の食事管理にご利用ください。
+##### ご自身の食事管理にご利用ください。
 1. まずは「食事記録する」から食べたものを記録します。
 2. 記録するとマイページのカレンダーに「登録済み」と表示されます。
 3. カレンダーの「登録済み」を選択すると、その日の食べた食事一覧が見れます。
@@ -53,7 +53,7 @@ TABE RECO (http://www.tabereco.xyz/)
 
 <a id="feature_2"></a>
 ### みんなの広場
-#### ひとりで頑張れない方は登録済みユーザーとつながって一緒に頑張りましょう。
+##### ひとりで頑張れない方は登録済みユーザーとつながって一緒に頑張りましょう。
 1. プロフィール登録で自分の目標や自己紹介を登録します。
 2. 「新規投稿する」から登録済みの目標を選択して仲間に宣言しましょう。
 3. 他のユーザーが目標を達成できていたら「いいね」をすることができます。
@@ -63,7 +63,7 @@ TABE RECO (http://www.tabereco.xyz/)
 
 <a id="feature_3"></a>
 ### 栄養の知識
-#### 運営側から栄養や食に関する情報を発信いたします。
+##### 運営側から栄養や食に関する情報を発信いたします。
 1. 一覧ページから投稿記事を選択すると詳細を確認することができます。 
 2. 食事の基本、栄養素、食べ合わせ、レシピなど随時更新予定です。
 3. 日々の食生活の参考にしていただければ幸いです。
@@ -72,13 +72,13 @@ TABE RECO (http://www.tabereco.xyz/)
 <a id="requirement"></a>
 ## 要件(Requirement)
 <a id="requirement_01"></a>
-### フロントエンド
+#### フロントエンド
 - HTML / CSS
 - Bootstrap
 - JavaScript / jQuery / Ajax
 
 <a id="requirement_02"></a>
-### サーバサイド
+#### サーバサイド
 - Ruby / Ruby on Rails
 - 利用したライブラリ
   
@@ -91,12 +91,12 @@ TABE RECO (http://www.tabereco.xyz/)
    pry-byebug, ransack, rails-i18n
 
 <a id="requirement_03"></a>
-### インフラ
+#### インフラ
 - AWS(EC2, RDS, AMI, EIP)
 - Vagrant / VirtualBox
 
 <a id="requirement_04"></a>
-### その他
+#### その他
 - SQL
 
 
@@ -111,6 +111,7 @@ TABE RECO (http://www.tabereco.xyz/)
 このプロジェクトは MIT ライセンスの元にライセンスされています。
   
 詳細はLICENSE.mdをご覧ください。
+  
 Copyright © 2019 TabeReco. All Rights Reserved.
 
 
