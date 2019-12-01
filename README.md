@@ -109,6 +109,6 @@ Copyright © 2019 TabeReco. All Rights Reserved.
 - [あすけん](https://www.asken.jp/)
 - [FiNC](https://finc.com/)
 - [DietPlus](https://dietplus.jp/)
-#### 感謝(Thanks)
+#### 感謝(Thanks!!)
 - [DMM WEB CAMP 難波校](https://web-camp.io/)
 
