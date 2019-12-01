@@ -10,13 +10,13 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 **食事の自己管理**を目的とした方におすすめのサイトとなっています。
 
 ## 目次(Table of contents)
-- [機能](#Feature)
-- デモ
-- 使い方
-- [著者](#Author)
-- ライセンス
+- [機能](#feature)
+- [デモ](#demo)
+- [使い方](#usage)
+- [著者](#author)
+- [ライセンス](#licence)
 
-<a id="Feature"></a>
+<a id="feature"></a>
 ## 機能(Feature)
 - 食事を自己管理することができる
 - 食事の入力が簡単に短時間でできる
@@ -24,11 +24,13 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 - 目標に向かって頑張る仲間同士で応援しあうことができる
 - 栄養や食の知識をつけることができる
 
+<a id="demo"></a>
 ## デモ(Demo)
 [TABE RECO] (http://www.tabereco.xyz/)
 
 
 
+<a id="usage"></a>
 ## 使い方(Usage)
 ### 自分の記録
 #### ご自身の食事管理にご利用ください。
@@ -55,11 +57,29 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 2. 食事の基本、栄養素、食べ合わせ、レシピなど随時更新予定です。
 3. 日々の食生活の参考にしていただければ幸いです。
 
-<a id="Author"></a>
+
+## 必要条件(Requirements)
+### 言語
+- HTML
+- CSS
+- Ruby
+- Ruby on Rails
+- JavaScript
+- jQuery
+
+### 使用Gem
+- device
+- coccon
+- 
+- 
+- 
+
+<a id="author"></a>
 ## 著者(Author)
 - Name: Nao Ikeji
 - Mail: na3o.g.7@gmail.com
 
+<a id="licence"></a>
 ## ライセンス(Licence)
 [MIT](http://)</blockquote>
 このプロジェクトは MIT ライセンスの元にライセンスされています。
@@ -68,4 +88,7 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 Copyright © 2019 TabeReco. All Rights Reserved.
 
 ## 謝辞(Acknowledgments)
-- インスピレーション(Inspiration)
+### インスピレーション(Inspiration)
+[あすけん](https://www.asken.jp/)
+[FiNC](https://finc.com/)
+[DietPlus](https://dietplus.jp/)
