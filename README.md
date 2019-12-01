@@ -107,13 +107,9 @@ TABE RECO (http://www.tabereco.xyz/)
 
 <a id="licence"></a>
 ## ライセンス(Licence)
-[MIT](http://)</blockquote>
-このプロジェクトは MIT ライセンスの元にライセンスされています。
+この作品は [MIT](http://) ライセンスにて提供しています。
   
-詳細はLICENSE.mdをご覧ください。
-  
-Copyright © 2019 TabeReco. All Rights Reserved.
-
+詳しくは LICENSE ファイルをご確認ください。  
 
 <a id="acknowledgments"></a>
 ## 謝辞(Acknowledgments)
