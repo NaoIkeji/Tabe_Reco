@@ -107,9 +107,9 @@ TABE RECO (http://www.tabereco.xyz/)
 
 <a id="licence"></a>
 ## ライセンス(Licence)
-この作品は [MIT](http://) ライセンスにて提供しています。
+この作品はMITライセンスにて提供しています。
   
-詳しくは LICENSE ファイルをご確認ください。  
+詳しくは[LICENSE](https://github.com/NaoIkeji/Tabe_Reco/blob/master/LICENSE) ファイルをご確認ください。  
 
 <a id="acknowledgments"></a>
 ## 謝辞(Acknowledgments)
