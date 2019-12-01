@@ -9,8 +9,8 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
   
 **食事の自己管理**を目的とした方におすすめのサイトとなっています。
 
-## 目次()
-- 機能
+## 目次(Table of contents)
+- [機能](## 機能(Feature))
 - デモ
 - 使い方
 - 著者
@@ -55,10 +55,10 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 3. 日々の食生活の参考にしていただければ幸いです。
 
 ## 著者(Author)
-- name: Nao Ikeji
-- mail: na3o.g.7@gmail.com
+- Name: Nao Ikeji
+- Mail: na3o.g.7@gmail.com
 
-## ライセンス(LICENCE)
+## ライセンス(Licence)
 [MIT](http://)</blockquote>
 このプロジェクトは MIT ライセンスの元にライセンスされています。
   
@@ -66,4 +66,4 @@ TABE RECO(タベレコ)は食べたものを記録(レコード)できるサイ�
 Copyright © 2019 TabeReco. All Rights Reserved.
 
 ## 謝辞(Acknowledgments)
-- Inspiration
+- インスピレーション(Inspiration)
