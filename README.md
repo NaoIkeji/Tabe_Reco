@@ -37,8 +37,7 @@ TABE RECO(タベレコ)は食べたものを記録できるサイトです。
 ## デモ(Demo)
 TABE RECO (http://www.tabereco.xyz/)
 
-![PF_demo](https://user-images.githubusercontent.com/49096883/69917167-7186ae80-14a6-11ea-9834-ae6d2ff5f352.gif)
-
+![PF_demo1](https://user-images.githubusercontent.com/49096883/69917314-d42c7a00-14a7-11ea-9e3e-867a28e64359.gif)
 
 <a id="usage"></a>
 ## 使い方(Usage)
