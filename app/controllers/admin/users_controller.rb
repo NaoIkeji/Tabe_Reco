@@ -3,7 +3,9 @@ class Admin::UsersController < ApplicationController
 
 	def index
 		@users = User.page(params[:page]).reverse_order
+		# 検索オブジェクトの作成 params[:q]には検索パラメータが渡される
 		@search = User.ransack(params[:q])
+		# 検索結果を得る
 		@users = @search.result
 	end
 
@@ -35,9 +37,6 @@ class Admin::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		User.find(params[:id]).destroy
 		redirect_to admin_users_path
-	end
-
-	def user_search
 	end
 
 	def search_list

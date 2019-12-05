@@ -10,6 +10,7 @@ class User::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    #プロフィール登録で登録済みの目標を全てを表示させる
     @targets = current_user.targets.all
   end
 

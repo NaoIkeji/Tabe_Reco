@@ -4,13 +4,11 @@ class User::MealsController < ApplicationController
 	def meal_indication
 	end
 
-	# def index
-	# 	@meals = Meal.all
-	# end
-
 	def new
 		@meal = Meal.new
+		# @textはsubmitボタンに表示する文字
 		@text = "食事を登録する"
+		# @urlはform_forのオプションフォームの送信先を指定(createへ)
 		@url = user_meals_path
 	end
 
@@ -19,6 +17,7 @@ class User::MealsController < ApplicationController
 		@meal.user_id = current_user.id
 		if @meal.save
 			@date = params[:commit]
+			# 新規登録が保存できれば、ログインユーザーのxx年xx月xx日の食事一覧ページへ
             redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + @meal.ate_date.strftime("%F")
         else
          @text = "食事を登録する"
@@ -30,16 +29,16 @@ class User::MealsController < ApplicationController
 
 	def edit
 		@meal = Meal.find(params[:id])
+		# @textはsubmitボタンに表示する文字
 		@text = "食事を編集する"
-		@url = user_meals_path(@meal)
+		# @urlはform_forのオプションフォームの送信先を指定(updateへ)
 		@url = "/user/meals/#{@meal.id}"
 	end
 
 	def update
 		@meal = Meal.find(params[:id])
-		# puts "検索用"
-		# puts meal_params
 		if @meal.update(meal_params)
+			# updateできたら、ログインユーザーのxx年xx月xx日の食事一覧ページへ
 		   redirect_to user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + @meal.ate_date.strftime("%F")
 		else
 			@url = "/user/meals/#{@meal.id}"

@@ -47,7 +47,7 @@ namespace :admin do
     get 'home/top' => 'home#top'
     get 'users/:id/post_list' => 'users#post_list', as: 'user_post_list'
     get 'users/search_list' => 'users#search_list', as:'user_search_list'
-    get 'users/user_search' =>'users#user_search', as: 'user_search'
+    # get 'users/user_search' =>'users#user_search', as: 'user_search'
     get 'users/:id/user_comments' => 'users#user_comments', as: 'user_comments'
 
   	resources :foods, only: [:index, :new, :create, :update, :edit, :destroy]

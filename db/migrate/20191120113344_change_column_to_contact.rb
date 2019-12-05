@@ -3,3 +3,4 @@ class ChangeColumnToContact < ActiveRecord::Migration[5.2]
   	change_column :contacts, :status, :string, default: "未対応"
   end
 end
+
