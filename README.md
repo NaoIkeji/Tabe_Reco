@@ -41,7 +41,7 @@ TABE RECO (http://www.tabereco.xyz/)
 
 
 #### Point
-<img width="450" alt="スクリーンショット 2019-11-29 14 50 08" src="https://user-images.githubusercontent.com/49096883/70374757-d6745580-1939-11ea-8e48-63cea08030ed.png">　<img width="325" alt="スクリーンショット 2019-12-06 1 37 28" src="https://user-images.githubusercontent.com/49096883/70374763-e2601780-1939-11ea-8972-b762e0addd3b.png">
+<img width="325" alt="スクリーンショット 2019-12-06 1 37 28" src="https://user-images.githubusercontent.com/49096883/70374763-e2601780-1939-11ea-8972-b762e0addd3b.png">　　<img width="450" alt="スクリーンショット 2019-11-29 14 50 08" src="https://user-images.githubusercontent.com/49096883/70374757-d6745580-1939-11ea-8e48-63cea08030ed.png">
 
 ユーザーが食事記録をするごとに食品のグループ分けができるようになり、
   
