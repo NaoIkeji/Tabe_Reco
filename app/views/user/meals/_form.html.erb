@@ -83,8 +83,10 @@
 						<div class="food-select-form">
 							<% @kind = "主食" %>
 							<%= f.fields_for :food_points do |food_point| %>
+								<!-- foodモデルのfood_categoryカラムが主食であるレコードを全て取得 -->
 								<% @foods = Food.where(food_category: "主食") %>
 								<% @foods.each do |t| %>
+								<!-- 編集画面の時、foodのidとfood_pointモデルのfood_idが同じならば、フォームを表示させる -->
 									<% if t.id == food_point.object.food_id%>
 										<%= render "food_point_fields", f: food_point %>
 									<%	end %>

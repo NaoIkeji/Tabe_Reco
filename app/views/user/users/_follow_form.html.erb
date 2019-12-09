@@ -5,9 +5,11 @@
 	<div class="follow-status clearfix col-lg-7">
 		<ul>
 			<li>
+				<!-- あるユーザーのフォロー一覧のリンク、フォロー数を表示 -->
 				<a href = "<%= following_user_user_path(user) %>" %><%= user.following.count %>フォロー</a>
 			</li>
 			<li>
+				<!-- あるユーザーのフォロワー一覧のリンク、フォロワー数を表示 -->
 				<a href = "<%= followers_user_user_path(user) %>" %><%= user.followers.count %>フォロワー</a>
 			</li>
 		</ul>
@@ -17,12 +19,20 @@
 
 	<div class="follow-btn col-lg-5">
 		<% if current_user != user %>
+		<!-- あるユーザー(user)に対して
+			「follower_id(フォローする人)がログインユーザー(current_user)のid」であり、
+			「followed_id(フォローされる人)のidがあるユーザーのid」という関係(Relationshipモデルから)を探してくる-->
+			<!-- 見つけてこれたら「フォロー中」、見つけられなかったら「フォローする」を表示 -->
 			<% if Relationship.find_by(follower_id: current_user.id,followed_id: user.id) %>
+			<!-- remote: true を記述することで、通常はlink_toで呼ばれるアクションに対応する
+			html.erbファイルを呼び出すところ、js.erbファイルを呼び出せるようになる。
+			→ ページ遷移を行わず非同期で通信が行われるようになる-->
 					<%= link_to "フォロー中", user_user_relationships_path(user.id), method: :delete, remote: true, class:"btn btn-info col-lg-12" %>
 			<% else %>
 		            <%= link_to "フォローする", user_user_relationships_path(user.id), method: :post, remote: true, class:"btn btn-default col-lg-12" %>
 			<% end %>
 		<% end %>
 	</div>
-
 </div>
+
+

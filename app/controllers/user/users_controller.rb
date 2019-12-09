@@ -14,7 +14,7 @@ class User::UsersController < ApplicationController
 		#空の配列を準備する
 		meal_json=[]
 		@meals.each do |meal|
-			# urlnはログインユーザーのxx年xx月xx日の食事一覧ページのURL
+			# urlnはログインユーザーのxx年xx月xx日の食事一覧ページのURL 「%E2%9C%93」はパラメーターのチェックマーク
 			urln = user_daily_meal_path(current_user.id)+"?utf8=%E2%9C%93&commit=" + meal.ate_date.strftime("%F")
 			# titleには登録済み、startには食事をした日付、urlにはログインユーザーのxx年xx月xx日の食事一覧ページのURL のデータを渡す
 	   		obj = {title: '登録済み', start: meal.ate_date.strftime("%F"), url: urln }
@@ -114,30 +114,36 @@ class User::UsersController < ApplicationController
 		@posts = @user.posts.all.order(created_at: "DESC")
 	end
 
+	# ユーザーをフォローする
 	def follow(other_user)
 		following << other_user
 	end
 
+	# ユーザーをフォロー解除する
 	def unfollow(other_user)
 		active_relationships.find_by(followed_id: other_user.id).destroy
 	end
 
+	# 現在のユーザーがフォローしてたらtrueを返す
 	def following?(other_user)
 		following.include?(other_user)
 	end
 
+	# フォロー一覧
 	def following
 		@user = User.find(params[:id])
 		@users = @user.following
 		@search = User.ransack(params[:q])
 	end
 
+	# フォロワー一覧
 	def followers
 		@user = User.find(params[:id])
 		@users = @user.followers
 		@search = User.ransack(params[:q])
 	end
 
+	# 検索結果一覧
 	def search_list
 		# 検索オブジェクト
 		@search = User.ransack(params[:q])

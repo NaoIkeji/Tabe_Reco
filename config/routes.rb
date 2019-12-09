@@ -36,6 +36,9 @@ namespace :user do
 
     resources :users do
         resource :relationships, only: [:create, :destroy]
+        # リソースベースのルーティングに別のアクションを追加
+        # memberは特定のデータを対象としたアクションを記述する
+        # リクエストのURLの中でidパラメータが必要
         member do
             get :following, :followers
         end
