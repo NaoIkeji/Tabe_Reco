@@ -6,4 +6,5 @@ class User::ArticleGenresController < ApplicationController
 		@articles = @article_genre.articles
 		@genres = ArticleGenre.all
 	end
+
 end

@@ -114,15 +114,15 @@ class User::UsersController < ApplicationController
 		@posts = @user.posts.all.order(created_at: "DESC")
 	end
 
-	# ユーザーをフォローする
-	def follow(other_user)
-		following << other_user
-	end
+	# # ユーザーをフォローする
+	# def follow(other_user)
+	# 	following << other_user
+	# end
 
-	# ユーザーをフォロー解除する
-	def unfollow(other_user)
-		active_relationships.find_by(followed_id: other_user.id).destroy
-	end
+	# # ユーザーをフォロー解除する
+	# def unfollow(other_user)
+	# 	active_relationships.find_by(followed_id: other_user.id).destroy
+	# end
 
 	# 現在のユーザーがフォローしてたらtrueを返す
 	def following?(other_user)
@@ -156,11 +156,8 @@ class User::UsersController < ApplicationController
 	end
 
 	private
-
 	def user_params
 		print params
 		params.require(:user).permit(:profile_image, :introduction, targets_attributes: [:id, :target_body, :_destroy])
 	end
-
-
 end

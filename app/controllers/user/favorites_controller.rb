@@ -17,4 +17,5 @@ class User::FavoritesController < ApplicationController
 		# favorite = current_user.favorites.find_by(post_id: post.id)
 		# redirect_to user_post_path(post.id)
 	end
+
 end

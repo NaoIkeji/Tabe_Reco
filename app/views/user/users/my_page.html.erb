@@ -27,7 +27,7 @@
 
 <script>
    	$(document).ready(function() {
-		var data = {};
+		    var data = {};
         $.ajaxSetup({ cache: false });
         $.ajax({
             url: '/user/users/json',//←ここをjsonを返却するアクションのパスに設定し直す
@@ -35,10 +35,10 @@
             async: false,
             success: function(json) {
             	 $('#calendar').fullCalendar({
-	        		editable: true,
-	        		events: json,
-              eventColor: '#93c9ff'
-	   			});
+	        		   editable: true,
+	        		   events: json,
+                 eventColor: '#93c9ff'
+	   			     });
             }
         });
 

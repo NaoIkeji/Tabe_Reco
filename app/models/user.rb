@@ -14,8 +14,6 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  accepts_nested_attributes_for :targets, allow_destroy: true
-
 
   has_many :meals, dependent: :destroy
   has_many :targets, dependent: :destroy
@@ -66,5 +64,7 @@ class User < ApplicationRecord
     # cheersの中に引数で送られたuserのidがあるかどうか。
     cheers.where(user_id: user.id).exists?
   end
+
+  accepts_nested_attributes_for :targets, allow_destroy: true
 
 end

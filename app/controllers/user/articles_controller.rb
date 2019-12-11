@@ -10,4 +10,5 @@ class User::ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		@genres = ArticleGenre.all
 	end
+
 end

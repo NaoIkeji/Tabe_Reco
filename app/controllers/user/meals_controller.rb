@@ -56,4 +56,5 @@ class User::MealsController < ApplicationController
 	def meal_params
 		params.require(:meal).permit(:ate_date, :ate_time, :meal_item, :meal_image, :meal_text, food_points_attributes: [:id, :meal_id, :food_id, :point, :_destroy])
 	end
+
 end

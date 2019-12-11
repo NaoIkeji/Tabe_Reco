@@ -42,7 +42,6 @@ class Admin::ArticlesController < ApplicationController
 	end
 
 	private
-
 	def article_params
 		params.require(:article).permit(:article_title, :article_genre_id, :article_image, :article_body)
 	end

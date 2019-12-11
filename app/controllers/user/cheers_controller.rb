@@ -16,4 +16,5 @@ class User::CheersController < ApplicationController
 		# cheer = current_user.cheers.find_by(post_id: post.id)
 		# redirect_to user_post_path(post.id)
 	end
+
 end

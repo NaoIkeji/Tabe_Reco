@@ -14,4 +14,5 @@ class User::RelationshipsController < ApplicationController
 	  	relationship.destroy
 	  	# redirect_to user_users_path
     end
+
 end
